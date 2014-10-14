@@ -33,5 +33,6 @@ typedef NS_ENUM(NSUInteger, SavedLocationType) {
 -(NSString*)locationIcon;
 
 -(CLLocationCoordinate2D)coordinate;
+-(void)setCoordinate:(CLLocationCoordinate2D)coord;
 
 @end

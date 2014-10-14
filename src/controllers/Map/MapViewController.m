@@ -408,6 +408,9 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 													   target:self
 													   action:@selector(routeButtonSelected)];
 	
+	
+	// CNS only
+	
 	self.poiButton = [[UIBarButtonItem alloc] initWithTitle:@"POI"
 														style:UIBarButtonItemStylePlain
 													   target:self
@@ -417,6 +420,8 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 													  style:UIBarButtonItemStylePlain
 													 target:self
 													 action:@selector(didSelectSaveLocationsButton:)];
+	
+	//
 	
 	
 	
@@ -457,7 +462,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 			_searchButton.enabled = YES;
 			_activeLocationSubButton.selected=NO;
 			
-			items=@[_locationButton,_searchButton, _leftFlex, _rightFlex,_savedLocationButton];
+			items=@[_locationButton,_searchButton, _leftFlex, _rightFlex];
 			[self.toolBar setItems:items animated:YES ];
 			
 		}
@@ -1136,7 +1141,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 
 - (void) didTapOnMapSingle:(UITapGestureRecognizer*)recogniser {
 	
-	BetterLog(@"");
+	BetterLog(@"_selectedAnnotation=%@",_selectedAnnotation);
 	
 	// if an annotation is active, do not add a new one, we must wait for the annotation to be deselected
 	if(_selectedAnnotation!=nil)
@@ -1153,6 +1158,12 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 
 
 -(void)addLocationToMapForGesture:(CLLocation*)location{
+	
+	if (location==nil) {
+		return;
+	}
+	
+	BetterLog(@"");
 	
 	if(_uiState==MapPlanningStateRoute)
 		return;
@@ -1204,11 +1215,15 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
 	
+	BetterLog(@"");
+	
 	 if ([annotation isKindOfClass:[MKUserLocation class]])
 		 return nil;
 	
 	 static NSString *reuseId = @"CSWaypointAnnotationView";
 	 CSWaypointAnnotationView *annotationView = (CSWaypointAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:reuseId];
+	
+	BetterLog(@"annotationView=%@",annotationView);
 	
 	 if (annotationView == nil){
 		 
@@ -1223,10 +1238,16 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 		 calloutButton.backgroundColor=[UIColor redColor];
 		 annotationView.rightCalloutAccessoryView=calloutButton;
 		 
+		 UIButton *xcalloutButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 44)];
+		 [xcalloutButton setImage:[UIImage imageNamed:@"UIButtonBarTrash.png"] forState:UIControlStateNormal];
+		 xcalloutButton.backgroundColor=[UIColor greenColor];
+		 annotationView.leftCalloutAccessoryView=xcalloutButton;
+		 
 		 
 		 
 	 } else {
 		 annotationView.annotation = annotation;
+		 annotationView.canShowCallout=YES;
 	 }
 	 
 	 return annotationView;
@@ -1245,6 +1266,8 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 // offsets the nilling of the selectedAnnotation as single tap will occur immediately after didDeselectAnnotationView, we dont
 // want a waypoint to be addded when the user has merely dismissed the annotation popup
 -(void)offsetSelectedAnnnotationDeselection{
+	
+	BetterLog(@"selectedAnnotation=%@",_selectedAnnotation);
 	self.selectedAnnotation=nil;
 }
  
@@ -1265,9 +1288,16 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 		
 	}else{
 		
+		BetterLog(@"selectedAnnotation=%@",_selectedAnnotation);
+		
+		
 		self.selectedAnnotation=(CSWaypointAnnotationView*)view;
+		
+		BetterLog(@"selectedAnnotation=%@",_selectedAnnotation);
+		
+		BetterLog(@"s=%i",_selectedAnnotation.selected);
 	
-		[view setDragState:MKAnnotationViewDragStateStarting];
+		//[view setDragState:MKAnnotationViewDragStateStarting];
 	}
 	
 	

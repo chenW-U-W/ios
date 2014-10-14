@@ -579,6 +579,12 @@
 		289EFC5619ED5A710081E7BB /* NSMutableArray+Plist.m in Sources */ = {isa = PBXBuildFile; fileRef = 289EFC5519ED5A710081E7BB /* NSMutableArray+Plist.m */; };
 		289EFC5719ED5A710081E7BB /* NSMutableArray+Plist.m in Sources */ = {isa = PBXBuildFile; fileRef = 289EFC5519ED5A710081E7BB /* NSMutableArray+Plist.m */; };
 		289EFC5819ED5A710081E7BB /* NSMutableArray+Plist.m in Sources */ = {isa = PBXBuildFile; fileRef = 289EFC5519ED5A710081E7BB /* NSMutableArray+Plist.m */; };
+		289EFC5919ED86AE0081E7BB /* CSOverlayTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 289EFC5019ED39E30081E7BB /* CSOverlayTransitionAnimator.m */; };
+		289EFC5A19ED86AF0081E7BB /* CSOverlayTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 289EFC5019ED39E30081E7BB /* CSOverlayTransitionAnimator.m */; };
+		289EFC5B19ED86BB0081E7BB /* SavedLocationsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 289EFC3F19ED23760081E7BB /* SavedLocationsManager.m */; };
+		289EFC5C19ED86BB0081E7BB /* SavedLocationsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 289EFC3F19ED23760081E7BB /* SavedLocationsManager.m */; };
+		289EFC5D19ED86C50081E7BB /* SavedLocationVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 289EFC4219ED24360081E7BB /* SavedLocationVO.m */; };
+		289EFC5E19ED86C50081E7BB /* SavedLocationVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 289EFC4219ED24360081E7BB /* SavedLocationVO.m */; };
 		289F78031534431E00B062D1 /* UIImage+Operations.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B485211526222800E406E1 /* UIImage+Operations.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		289F78041534432900B062D1 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ECCBDE1526316600284926 /* NSData+Base64.m */; };
 		289F78051534432B00B062D1 /* NSString-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B4855D15262D6000E406E1 /* NSString-Utilities.m */; };
@@ -3996,9 +4002,11 @@
 				28AD6442131FB6C8008527FC /* MultiLabelLine.m in Sources */,
 				28AD6443131FB6C8008527FC /* RadioButtonGroup.m in Sources */,
 				28AD6455131FB6C8008527FC /* ShadowedTableView.m in Sources */,
+				289EFC5D19ED86C50081E7BB /* SavedLocationVO.m in Sources */,
 				28AD6460131FB6C8008527FC /* DeviceUtilities.m in Sources */,
 				283C5FCC18B915C300E97BDF /* PhotoWizardViewController.m in Sources */,
 				28AD6462131FB6C8008527FC /* GlobalUtilities.m in Sources */,
+				289EFC5919ED86AE0081E7BB /* CSOverlayTransitionAnimator.m in Sources */,
 				283C5FCD18B91B4500E97BDF /* PhotoWizardLocationViewController.m in Sources */,
 				28965C5418BF3CC3001BB258 /* TBXML+Additions.m in Sources */,
 				28AD6493131FB6C8008527FC /* StringUtilities.m in Sources */,
@@ -4091,6 +4099,7 @@
 				284608281649388900CBF96A /* ImageUtilties.m in Sources */,
 				288C0F65164AA0B1000880FF /* MapViewController.m in Sources */,
 				28965C5A18BF4F94001BB258 /* CSRoutePolyLineOverlay.m in Sources */,
+				289EFC5B19ED86BB0081E7BB /* SavedLocationsManager.m in Sources */,
 				2889095C193F385D009C4325 /* CSOpenCycleMapSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4152,9 +4161,11 @@
 				283436F415DD5DC300B00FD5 /* MultiLabelLine.m in Sources */,
 				283436F515DD5DC300B00FD5 /* RadioButtonGroup.m in Sources */,
 				283436F715DD5DC300B00FD5 /* ShadowedTableView.m in Sources */,
+				289EFC5E19ED86C50081E7BB /* SavedLocationVO.m in Sources */,
 				283436F815DD5DC300B00FD5 /* DeviceUtilities.m in Sources */,
 				283436F915DD5DC300B00FD5 /* GlobalUtilities.m in Sources */,
 				283436FA15DD5DC300B00FD5 /* StringUtilities.m in Sources */,
+				289EFC5A19ED86AF0081E7BB /* CSOverlayTransitionAnimator.m in Sources */,
 				283436FB15DD5DC300B00FD5 /* ViewUtilities.m in Sources */,
 				283436FC15DD5DC300B00FD5 /* ItineraryCellView.m in Sources */,
 				283436FD15DD5DC300B00FD5 /* RouteListViewController.m in Sources */,
@@ -4247,6 +4258,7 @@
 				2875DE4E18B77CC400BEF18B /* BUIconActionSheet.m in Sources */,
 				2815EA04164D77B0003C356A /* MapViewController.m in Sources */,
 				28965C5B18BF4F94001BB258 /* CSRoutePolyLineOverlay.m in Sources */,
+				289EFC5C19ED86BB0081E7BB /* SavedLocationsManager.m in Sources */,
 				2889095D193F385D009C4325 /* CSOpenCycleMapSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

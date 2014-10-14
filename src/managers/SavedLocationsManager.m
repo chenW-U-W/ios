@@ -76,6 +76,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(SavedLocationsManager);
 				vo.locationType=SavedLocationTypeHome;
 			}
 			
+			[vo setCoordinate:CLLocationCoordinate2DMake(52.0, 0.1)];
+			
 			vo.title=[NSString stringWithFormat:@"Title %i",i];
 			[_dataProvider addObject:vo];
 			
@@ -96,7 +98,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(SavedLocationsManager);
 	NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
 	[archiver encodeObject:_dataProvider forKey:SAVEDLOCATIONARCHIVEKEY];
 	[archiver finishEncoding];
-	BOOL result=[data writeToFile:[self filepath] atomically:YES];
+	[data writeToFile:[self filepath] atomically:YES];
 	
 }
 
