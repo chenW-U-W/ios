@@ -8,6 +8,8 @@
 
 #import "BuildTargetConstants.h"
 
+#import "AppConstants.h"
+
 NSString *const API_IDENTIFIER=@"cyclestreets";
 
 
@@ -18,5 +20,11 @@ NSString *const API_IDENTIFIER=@"cyclestreets";
 	return @[MAPPING_BASE_OSM,MAPPING_BASE_OPENCYCLEMAP,MAPPING_BASE_OS,MAPPING_BASE_APPLE_VECTOR];
 	
 }
+
++(ApplicationBuildTarget)buildTarget{
+	return ApplicationBuildTarget_CycleStreets;
+}
+
+
 
 @end

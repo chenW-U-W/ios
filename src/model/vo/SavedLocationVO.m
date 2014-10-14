@@ -62,6 +62,15 @@
 }
 
 
+-(NSString*)coordinateString{
+	
+	CLLocationCoordinate2D coordinate=[self coordinate];
+	
+	return [NSString stringWithFormat:@"%f, %f",coordinate.latitude,coordinate.longitude];
+	
+}
+
+
 
 //- (void)encodeWithCoder:(NSCoder *)aCoder{
 //	

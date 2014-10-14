@@ -14,7 +14,8 @@
 @interface SavedLocationTableCellView()
 
 @property (weak, nonatomic) IBOutlet UILabel            *titleLabel;
-@property (strong, nonatomic) UIImageView        *locationTypeIcon;
+@property (strong, nonatomic) UIImageView               *locationTypeIcon;
+@property (weak, nonatomic) IBOutlet UILabel            *coordLabel;
 
 
 @end
@@ -36,6 +37,8 @@
     _titleLabel.text=_dataProvider.title;
     
 	_locationTypeIcon.image=[UIImage imageNamed:[_dataProvider locationIcon]];
+    
+    _coordLabel.text=_dataProvider.coordinateString;
     
 }
 

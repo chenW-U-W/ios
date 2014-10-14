@@ -18,4 +18,6 @@ extern NSString *const API_IDENTIFIER;
 
 +(NSArray*)ApplicationSupportedMaps;
 
++(ApplicationBuildTarget)buildTarget;
+
 @end

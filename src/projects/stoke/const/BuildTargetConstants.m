@@ -20,4 +20,8 @@ NSString *const API_IDENTIFIER=@"stoke";
 	
 }
 
++(ApplicationBuildTarget)buildTarget{
+	return ApplicationBuildTarget_CNS;
+}
+
 @end

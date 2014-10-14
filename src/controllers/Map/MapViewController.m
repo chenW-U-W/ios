@@ -43,14 +43,17 @@
 #import "MKMapView+LegalLabel.h"
 #import "CSMapTileService.h"
 #import "MapViewSearchLocationViewController.h"
+#import "BuildTargetConstants.h"
 
 #import "UIColor+AppColors.h"
+#import "UIImage+Additions.h"
 
 #import <Crashlytics/Crashlytics.h>
 
 #import "CSOverlayTransitionAnimator.h"
 #import "SavedLocationsViewController.h"
 #import "SavedLocationVO.h"
+#import "SavedLocationsManager.h"
 
 
 static NSInteger DEFAULT_ZOOM = 15;
@@ -416,7 +419,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 													   target:self
 													   action:@selector(routeButtonSelected)];
 	
-	self.savedLocationButton = [[UIBarButtonItem alloc] initWithTitle:@"SL"
+	self.savedLocationButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CSBarButton_saveloc.png"]
 													  style:UIBarButtonItemStylePlain
 													 target:self
 													 action:@selector(didSelectSaveLocationsButton:)];
@@ -428,6 +431,88 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 	self.leftFlex=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 	self.rightFlex=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 	
+	
+}
+
+
+
+-(NSArray*)toolbarItemsForBuildTargetForUIState{
+	
+	ApplicationBuildTarget buildTarget=[BuildTargetConstants buildTarget];
+	
+	switch (buildTarget) {
+		case ApplicationBuildTarget_CycleStreets:
+		{
+			switch (_uiState) {
+					
+				case MapPlanningStateNoRoute:
+					return @[_locationButton,_searchButton, _leftFlex,];
+				break;
+					
+				case MapPlanningStateLocating:
+					if([self shouldShowWayPointUI]==YES){
+						return @[_waypointButton,_locationButton,_searchButton, _leftFlex,];
+					}else{
+						
+						return @[_locationButton,_searchButton, _leftFlex,];
+					}
+				break;
+					
+				case MapPlanningStateStartPlanning:
+					return @[_locationButton,_searchButton,_leftFlex];
+				break;
+					
+				case MapPlanningStatePlanning:
+					return @[_waypointButton, _locationButton,_searchButton,_leftFlex,_routeButton];
+				break;
+					
+				case MapPlanningStateRoute:
+					return @[_locationButton,_searchButton,_leftFlex, _changePlanButton,_routeButton];
+				break;
+					
+				case MapPlanningStateRouteLocating:
+					return @[_locationButton,_searchButton,_leftFlex, _changePlanButton,_routeButton];
+				break;
+			}
+		}
+			break;
+			
+		case ApplicationBuildTarget_CNS:
+		{
+			switch (_uiState) {
+					
+				case MapPlanningStateNoRoute:
+					return @[_locationButton,_searchButton, _leftFlex, _rightFlex,_savedLocationButton];
+					break;
+					
+				case MapPlanningStateLocating:
+					if([self shouldShowWayPointUI]==YES){
+						return @[_waypointButton,_locationButton,_searchButton, _leftFlex, _rightFlex,_savedLocationButton];
+					}else{
+						return @[_locationButton,_searchButton, _leftFlex, _rightFlex,_savedLocationButton];
+					}
+					break;
+					
+				case MapPlanningStateStartPlanning:
+					return @[_locationButton,_searchButton,_leftFlex,_rightFlex,_savedLocationButton];
+					break;
+					
+				case MapPlanningStatePlanning:
+					return @[_waypointButton, _locationButton,_searchButton,_leftFlex,_routeButton,_savedLocationButton];
+					break;
+					
+				case MapPlanningStateRoute:
+					return @[_locationButton,_searchButton,_leftFlex, _changePlanButton,_routeButton];
+					break;
+					
+				case MapPlanningStateRouteLocating:
+					return @[_locationButton,_searchButton,_leftFlex, _changePlanButton,_routeButton];
+				break;
+			}
+		}
+			
+		break;
+	}
 	
 }
 
@@ -462,7 +547,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 			_searchButton.enabled = YES;
 			_activeLocationSubButton.selected=NO;
 			
-			items=@[_locationButton,_searchButton, _leftFlex, _rightFlex];
+			items=[self toolbarItemsForBuildTargetForUIState];
 			[self.toolBar setItems:items animated:YES ];
 			
 		}
@@ -476,12 +561,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 			_searchButton.enabled = YES;
 			_activeLocationSubButton.selected=YES;
 			
-			if([self shouldShowWayPointUI]==YES){
-				items=@[_waypointButton,_locationButton,_searchButton, _leftFlex, _rightFlex];
-			}else{
-				
-				items=@[_locationButton,_searchButton, _leftFlex, _rightFlex];
-			}
+			items=[self toolbarItemsForBuildTargetForUIState];
 			
 			[self.toolBar setItems:items animated:YES ];
 			
@@ -497,7 +577,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 			_searchButton.enabled = YES;
 			_activeLocationSubButton.selected=NO;
 			
-			items=[@[_locationButton,_searchButton,_leftFlex]mutableCopy];
+			items=[self toolbarItemsForBuildTargetForUIState];
             
             [self.toolBar setItems:items animated:YES ];
 		}
@@ -511,7 +591,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 			_searchButton.enabled = YES;
 			_activeLocationSubButton.selected=NO;
 			
-			items=@[_waypointButton, _locationButton,_searchButton,_leftFlex,_routeButton];
+			items=[self toolbarItemsForBuildTargetForUIState];
             [self.toolBar setItems:items animated:YES ];
 		}
 		break;
@@ -524,7 +604,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 			_activeLocationSubButton.selected=NO;
 			_searchButton.enabled = YES;
 			
-			items=@[_locationButton,_searchButton,_leftFlex, _changePlanButton,_routeButton];
+			items=[self toolbarItemsForBuildTargetForUIState];
             [self.toolBar setItems:items animated:NO ];
 		}
 		break;
@@ -537,7 +617,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 			_activeLocationSubButton.selected=NO;
 			_searchButton.enabled = NO;
 			
-			items=@[_locationButton,_searchButton,_leftFlex, _changePlanButton,_routeButton];
+			items=[self toolbarItemsForBuildTargetForUIState];
 			[self.toolBar setItems:items animated:NO ];
 		}
 		break;
@@ -1213,6 +1293,9 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 
 #pragma mark - MKMap Annotations
 
+#define kDeleteWaypointControlTag 3001
+#define kSaveLocationControlTag 3002
+
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
 	
 	BetterLog(@"");
@@ -1233,16 +1316,20 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 		 annotationView.selected=YES;
 		 annotationView.canShowCallout=YES;
 		 
-		 UIButton *calloutButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 44)];
-		 [calloutButton setImage:[UIImage imageNamed:@"UIButtonBarTrash.png"] forState:UIControlStateNormal];
-		 calloutButton.backgroundColor=[UIColor redColor];
-		 annotationView.rightCalloutAccessoryView=calloutButton;
+		 UIButton *rcalloutButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 44)];
+		 [rcalloutButton setImage:[UIImage imageNamed:@"UIButtonBarTrash.png"] forState:UIControlStateNormal];
+		 rcalloutButton.tag=kDeleteWaypointControlTag;
+		 rcalloutButton.backgroundColor=[UIColor redColor];
+		 annotationView.rightCalloutAccessoryView=rcalloutButton;
 		 
-		 UIButton *xcalloutButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 44)];
-		 [xcalloutButton setImage:[UIImage imageNamed:@"UIButtonBarTrash.png"] forState:UIControlStateNormal];
-		 xcalloutButton.backgroundColor=[UIColor greenColor];
-		 annotationView.leftCalloutAccessoryView=xcalloutButton;
-		 
+		 if([BuildTargetConstants buildTarget]==ApplicationBuildTarget_CNS){
+			 UIButton *lcalloutButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 44)];
+			 [lcalloutButton setImage:[UIImage imageNamed:@"CSBarButton_saveloc" tintColor:[UIColor whiteColor] style:UIImageTintedStyleKeepingAlpha] forState:UIControlStateNormal];
+			 [lcalloutButton setImage:[UIImage imageNamed:@"CSBarButton_saveloc" tintColor:[UIColor blackColor] style:UIImageTintedStyleKeepingAlpha] forState:UIControlStateHighlighted];
+			 lcalloutButton.tag=kSaveLocationControlTag;
+			 lcalloutButton.backgroundColor=[UIColor appTintColor];
+			 annotationView.leftCalloutAccessoryView=lcalloutButton;
+		 }
 		 
 		 
 	 } else {
@@ -1307,11 +1394,29 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
 	
+	NSInteger tag=control.tag;
+	
 	CSWaypointAnnotationView *annotationView=(CSWaypointAnnotationView*)view;
 	CSWaypointAnnotation* annotation=annotationView.annotation;
 	
-	[self removeWayPoint:annotation.dataProvider];
-	
+	switch (tag) {
+		case kSaveLocationControlTag:
+		{
+			SavedLocationVO *location=[[SavedLocationVO alloc] init];
+			[location setCoordinate:annotation.coordinate];
+			location.title=@"Title";
+			[[SavedLocationsManager sharedInstance] addSavedLocation:location];
+			
+			[mapView deselectAnnotation:annotation animated:YES];
+		}
+		break;
+			
+		case kDeleteWaypointControlTag:
+		{
+			[self removeWayPoint:annotation.dataProvider];
+		}
+		break;
+	}
 	
 }
 

@@ -70,6 +70,13 @@ typedef NS_ENUM(int, ValidationStatusCode){
 };
 
 
+typedef NS_ENUM(NSUInteger, ApplicationBuildTarget) {
+	ApplicationBuildTarget_CycleStreets,
+	ApplicationBuildTarget_CNS
+};
+
+
+
 extern NSString *const DEVICETYPE;
 
 // mapping
