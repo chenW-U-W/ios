@@ -669,6 +669,13 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ApplicationXMLParser);
 	
     
 	TBXMLElement *pois=[TBXML childElementNamed:@"pois" parentElement:response];
+	
+	if(pois==nil){
+		
+		_activeOperation.validationStatus=ValidationPOIMapCategoryFailed;
+		return;
+	}
+		
 	TBXMLElement *poi=[TBXML childElementNamed:@"poi" parentElement:pois];
 	
 	if(poi!=nil){
@@ -697,10 +704,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ApplicationXMLParser);
 		
 		_activeOperation.dataProvider=dataProvider;
 		_activeOperation.operationState=NetResponseStateComplete;
-		_activeOperation.validationStatus=ValidationPOICategorySuccess;
+		_activeOperation.validationStatus=ValidationPOIMapCategorySuccess;
 		
 	}else{
-		_activeOperation.validationStatus=ValidationPOICategoryFailure;
+		_activeOperation.validationStatus=ValidationPOIMapCategorySuccessNoEntries;
 	}
 	
 	

@@ -153,10 +153,10 @@
 			<string>Accepts-Encoding</string>
 		</dict>
 	</dict>
-	<key>PoiMapLocation</key>
+	<key>PoiMapCategoryLocation</key>
 	<dict>
 		<key>id</key>
-		<string>PoiMapLocation</string>
+		<string>PoiMapCategoryLocation</string>
 		<key>remoteurl</key>
 		<string>http://www.cyclestreets.net/api/pois.xml</string>
 		<key>type</key>

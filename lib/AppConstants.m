@@ -64,7 +64,7 @@ NSString *const UPLOADUSERPHOTO=@"UploadUserPhotos";
 NSString *const LOCATIONFEATURES=@"LocationFeatures";
 NSString *const POILISTING=@"PoiListing";
 NSString *const POICATEGORYLOCATION=@"PoiCategoryLocation";
-NSString *const POIMAPLOCATION=@"PoiMapLocation";
+NSString *const POIMAPLOCATION=@"PoiMapCategoryLocation";
 NSString *const PHOTOCATEGORIES=@"PhotoCategories";
 NSString *const WAYPOINTMETADATA=@"WaypointMetaData";
 
