@@ -7,12 +7,16 @@
 //
 
 #import "BUTableCellView.h"
-
-@class POICategoryVO;
+#import "POICategoryVO.h"
 
 @interface POITypeCellView : BUTableCellView{
 	
+	IBOutlet	UIImageView				*imageView;
+	IBOutlet	UILabel					*label;
+	
+	POICategoryVO						*dataProvider;
 }
-
+@property (nonatomic, strong)	IBOutlet UIImageView		*imageView;
+@property (nonatomic, strong)	IBOutlet UILabel		*label;
 @property (nonatomic, strong)	POICategoryVO		*dataProvider;
 @end

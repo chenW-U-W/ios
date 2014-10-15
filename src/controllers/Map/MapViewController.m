@@ -417,7 +417,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 	self.poiButton = [[UIBarButtonItem alloc] initWithTitle:@"POI"
 														style:UIBarButtonItemStylePlain
 													   target:self
-													   action:@selector(routeButtonSelected)];
+													   action:@selector(didSelectPOIButton:)];
 	
 	self.savedLocationButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CSBarButton_saveloc.png"]
 													  style:UIBarButtonItemStylePlain

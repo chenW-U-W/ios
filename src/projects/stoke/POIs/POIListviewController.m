@@ -10,15 +10,23 @@
 #import "POITypeCellView.h"
 #import "GlobalUtilities.h"
 #import "POIManager.h"
-#import "BUNetworkOperation.h"
+#import "NetResponse.h"
 #import "ViewUtilities.h"
 
 static NSString *const DATAID = @"PoiListing";
 
+
+@interface POIListviewController()
+
+@property (nonatomic, strong)	IBOutlet UITableView		*tableview;
+@property (nonatomic, strong)	NSMutableArray								*dataProvider;
+
+
+
+@end
+
 @implementation POIListviewController
-@synthesize tableview;
-@synthesize dataProvider;
-@synthesize categoryViewController;
+
 
 
 
@@ -53,7 +61,7 @@ static NSString *const DATAID = @"PoiListing";
 	
 	if([notification.name isEqualToString:REMOTEDATAREQUESTED]){
 		NSDictionary	*dict=[notification userInfo];
-		BUNetworkOperation		*response=[dict objectForKey:RESPONSE];
+		NetResponse		*response=[dict objectForKey:RESPONSE];
 		if([response.dataid isEqualToString:DATAID]){
             [self showViewOverlayForType:kViewOverlayTypeRequestIndicator show:YES withMessage:nil];
 		}
@@ -73,7 +81,7 @@ static NSString *const DATAID = @"PoiListing";
 	
 	self.dataProvider=[POIManager sharedInstance].dataProvider;
 	
-	if([dataProvider count]>0){
+	if([_dataProvider count]>0){
 		[self.tableview reloadData];
 		[self showViewOverlayForType:kViewOverlayTypeRequestIndicator show:NO withMessage:nil];
 	}else{
@@ -107,8 +115,9 @@ static NSString *const DATAID = @"PoiListing";
 
 -(void)createPersistentUI{
 	
+	//[[POIManager sharedInstance] requestPOIListingData];
 	
-	[self createNavigationBarUI];
+	//[self createNavigationBarUI];
 	
 }
 
@@ -138,7 +147,7 @@ static NSString *const DATAID = @"PoiListing";
 
 -(void)createNonPersistentUI{
 	
-	if(dataProvider==nil)
+	if(_dataProvider==nil)
 		[self dataProviderRequestRefresh:SYSTEM];
 	
 }
@@ -150,13 +159,15 @@ static NSString *const DATAID = @"PoiListing";
  ***********************************************/
 //
 
+//TBD: needs none cell added to dp
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	return 1;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [dataProvider count];
+	return [_dataProvider count];
 }
 
 
@@ -165,24 +176,44 @@ static NSString *const DATAID = @"PoiListing";
     
     POITypeCellView *cell = (POITypeCellView *)[POITypeCellView cellForTableView:tv fromNib:[POITypeCellView nib]];
 	
-	POICategoryVO *poitype = [dataProvider objectAtIndex:[indexPath row]];
+	POICategoryVO *poitype = [_dataProvider objectAtIndex:[indexPath row]];
 	cell.dataProvider=poitype;
 	[cell populate];
+	
+	if(indexPath==[_tableview indexPathForSelectedRow]){
+		cell.accessoryType=UITableViewCellAccessoryCheckmark;
+	}else{
+		cell.accessoryType=UITableViewCellAccessoryNone;
+	}
 	
     return cell;
 }
 
 
 
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+	
+	if([_tableview indexPathForSelectedRow]!=nil){
+		POITypeCellView *selectedCell=(POITypeCellView*)[_tableview cellForRowAtIndexPath:[_tableview indexPathForSelectedRow]];
+		selectedCell.accessoryType=UITableViewCellAccessoryNone;
+	}
+	
+	return indexPath;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
-	if(categoryViewController==nil){
-		self.categoryViewController=[[POICategoryViewController alloc] initWithNibName:[categoryViewController nibName] bundle:nil];
-	}
+	int rowIndex=[indexPath row];
 	
-	categoryViewController.requestdataProvider=[dataProvider objectAtIndex:[indexPath row]];
-	[self.navigationController pushViewController:categoryViewController animated:YES];
+	POICategoryVO *vo=_dataProvider[rowIndex];
+	
+	[[POIManager sharedInstance] requestPOICategoryMapPointsForCategory:vo withNWBounds:_nwCoordinate andSEBounds:_seCoordinate];
+	
+	// map view will get the response as well as this list
+	
+	POITypeCellView *selectedCell=(POITypeCellView*)[_tableview cellForRowAtIndexPath:[_tableview indexPathForSelectedRow]];
+	selectedCell.accessoryType=UITableViewCellAccessoryCheckmark;
+	
 	
 }
 
@@ -192,14 +223,9 @@ static NSString *const DATAID = @"PoiListing";
  ***********************************************/
 //
 
--(void)doNavigationSelector:(NSString *)type{
+-(IBAction)closeViewController:(id)sender{
 	
-	if([type isEqualToString:RIGHT]){
-		
-		[self dismissModalViewControllerAnimated:YES];
-		
-	}
-	
+	[self.viewDeckController closeRightViewAnimated:YES];
 	
 }
 

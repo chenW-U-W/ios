@@ -686,6 +686,15 @@
 		28AD6550131FC239008527FC /* UIButton_orangesmall_lo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28AD653A131FC239008527FC /* UIButton_orangesmall_lo@2x.png */; };
 		28AD6551131FC239008527FC /* UIButton_red_hi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28AD653B131FC239008527FC /* UIButton_red_hi@2x.png */; };
 		28AD6552131FC239008527FC /* UIButton_red_lo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28AD653C131FC239008527FC /* UIButton_red_lo@2x.png */; };
+		28B0AD2B19EEBA04008A3F21 /* POICategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B0AD2819EEBA04008A3F21 /* POICategoryViewController.m */; };
+		28B0AD2C19EEBA04008A3F21 /* POIListviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B0AD2A19EEBA04008A3F21 /* POIListviewController.m */; };
+		28B0AD2E19EEBA0F008A3F21 /* POIListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B0AD2D19EEBA0F008A3F21 /* POIListView.xib */; };
+		28B0AD3119EEBA18008A3F21 /* POICatLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B0AD2F19EEBA17008A3F21 /* POICatLocationCell.xib */; };
+		28B0AD3219EEBA18008A3F21 /* POITypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B0AD3019EEBA17008A3F21 /* POITypeCell.xib */; };
+		28B0AD3719EEBA21008A3F21 /* POICatLocationCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B0AD3419EEBA21008A3F21 /* POICatLocationCellView.m */; };
+		28B0AD3819EEBA21008A3F21 /* POITypeCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B0AD3619EEBA21008A3F21 /* POITypeCellView.m */; };
+		28B0AD3B19EEBA40008A3F21 /* POIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B0AD3A19EEBA40008A3F21 /* POIManager.m */; };
+		28B0AD3D19EEBA9F008A3F21 /* POICategoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B0AD3C19EEBA9F008A3F21 /* POICategoryView.xib */; };
 		28B3677C18B275C800F7244C /* MKMapView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B3677B18B275C800F7244C /* MKMapView+Additions.m */; };
 		28B3677D18B275C800F7244C /* MKMapView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B3677B18B275C800F7244C /* MKMapView+Additions.m */; };
 		28B3678018B2822700F7244C /* CSWaypointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B3677F18B2822700F7244C /* CSWaypointAnnotation.m */; };
@@ -1615,6 +1624,20 @@
 		28AD653A131FC239008527FC /* UIButton_orangesmall_lo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UIButton_orangesmall_lo@2x.png"; sourceTree = "<group>"; };
 		28AD653B131FC239008527FC /* UIButton_red_hi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UIButton_red_hi@2x.png"; sourceTree = "<group>"; };
 		28AD653C131FC239008527FC /* UIButton_red_lo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UIButton_red_lo@2x.png"; sourceTree = "<group>"; };
+		28B0AD2719EEBA04008A3F21 /* POICategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POICategoryViewController.h; sourceTree = "<group>"; };
+		28B0AD2819EEBA04008A3F21 /* POICategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POICategoryViewController.m; sourceTree = "<group>"; };
+		28B0AD2919EEBA04008A3F21 /* POIListviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POIListviewController.h; sourceTree = "<group>"; };
+		28B0AD2A19EEBA04008A3F21 /* POIListviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POIListviewController.m; sourceTree = "<group>"; };
+		28B0AD2D19EEBA0F008A3F21 /* POIListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = POIListView.xib; sourceTree = "<group>"; };
+		28B0AD2F19EEBA17008A3F21 /* POICatLocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = POICatLocationCell.xib; sourceTree = "<group>"; };
+		28B0AD3019EEBA17008A3F21 /* POITypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = POITypeCell.xib; sourceTree = "<group>"; };
+		28B0AD3319EEBA21008A3F21 /* POICatLocationCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POICatLocationCellView.h; sourceTree = "<group>"; };
+		28B0AD3419EEBA21008A3F21 /* POICatLocationCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POICatLocationCellView.m; sourceTree = "<group>"; };
+		28B0AD3519EEBA21008A3F21 /* POITypeCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POITypeCellView.h; sourceTree = "<group>"; };
+		28B0AD3619EEBA21008A3F21 /* POITypeCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POITypeCellView.m; sourceTree = "<group>"; };
+		28B0AD3919EEBA40008A3F21 /* POIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POIManager.h; sourceTree = "<group>"; };
+		28B0AD3A19EEBA40008A3F21 /* POIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POIManager.m; sourceTree = "<group>"; };
+		28B0AD3C19EEBA9F008A3F21 /* POICategoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = POICategoryView.xib; sourceTree = "<group>"; };
 		28B3677A18B275C800F7244C /* MKMapView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+Additions.h"; sourceTree = "<group>"; };
 		28B3677B18B275C800F7244C /* MKMapView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+Additions.m"; sourceTree = "<group>"; };
 		28B3677E18B2822700F7244C /* CSWaypointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSWaypointAnnotation.h; path = Map/CSWaypointAnnotation.h; sourceTree = "<group>"; };
@@ -2191,6 +2214,7 @@
 		285320F919E7D43300118E48 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				28B0AD2619EEBA04008A3F21 /* POIs */,
 				285320FF19E7D4E800118E48 /* BUHorizontalMenuView.h */,
 				2853210019E7D4E800118E48 /* BUHorizontalMenuView.m */,
 				285320FA19E7D44000118E48 /* SettingsViewController.h */,
@@ -2211,6 +2235,8 @@
 		2853210619E7DA6200118E48 /* cells */ = {
 			isa = PBXGroup;
 			children = (
+				28B0AD2F19EEBA17008A3F21 /* POICatLocationCell.xib */,
+				28B0AD3019EEBA17008A3F21 /* POITypeCell.xib */,
 				2853210719E7DA7E00118E48 /* MapStyleCellView.xib */,
 				289EFC4D19ED2CEC0081E7BB /* SavedLocationTableCell.xib */,
 			);
@@ -2398,6 +2424,10 @@
 		289EFC4819ED2C1A0081E7BB /* cells */ = {
 			isa = PBXGroup;
 			children = (
+				28B0AD3319EEBA21008A3F21 /* POICatLocationCellView.h */,
+				28B0AD3419EEBA21008A3F21 /* POICatLocationCellView.m */,
+				28B0AD3519EEBA21008A3F21 /* POITypeCellView.h */,
+				28B0AD3619EEBA21008A3F21 /* POITypeCellView.m */,
 				289EFC4919ED2C440081E7BB /* SavedLocationTableCellView.h */,
 				289EFC4A19ED2C440081E7BB /* SavedLocationTableCellView.m */,
 			);
@@ -2407,6 +2437,8 @@
 		28A9997319E702AF0050C3E8 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				28B0AD3C19EEBA9F008A3F21 /* POICategoryView.xib */,
+				28B0AD2D19EEBA0F008A3F21 /* POIListView.xib */,
 				285320FD19E7D46100118E48 /* SettingsView.xib */,
 				28A9998819E709340050C3E8 /* GenericWebView.xib */,
 				28A9997419E702BF0050C3E8 /* PhotoMapView.xib */,
@@ -2517,6 +2549,8 @@
 				28AD61ED131FB69D008527FC /* StartupManager.m */,
 				289EFC3E19ED23760081E7BB /* SavedLocationsManager.h */,
 				289EFC3F19ED23760081E7BB /* SavedLocationsManager.m */,
+				28B0AD3919EEBA40008A3F21 /* POIManager.h */,
+				28B0AD3A19EEBA40008A3F21 /* POIManager.m */,
 			);
 			path = managers;
 			sourceTree = "<group>";
@@ -2864,6 +2898,17 @@
 				28718BB117858BE600781A6B /* UIButtonBarStop@2x.png */,
 			);
 			path = x2;
+			sourceTree = "<group>";
+		};
+		28B0AD2619EEBA04008A3F21 /* POIs */ = {
+			isa = PBXGroup;
+			children = (
+				28B0AD2719EEBA04008A3F21 /* POICategoryViewController.h */,
+				28B0AD2819EEBA04008A3F21 /* POICategoryViewController.m */,
+				28B0AD2919EEBA04008A3F21 /* POIListviewController.h */,
+				28B0AD2A19EEBA04008A3F21 /* POIListviewController.m */,
+			);
+			path = POIs;
 			sourceTree = "<group>";
 		};
 		28B4855815262BE000E406E1 /* constants */ = {
@@ -3675,6 +3720,7 @@
 				28FA8A4019E454E80040EA46 /* Entitlements.plist in Resources */,
 				285320FE19E7D46100118E48 /* SettingsView.xib in Resources */,
 				28FA8A4119E454E80040EA46 /* contentStrings.plist in Resources */,
+				28B0AD2E19EEBA0F008A3F21 /* POIListView.xib in Resources */,
 				28FA8A4219E454E80040EA46 /* FormData.plist in Resources */,
 				28FA8A4319E454E80040EA46 /* styles.plist in Resources */,
 				28FA8A4419E454E80040EA46 /* Icon_nosearchresults.png in Resources */,
@@ -3789,6 +3835,8 @@
 				28FA8AAA19E454E80040EA46 /* CSTabBar_add_photo.png in Resources */,
 				28FA8AAB19E454E80040EA46 /* CSTabBar_credits.png in Resources */,
 				28FA8AAC19E454E80040EA46 /* CSTabBar_fav_routes.png in Resources */,
+				28B0AD3219EEBA18008A3F21 /* POITypeCell.xib in Resources */,
+				28B0AD3D19EEBA9F008A3F21 /* POICategoryView.xib in Resources */,
 				28FA8AAD19E454E80040EA46 /* CSTabBar_itinerary.png in Resources */,
 				28FA8BB119E455E50040EA46 /* appconfig_live.plist in Resources */,
 				28FA8AAE19E454E80040EA46 /* CSTabBar_photomap_tb.png in Resources */,
@@ -3813,6 +3861,7 @@
 				28FA8ABF19E454E80040EA46 /* UIButton_save_hi.png in Resources */,
 				28FA8AC019E454E80040EA46 /* UIButtonBarArrowLeft.png in Resources */,
 				28FA8AC119E454E80040EA46 /* UIButtonBarArrowRight.png in Resources */,
+				28B0AD3119EEBA18008A3F21 /* POICatLocationCell.xib in Resources */,
 				28FA8AC219E454E80040EA46 /* UIButtonBarCameraSmall.png in Resources */,
 				28FA8AC319E454E80040EA46 /* PhotoWizardView.xib in Resources */,
 				28FA8AC419E454E80040EA46 /* UIButtonBarInfo.png in Resources */,
@@ -4324,6 +4373,7 @@
 				28FA8B0819E454E80040EA46 /* StartupManager.m in Sources */,
 				28FA8B0919E454E80040EA46 /* Files.m in Sources */,
 				289EFC5119ED39E30081E7BB /* CSOverlayTransitionAnimator.m in Sources */,
+				28B0AD2B19EEBA04008A3F21 /* POICategoryViewController.m in Sources */,
 				28FA8B0A19E454E80040EA46 /* CSWaypointAnnotation.m in Sources */,
 				28FA8B0B19E454E80040EA46 /* UserAccount.m in Sources */,
 				28FA8B0C19E454E80040EA46 /* CSAppleVectorMapSource.m in Sources */,
@@ -4331,6 +4381,7 @@
 				28FA8B0E19E454E80040EA46 /* CSElevationGraphView.m in Sources */,
 				28FA8B0F19E454E80040EA46 /* UserLocationManager.m in Sources */,
 				28FA8B1019E454E80040EA46 /* RouteSegmentViewController.m in Sources */,
+				28B0AD3B19EEBA40008A3F21 /* POIManager.m in Sources */,
 				28FA8B1119E454E80040EA46 /* ValidationVO.m in Sources */,
 				28FA8B1219E454E80040EA46 /* ApplicationXMLParser.m in Sources */,
 				28FA8B1319E454E80040EA46 /* CreditsViewController.m in Sources */,
@@ -4437,8 +4488,10 @@
 				28FA8B6E19E454E80040EA46 /* POICategoryVO.m in Sources */,
 				28FA8B6F19E454E80040EA46 /* POILocationVO.m in Sources */,
 				28FA8B7019E454E80040EA46 /* XMLRequest.m in Sources */,
+				28B0AD3719EEBA21008A3F21 /* POICatLocationCellView.m in Sources */,
 				28FA8B7119E454E80040EA46 /* BUCodableObject.m in Sources */,
 				28FA8B7219E454E80040EA46 /* POICatLocationCellView.m in Sources */,
+				28B0AD3819EEBA21008A3F21 /* POITypeCellView.m in Sources */,
 				28FA8B7319E454E80040EA46 /* GTMNSString+HTML.m in Sources */,
 				28FA8B7419E454E80040EA46 /* NSString+HTML.m in Sources */,
 				28FA8B7519E454E80040EA46 /* SegmentVO.m in Sources */,
@@ -4464,6 +4517,7 @@
 				28FA8B8419E454E80040EA46 /* MapLocationSearchCellView.m in Sources */,
 				289EFC5819ED5A710081E7BB /* NSMutableArray+Plist.m in Sources */,
 				2853213019E84F4200118E48 /* CSMapTileService.m in Sources */,
+				28B0AD2C19EEBA04008A3F21 /* POIListviewController.m in Sources */,
 				28FA8B8519E454E80040EA46 /* PhotoMapImageLocationViewController.m in Sources */,
 				28FA8B8619E454E80040EA46 /* ItineraryViewController.m in Sources */,
 				28FA8B8719E454E80040EA46 /* PhotoWizardCategoryCellView.m in Sources */,
