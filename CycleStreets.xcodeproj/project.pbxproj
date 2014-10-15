@@ -683,6 +683,8 @@
 		28B0AD3819EEBA21008A3F21 /* POITypeCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B0AD3619EEBA21008A3F21 /* POITypeCellView.m */; };
 		28B0AD3D19EEBA9F008A3F21 /* POICategoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B0AD3C19EEBA9F008A3F21 /* POICategoryView.xib */; };
 		28B0AD4019EEC113008A3F21 /* POIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B0AD3F19EEC113008A3F21 /* POIManager.m */; };
+		28B0AD4D19EEE97F008A3F21 /* POIAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B0AD4C19EEE97F008A3F21 /* POIAnnotation.m */; };
+		28B0AD5019EEEB14008A3F21 /* POIAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B0AD4F19EEEB14008A3F21 /* POIAnnotationView.m */; };
 		28B3677C18B275C800F7244C /* MKMapView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B3677B18B275C800F7244C /* MKMapView+Additions.m */; };
 		28B3677D18B275C800F7244C /* MKMapView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B3677B18B275C800F7244C /* MKMapView+Additions.m */; };
 		28B3678018B2822700F7244C /* CSWaypointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B3677F18B2822700F7244C /* CSWaypointAnnotation.m */; };
@@ -1611,6 +1613,10 @@
 		28B0AD3C19EEBA9F008A3F21 /* POICategoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = POICategoryView.xib; sourceTree = "<group>"; };
 		28B0AD3E19EEC113008A3F21 /* POIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POIManager.h; sourceTree = "<group>"; };
 		28B0AD3F19EEC113008A3F21 /* POIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POIManager.m; sourceTree = "<group>"; };
+		28B0AD4B19EEE97F008A3F21 /* POIAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = POIAnnotation.h; path = Map/POIAnnotation.h; sourceTree = "<group>"; };
+		28B0AD4C19EEE97F008A3F21 /* POIAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = POIAnnotation.m; path = Map/POIAnnotation.m; sourceTree = "<group>"; };
+		28B0AD4E19EEEB14008A3F21 /* POIAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = POIAnnotationView.h; path = Map/POIAnnotationView.h; sourceTree = "<group>"; };
+		28B0AD4F19EEEB14008A3F21 /* POIAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = POIAnnotationView.m; path = Map/POIAnnotationView.m; sourceTree = "<group>"; };
 		28B3677A18B275C800F7244C /* MKMapView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+Additions.h"; sourceTree = "<group>"; };
 		28B3677B18B275C800F7244C /* MKMapView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+Additions.m"; sourceTree = "<group>"; };
 		28B3677E18B2822700F7244C /* CSWaypointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSWaypointAnnotation.h; path = Map/CSWaypointAnnotation.h; sourceTree = "<group>"; };
@@ -2247,6 +2253,10 @@
 				28B3677F18B2822700F7244C /* CSWaypointAnnotation.m */,
 				28B3678218B2867400F7244C /* CSWaypointAnnotationView.h */,
 				28B3678318B2867400F7244C /* CSWaypointAnnotationView.m */,
+				28B0AD4B19EEE97F008A3F21 /* POIAnnotation.h */,
+				28B0AD4C19EEE97F008A3F21 /* POIAnnotation.m */,
+				28B0AD4E19EEEB14008A3F21 /* POIAnnotationView.h */,
+				28B0AD4F19EEEB14008A3F21 /* POIAnnotationView.m */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -4390,6 +4400,7 @@
 				28FA8B4719E454E80040EA46 /* SettingsVO.m in Sources */,
 				28FA8B4819E454E80040EA46 /* CSRoutePolyLineRenderer.m in Sources */,
 				28A9998F19E709C30050C3E8 /* GenericWebViewController.m in Sources */,
+				28B0AD4D19EEE97F008A3F21 /* POIAnnotation.m in Sources */,
 				28FA8B4919E454E80040EA46 /* FavouritesCellView.m in Sources */,
 				28FA8B4A19E454E80040EA46 /* CSRouteDetailsViewController.m in Sources */,
 				28FA8B4B19E454E80040EA46 /* BUCalloutView.m in Sources */,
@@ -4423,6 +4434,7 @@
 				28FA8B6319E454E80040EA46 /* UIViewController+BUAdditions.m in Sources */,
 				28FA8B6419E454E80040EA46 /* PhotoManager.m in Sources */,
 				28FA8B6519E454E80040EA46 /* PhotoMapVO.m in Sources */,
+				28B0AD5019EEEB14008A3F21 /* POIAnnotationView.m in Sources */,
 				28FA8B6619E454E80040EA46 /* BUNetworkOperation.m in Sources */,
 				28FA8B6719E454E80040EA46 /* PhotoMapListVO.m in Sources */,
 				289EFC4319ED24360081E7BB /* SavedLocationVO.m in Sources */,

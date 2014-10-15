@@ -335,7 +335,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(POIManager);
 	category.key=NONE;
 	category.shortname=@"None";
 	category.total=0;
-	category.icon=nil;
+	category.imageName=nil;
 	
 	return category;
 }

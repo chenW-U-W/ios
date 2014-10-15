@@ -26,6 +26,8 @@
 #import "PhotoCategoryVO.h"
 #import "LocationSearchVO.h"
 
+#import "ImageCache.h"
+
 #import "TBXML+Additions.h"
 
 #import "BUNetworkOperation.h"
@@ -633,7 +635,13 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ApplicationXMLParser);
 			poicategory.key=[TBXML textForElement:[TBXML childElementNamed:@"key" parentElement:poitype]];
 			poicategory.shortname=[TBXML textForElement:[TBXML childElementNamed:@"shortname" parentElement:poitype]];
 			poicategory.total=[[TBXML textForElement:[TBXML childElementNamed:@"total" parentElement:poitype]] intValue];
-			poicategory.icon=[StringUtilities imageFromString:[TBXML textForElement:[TBXML childElementNamed:@"icon" parentElement:poitype]]];
+			
+			UIImage *image=[StringUtilities imageFromString:[TBXML textForElement:[TBXML childElementNamed:@"icon" parentElement:poitype]]];
+			NSString *imageFilename=[NSString stringWithFormat:@"Icon_POI_%@",poicategory.key];
+			
+			[[ImageCache sharedInstance] storeImage:image withName:imageFilename ofType:nil];
+			
+			poicategory.imageName=imageFilename;
 			
 			[dataProvider addObject:poicategory];
 			
@@ -685,13 +693,17 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ApplicationXMLParser);
 		while (poi!=nil) {
 			
 			POILocationVO *poilocation=[[POILocationVO alloc]init];
+			
+			poilocation.poiType=[_activeOperation requestParameterForType:@"type"];
+			
+			poilocation.locationid= [TBXML valueOfAttributeNamed:@"id" forElement:poi];
+			
 			poilocation.name= [[TBXML textForElement:[TBXML childElementNamed:@"name" parentElement:poi]] stringByDecodingHTMLEntities];
 			
 			CLLocationCoordinate2D coords;
 			coords.longitude=[[TBXML textForElement:[TBXML childElementNamed:@"longitude" parentElement:poi]] floatValue];
 			coords.latitude=[[TBXML textForElement:[TBXML childElementNamed:@"latitude" parentElement:poi]] floatValue];
-			CLLocation *location=[[CLLocation alloc]initWithLatitude:coords.latitude longitude:coords.longitude];
-			poilocation.location=location;
+			poilocation.coordinate=coords;
 			
 			poilocation.website=[TBXML textForElement:[TBXML childElementNamed:@"website" parentElement:poi]];
 			poilocation.notes=[TBXML textForElement:[TBXML childElementNamed:@"notes" parentElement:poi]];

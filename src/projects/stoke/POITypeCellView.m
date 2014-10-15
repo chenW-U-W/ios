@@ -8,11 +8,16 @@
 
 #import "POITypeCellView.h"
 #import "GlobalUtilities.h"
+#import "ImageCache.h"
+
+@interface POITypeCellView()
+
+@property (nonatomic, weak)	IBOutlet UIImageView			*iconView;
+@property (nonatomic, weak)	IBOutlet UILabel				*label;
+
+@end
 
 @implementation POITypeCellView
-@synthesize imageView;
-@synthesize label;
-@synthesize dataProvider;
 	
 	
 -(void)initialise{
@@ -24,8 +29,8 @@
 
 -(void)populate{
 	
-	imageView.image=dataProvider.icon;
-	label.text=dataProvider.name;
+	_iconView.image=[[ImageCache sharedInstance] imageExists:_dataProvider.imageName ofType:nil];
+	_label.text=_dataProvider.name;
 	
 }
 

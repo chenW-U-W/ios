@@ -58,6 +58,8 @@
 #import "POIListviewController.h"
 #import "POIManager.h"
 #import "POILocationVO.h"
+#import "POIAnnotation.h"
+#import "POIAnnotationView.h"
 
 
 static NSInteger DEFAULT_ZOOM = 15;
@@ -126,6 +128,11 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 @property (nonatomic, strong) NSMutableArray						* waypointArray;
 
 
+// pois
+@property (nonatomic, strong) NSMutableArray						* poiArray;
+@property (nonatomic, strong) NSMutableArray						* poiAnnotationArray;
+
+
 
 // state
 @property (nonatomic, assign) BOOL									doingLocation;
@@ -156,8 +163,6 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 -(void)assessWayPointAddition:(CLLocationCoordinate2D)cooordinate;
 -(void)addWayPointAtCoordinate:(CLLocationCoordinate2D)coords;
 
-// waypoint menu
--(void)removeMarkerAtIndexViaMenu:(UIMenuController*)menuController;
 
 @end
 
@@ -182,6 +187,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 	[notifications addObject:GPSLOCATIONFAILED];
 	[notifications addObject:GPSSYSTEMLOCATIONCOMPLETE];
 	
+	[notifications addObject:POIMAPLOCATIONRESPONSE];
 	
 	[super listNotificationInterests];
 	
@@ -211,6 +217,10 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 	
 	if([name isEqualToString:GPSSYSTEMLOCATIONCOMPLETE]){
 		[self userLocationDidComplete];
+	}
+	
+	if([name isEqualToString:POIMAPLOCATIONRESPONSE]){
+		[self updatePOIMapMarkers];
 	}
 	
 }
@@ -1304,44 +1314,73 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 	
 	BetterLog(@"");
 	
-	 if ([annotation isKindOfClass:[MKUserLocation class]])
+	if ([annotation isKindOfClass:[MKUserLocation class]]){
 		 return nil;
 	
-	 static NSString *reuseId = @"CSWaypointAnnotationView";
-	 CSWaypointAnnotationView *annotationView = (CSWaypointAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:reuseId];
-	
-	BetterLog(@"annotationView=%@",annotationView);
-	
-	 if (annotationView == nil){
-		 
-		 annotationView = [[CSWaypointAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil];
-		 annotationView.draggable = _uiState!=MapPlanningStateRoute;
-		 annotationView.enabled=_uiState!=MapPlanningStateRoute;
-		 annotationView.selected=YES;
-		 annotationView.canShowCallout=YES;
-		 
-		 UIButton *rcalloutButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 44)];
-		 [rcalloutButton setImage:[UIImage imageNamed:@"UIButtonBarTrash.png"] forState:UIControlStateNormal];
-		 rcalloutButton.tag=kDeleteWaypointControlTag;
-		 rcalloutButton.backgroundColor=[UIColor redColor];
-		 annotationView.rightCalloutAccessoryView=rcalloutButton;
-		 
-		 if([BuildTargetConstants buildTarget]==ApplicationBuildTarget_CNS){
-			 UIButton *lcalloutButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 44)];
-			 [lcalloutButton setImage:[UIImage imageNamed:@"CSBarButton_saveloc" tintColor:[UIColor whiteColor] style:UIImageTintedStyleKeepingAlpha] forState:UIControlStateNormal];
-			 [lcalloutButton setImage:[UIImage imageNamed:@"CSBarButton_saveloc" tintColor:[UIColor blackColor] style:UIImageTintedStyleKeepingAlpha] forState:UIControlStateHighlighted];
-			 lcalloutButton.tag=kSaveLocationControlTag;
-			 lcalloutButton.backgroundColor=[UIColor appTintColor];
-			 annotationView.leftCalloutAccessoryView=lcalloutButton;
+	}else if ([annotation isKindOfClass:[CSWaypointAnnotation class]]){
+		
+		static NSString *reuseId = @"CSWaypointAnnotationView";
+		CSWaypointAnnotationView *annotationView = (CSWaypointAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:reuseId];
+		
+		BetterLog(@"annotationView=%@",annotationView);
+		
+		 if (annotationView == nil){
+			 
+			 annotationView = [[CSWaypointAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil];
+			 annotationView.draggable = _uiState!=MapPlanningStateRoute;
+			 annotationView.enabled=_uiState!=MapPlanningStateRoute;
+			 annotationView.selected=YES;
+			 annotationView.canShowCallout=YES;
+			 
+			 UIButton *rcalloutButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 44)];
+			 [rcalloutButton setImage:[UIImage imageNamed:@"UIButtonBarTrash.png"] forState:UIControlStateNormal];
+			 rcalloutButton.tag=kDeleteWaypointControlTag;
+			 rcalloutButton.backgroundColor=[UIColor redColor];
+			 annotationView.rightCalloutAccessoryView=rcalloutButton;
+			 
+			 if([BuildTargetConstants buildTarget]==ApplicationBuildTarget_CNS){
+				 UIButton *lcalloutButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 44)];
+				 [lcalloutButton setImage:[UIImage imageNamed:@"CSBarButton_saveloc" tintColor:[UIColor whiteColor] style:UIImageTintedStyleKeepingAlpha] forState:UIControlStateNormal];
+				 [lcalloutButton setImage:[UIImage imageNamed:@"CSBarButton_saveloc" tintColor:[UIColor blackColor] style:UIImageTintedStyleKeepingAlpha] forState:UIControlStateHighlighted];
+				 lcalloutButton.tag=kSaveLocationControlTag;
+				 lcalloutButton.backgroundColor=[UIColor appTintColor];
+				 annotationView.leftCalloutAccessoryView=lcalloutButton;
+			 }
+			 
+			 
+		 } else {
+			 annotationView.annotation = annotation;
+			 annotationView.canShowCallout=YES;
 		 }
-		 
-		 
-	 } else {
-		 annotationView.annotation = annotation;
-		 annotationView.canShowCallout=YES;
-	 }
-	 
-	 return annotationView;
+		
+		return annotationView;
+		
+	}else if ([annotation isKindOfClass:[POIAnnotation class]]){
+		
+		static NSString *reuseId = @"POIAnnotationView";
+		POIAnnotationView *annotationView = (POIAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:reuseId];
+		
+		
+		if (annotationView == nil){
+			
+			annotationView = [[POIAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil];
+			annotationView.size=CGSizeMake(30, 30);
+			annotationView.draggable =NO;
+			annotationView.enabled=YES;
+			annotationView.selected=NO;
+			annotationView.canShowCallout=NO;
+			
+		} else {
+			annotationView.annotation = annotation;
+			annotationView.canShowCallout=YES;
+		}
+		
+		
+		return annotationView;
+		
+	}
+
+	 return nil;
 }
 
 -(void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view{
@@ -1425,18 +1464,6 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 }
 
 
--(void)removeMarkerAtIndexViaMenu:(UIMenuController*)menuController {
-	
-	MarkerMenuItem *menuItem = [[[UIMenuController sharedMenuController] menuItems] objectAtIndex:0];
-	
-	if(menuItem.waypoint!=nil){
-		
-		[self removeWayPoint:menuItem.waypoint];
-	}
-	
-	_markerMenuOpen=NO;
-	
-}
 
 
 //------------------------------------------------------------------------------------
@@ -1733,41 +1760,35 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 	
 	[self removePOIMarkers];
 	
-//	self.poiArray=[POIManager sharedInstance].categoryDataProvider;
-//	
-//	for (POILocationVO *poi in _poiArray) {
-//		
-//		RMMarker *marker=[Markers markerPOIWithImage:[POIManager sharedInstance].selectedCategory.mapImage];
-//		
-//		marker.data=poi;
-//		
-//		poi.marker=marker;
-//		[_poiMarkerArray addObject:marker];
-//		
-//		[[_mapView markerManager ] addMarkerAtBottom:marker AtLatLong:poi.location.coordinate];
-//		
-//	}
+	self.poiArray=[POIManager sharedInstance].categoryDataProvider;
 	
+	for (POILocationVO *poi in _poiArray) {
+		
+		POIAnnotation *annotation=[[POIAnnotation alloc]init];
+		annotation.coordinate=poi.coordinate;
+		annotation.dataProvider=poi;
+		
+		[_poiAnnotationArray addObject:annotation];
+		
+	}
 	
+	[_mapView addAnnotations:_poiAnnotationArray];
 	
 }
 
 
 
+
 -(void)removePOIMarkers{
 	
-//	if (_poiMarkerArray==nil) {
-//		self.poiMarkerArray=[NSMutableArray new];
-//		return;
-//	}
-//	
-//	for (RMMarker *marker in _poiMarkerArray) {
-//		
-//		[_mapView.markerManager removeMarker:marker];
-//		
-//	}
-//	
-//	[_poiMarkerArray removeAllObjects];
+	if (_poiAnnotationArray==nil) {
+		self.poiAnnotationArray=[NSMutableArray new];
+		return;
+	}
+	
+	[_mapView removeAnnotations:_poiAnnotationArray];
+	
+	[_poiAnnotationArray removeAllObjects];
 	
 }
 

@@ -184,11 +184,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/net/ApplicationXMLParser.m"
-            timestampString = "435086705.666335"
+            timestampString = "435090495.497741"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
             landmarkName = "-LoginXMLParser:"
             landmarkType = "5">
          </BreakpointContent>
@@ -392,11 +392,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/controllers/Map/MapViewController.m"
-            timestampString = "435084290.254167"
+            timestampString = "435090829.38882"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1807"
-            endingLineNumber = "1807"
+            startingLineNumber = "1828"
+            endingLineNumber = "1828"
             landmarkName = "-loadLocation"
             landmarkType = "5">
          </BreakpointContent>
@@ -440,11 +440,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/controllers/Map/MapViewController.m"
-            timestampString = "435083672.907157"
+            timestampString = "435090829.38882"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1370"
-            endingLineNumber = "1370"
+            startingLineNumber = "1409"
+            endingLineNumber = "1409"
             landmarkName = "-mapView:didSelectAnnotationView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -456,11 +456,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/controllers/Map/MapViewController.m"
-            timestampString = "435083672.907157"
+            timestampString = "435089001.609146"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1228"
-            endingLineNumber = "1228"
+            startingLineNumber = "1238"
+            endingLineNumber = "1238"
             landmarkName = "-didTapOnMapSingle:"
             landmarkType = "5">
          </BreakpointContent>
@@ -472,11 +472,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/controllers/Map/MapViewController.m"
-            timestampString = "435083672.907157"
+            timestampString = "435089001.609146"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1238"
-            endingLineNumber = "1238"
+            startingLineNumber = "1248"
+            endingLineNumber = "1248"
             landmarkName = "-didTapOnMapSingle:"
             landmarkType = "5">
          </BreakpointContent>
@@ -504,11 +504,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/controllers/Map/MapViewController.m"
-            timestampString = "435083710.63363"
+            timestampString = "435090829.38882"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1713"
-            endingLineNumber = "1713"
+            startingLineNumber = "1740"
+            endingLineNumber = "1740"
             landmarkName = "-showPOIView"
             landmarkType = "5">
          </BreakpointContent>
@@ -520,11 +520,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/controllers/Map/MapViewController.m"
-            timestampString = "435083986.421682"
+            timestampString = "435090829.38882"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1714"
-            endingLineNumber = "1714"
+            startingLineNumber = "1741"
+            endingLineNumber = "1741"
             landmarkName = "-showPOIView"
             landmarkType = "5">
          </BreakpointContent>
@@ -552,11 +552,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/net/ApplicationXMLParser.m"
-            timestampString = "435086705.666335"
+            timestampString = "435090495.497741"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "644"
-            endingLineNumber = "644"
+            startingLineNumber = "652"
+            endingLineNumber = "652"
             landmarkName = "-POIListingXMLParser:"
             landmarkType = "5">
          </BreakpointContent>
@@ -564,7 +564,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/managers/POIManager.m"

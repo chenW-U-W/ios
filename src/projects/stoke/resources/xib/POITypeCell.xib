@@ -42,7 +42,7 @@
 						<array class="NSMutableArray" key="NSSubviews">
 							<object class="IBUIImageView" id="1062162353">
 								<reference key="NSNextResponder" ref="954339270"/>
-								<int key="NSvFlags">292</int>
+								<int key="NSvFlags">260</int>
 								<string key="NSFrame">{{13, 6}, {32, 32}}</string>
 								<reference key="NSSuperview" ref="954339270"/>
 								<reference key="NSWindow"/>
@@ -123,19 +123,19 @@
 			<array key="connectionRecords">
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">imageView</string>
-						<reference key="source" ref="614482249"/>
-						<reference key="destination" ref="1062162353"/>
-					</object>
-					<int key="connectionID">5</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">label</string>
 						<reference key="source" ref="614482249"/>
 						<reference key="destination" ref="849733954"/>
 					</object>
 					<int key="connectionID">6</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">iconView</string>
+						<reference key="source" ref="614482249"/>
+						<reference key="destination" ref="1062162353"/>
+					</object>
+					<int key="connectionID">9</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -191,7 +191,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">8</int>
+			<int key="maxID">9</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -235,13 +235,20 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">POITypeCellView</string>
 					<string key="superclassName">BUTableCellView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">src/projects/stoke/POITypeCellView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">POITypeCellView</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="imageView">UIImageView</string>
+						<string key="iconView">UIImageView</string>
 						<string key="label">UILabel</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="imageView">
-							<string key="name">imageView</string>
+						<object class="IBToOneOutletInfo" key="iconView">
+							<string key="name">iconView</string>
 							<string key="candidateClassName">UIImageView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="label">
@@ -251,7 +258,7 @@
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">src/projects/stoke/POITypeCellView.h</string>
+						<string key="minorKey">src/projects/stoke/POITypeCellView.m</string>
 					</object>
 				</object>
 			</array>
