@@ -11,14 +11,18 @@
 #import "GlobalUtilities.h"
 #import "POIManager.h"
 #import "ViewUtilities.h"
+#import "UIView+Additions.h"
 
 static NSString *const DATAID = @"PoiListing";
 
 
 @interface POIListviewController()
 
-@property (nonatomic, strong)	IBOutlet UITableView		*tableview;
+@property (nonatomic, strong)	IBOutlet UITableView						*tableview;
 @property (nonatomic, strong)	NSMutableArray								*dataProvider;
+
+
+@property (nonatomic,assign)  int											initialHeight;
 
 
 
@@ -101,15 +105,14 @@ static NSString *const DATAID = @"PoiListing";
 	
 	UIType=UITYPE_MODALUI;
 	
+	self.initialHeight=self.view.height;
+	
 	[self createPersistentUI];
     [super viewDidLoad];
 }
 
 -(void)createPersistentUI{
 	
-	//[[POIManager sharedInstance] requestPOIListingData];
-	
-	//[self createNavigationBarUI];
 	
 }
 
@@ -127,6 +130,14 @@ static NSString *const DATAID = @"PoiListing";
     navigation.titleFontColor=[UIColor whiteColor];
 	navigation.navigationItem=self.navigationItem;
 	[navigation createNavigationUI];
+	
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+	
+	_tableview.height=_initialHeight;
+	
+	[super viewWillAppear:animated];
 	
 }
 
@@ -195,7 +206,7 @@ static NSString *const DATAID = @"PoiListing";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
-	int rowIndex=[indexPath row];
+	NSInteger rowIndex=[indexPath row];
 	
 	POICategoryVO *vo=_dataProvider[rowIndex];
 	
@@ -221,6 +232,13 @@ static NSString *const DATAID = @"PoiListing";
 	
 }
 
+
+
+-(BOOL)viewDeckController:(IIViewDeckController *)viewDeckController shouldOpenViewSide:(IIViewDeckSide)viewDeckSide{
+	
+	return YES;
+	
+}
 
 //
 /***********************************************

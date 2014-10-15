@@ -116,9 +116,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(POIManager);
 	
 	[[BUDataSourceManager sharedInstance] processDataRequest:request];
 	
-	[[HudManager sharedInstance] showHudWithType:HUDWindowTypeProgress withTitle:@"Obtaining route from CycleStreets.net" andMessage:nil];
-	
-	
 	
 }
 

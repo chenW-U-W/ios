@@ -853,7 +853,6 @@
 		28FA8A8719E454E80040EA46 /* appconfig_live.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28735C1E144F10F300726A6C /* appconfig_live.plist */; };
 		28FA8A8A19E454E80040EA46 /* services_dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 281E09011451C6690034CC63 /* services_dev.plist */; };
 		28FA8A8B19E454E80040EA46 /* services_live.plist in Resources */ = {isa = PBXBuildFile; fileRef = 281E09021451C6690034CC63 /* services_live.plist */; };
-		28FA8A8D19E454E80040EA46 /* APIKey_live.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2846556419C9B859002E7CB7 /* APIKey_live.txt */; };
 		28FA8A8F19E454E80040EA46 /* RouteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2818C79F1458069D0077F529 /* RouteCell.xib */; };
 		28FA8A9019E454E80040EA46 /* Alert200x200.png in Resources */ = {isa = PBXBuildFile; fileRef = 28187A5714FCFF4C00A38A17 /* Alert200x200.png */; };
 		28FA8A9119E454E80040EA46 /* CSIcon_MapArrow_end.png in Resources */ = {isa = PBXBuildFile; fileRef = 28187A5914FCFF4C00A38A17 /* CSIcon_MapArrow_end.png */; };
@@ -3758,7 +3757,6 @@
 				28FA8A8A19E454E80040EA46 /* services_dev.plist in Resources */,
 				28FA8A8B19E454E80040EA46 /* services_live.plist in Resources */,
 				28FA8BB319E455EF0040EA46 /* StokeStoryboard.storyboard in Resources */,
-				28FA8A8D19E454E80040EA46 /* APIKey_live.txt in Resources */,
 				28FA8A8F19E454E80040EA46 /* RouteCell.xib in Resources */,
 				28FA8A9019E454E80040EA46 /* Alert200x200.png in Resources */,
 				28FA8A9119E454E80040EA46 /* CSIcon_MapArrow_end.png in Resources */,

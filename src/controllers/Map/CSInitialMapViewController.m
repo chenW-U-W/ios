@@ -9,6 +9,8 @@
 #import "CSInitialMapViewController.h"
 #import "CycleStreets.h"
 
+#import "BuildTargetConstants.h"
+
 @interface CSInitialMapViewController ()
 
 @end
@@ -18,8 +20,25 @@
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:[CycleStreets sharedInstance].storyBoardName bundle:nil];
-    self = [super initWithCenterViewController:[storyboard instantiateViewControllerWithIdentifier:@"MapViewController"]
-                            leftViewController:[storyboard instantiateViewControllerWithIdentifier:@"WayPointNavController"]];
+	
+	switch ([BuildTargetConstants buildTarget]) {
+		case ApplicationBuildTarget_CycleStreets:
+		{
+			self = [super initWithCenterViewController:[storyboard instantiateViewControllerWithIdentifier:@"MapViewController"]
+									leftViewController:[storyboard instantiateViewControllerWithIdentifier:@"WayPointNavController"]];
+		}
+		break;
+			
+		case ApplicationBuildTarget_CNS:
+		{
+			self = [super initWithCenterViewController:[storyboard instantiateViewControllerWithIdentifier:@"MapViewController"]
+									leftViewController:[storyboard instantiateViewControllerWithIdentifier:@"WayPointNavController"]
+									rightViewController:[storyboard instantiateViewControllerWithIdentifier:@"POINavController"]];
+		}
+		break;
+	}
+	
+	
 	
 	// fix for "Presenting view controllers on detached view controllers is discouraged" warning
 	self.title=@"Map";

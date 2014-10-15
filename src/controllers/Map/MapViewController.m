@@ -55,6 +55,10 @@
 #import "SavedLocationVO.h"
 #import "SavedLocationsManager.h"
 
+#import "POIListviewController.h"
+#import "POIManager.h"
+#import "POILocationVO.h"
+
 
 static NSInteger DEFAULT_ZOOM = 15;
 static NSInteger DEFAULT_OVERVIEWZOOM = 15;
@@ -1621,9 +1625,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 
 -(IBAction)didSelectPOIButton:(id)sender{
 	
-	// display poi controller (side controller or as below with simple overlay segue
-	
-	
+	[self showPOIView];
 	
 }
 
@@ -1683,6 +1685,91 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 }
 
 
+
+
+//------------------------------------------------------------------------------------
+#pragma mark - POI Methods
+//------------------------------------------------------------------------------------
+
+//
+/***********************************************
+ * @description			POI METHODS
+ ***********************************************/
+//
+
+// logic //
+
+// map markers are made up of waypoint & pois
+// adding waypoint updates mapmarkers
+// enabling poin for type adds these to map markers
+
+// remove/add waypoint needs > full marker refresh needs to take pois into account
+// updateWaypointStatuses should call removeMarkers:arr not remove all
+// similarly removePOIMarkers should only remove poi markers from markermanager
+
+
+-(void)showPOIView{
+	
+	UINavigationController *nav=(UINavigationController*)self.viewDeckController.rightController;
+	POIListviewController *poiviewcontroller=(POIListviewController*)nav.topViewController;
+	
+	CLLocationCoordinate2D nw = [_mapView NWforMapView];
+	CLLocationCoordinate2D se = [_mapView SEforMapView];
+	
+	poiviewcontroller.nwCoordinate=nw;
+	poiviewcontroller.seCoordinate=se;
+	
+	[self.viewDeckController openRightViewAnimated:YES completion:^(IIViewDeckController *controller, BOOL success) {
+		
+	}];
+	
+	
+}
+
+
+// TBD: poi markers should always display behind any waypoint markers
+// we should create a insert at bottom method in mapMarkerManager
+-(void)updatePOIMapMarkers{
+	
+	[self removePOIMarkers];
+	
+//	self.poiArray=[POIManager sharedInstance].categoryDataProvider;
+//	
+//	for (POILocationVO *poi in _poiArray) {
+//		
+//		RMMarker *marker=[Markers markerPOIWithImage:[POIManager sharedInstance].selectedCategory.mapImage];
+//		
+//		marker.data=poi;
+//		
+//		poi.marker=marker;
+//		[_poiMarkerArray addObject:marker];
+//		
+//		[[_mapView markerManager ] addMarkerAtBottom:marker AtLatLong:poi.location.coordinate];
+//		
+//	}
+	
+	
+	
+}
+
+
+
+-(void)removePOIMarkers{
+	
+//	if (_poiMarkerArray==nil) {
+//		self.poiMarkerArray=[NSMutableArray new];
+//		return;
+//	}
+//	
+//	for (RMMarker *marker in _poiMarkerArray) {
+//		
+//		[_mapView.markerManager removeMarker:marker];
+//		
+//	}
+//	
+//	[_poiMarkerArray removeAllObjects];
+	
+}
 
 
 

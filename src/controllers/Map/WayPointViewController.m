@@ -80,13 +80,9 @@
 	
 		[self.tableView reloadData];
 	
-		return YES;
-	
-	}else{
-		return NO;
 	}
 	
-	
+	return YES;
 }
 
 
