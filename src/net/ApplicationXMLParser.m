@@ -87,9 +87,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ApplicationXMLParser);
                        [NSValue valueWithPointer:@selector(RetrievePhotosXMLParser:)],RETREIVELOCATIONPHOTOS,
 					   [NSValue valueWithPointer:@selector(RetrievePhotosXMLParser:)],RETREIVEROUTEPHOTOS,
                        [NSValue valueWithPointer:@selector(PhotoUploadXMLParser:)],UPLOADUSERPHOTO,
-					   [NSValue valueWithPointer:@selector(POIListingXMLParser:)],POILISTING,
-					   [NSValue valueWithPointer:@selector(POICategoryXMLParser:)],POICATEGORYLOCATION,
-					   [NSValue valueWithPointer:@selector(CalculateRouteXMLParser:)],CALCULATEROUTE,
+						[NSValue valueWithPointer:@selector(POIListingXMLParser:)],POILISTING,
+						[NSValue valueWithPointer:@selector(POICategoryXMLParser:)],POICATEGORYLOCATION,
+						[NSValue valueWithPointer:@selector(POICategoryXMLParser:)],POIMAPLOCATION,
+						[NSValue valueWithPointer:@selector(CalculateRouteXMLParser:)],CALCULATEROUTE,
 					   [NSValue valueWithPointer:@selector(CalculateRouteXMLParser:)],RETRIEVEROUTEBYID, // note: uses same response parser
 					   [NSValue valueWithPointer:@selector(PhotoCategoriesXMLParser:)],PHOTOCATEGORIES, // note: uses same response parser
 						[NSValue valueWithPointer:@selector(CalculateRouteXMLParser:)],UPDATEROUTE,
@@ -642,6 +643,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ApplicationXMLParser);
 		
 		_activeOperation.dataProvider=dataProvider;
 		
+		_activeOperation.operationState=NetResponseStateComplete;
 		_activeOperation.validationStatus=ValidationPOIListingSuccess;
 		
 	}else{
@@ -694,7 +696,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ApplicationXMLParser);
 		}
 		
 		_activeOperation.dataProvider=dataProvider;
-		
+		_activeOperation.operationState=NetResponseStateComplete;
 		_activeOperation.validationStatus=ValidationPOICategorySuccess;
 		
 	}else{
@@ -792,6 +794,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ApplicationXMLParser);
 
 
 
+
+
+
 /*
  <?xml version="1.0"?>
  <sayt>
@@ -868,7 +873,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ApplicationXMLParser);
 
 
 
-									
+
 	
 //
 /***********************************************
