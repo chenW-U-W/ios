@@ -7,6 +7,8 @@
 #import "ViewUtilities.h"
 #import "UIViewController+BUAdditions.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 @implementation CSOverlayTransitionAnimator
 
 - (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext {
@@ -27,11 +29,11 @@
 	
     if (self.presenting) {
 		
-		
+		// from
         fromViewController.view.userInteractionEnabled = NO;
-        
         [transitionContext.containerView addSubview:fromView];
 		
+		// background touchview
 		touchView=[[UIView alloc]initWithFrame:fromViewController.view.frame];
 		touchView.backgroundColor=[UIColor blackColor];
 		touchView.tag=kTouchViewTag;
@@ -40,12 +42,14 @@
 		[touchView addGestureRecognizer:tapGestureRecognizer];
 		[transitionContext.containerView addSubview:touchView];
 		
+		// to
         [transitionContext.containerView addSubview:toView];
-		
+		toView.layer.cornerRadius=10;
 		toView.size=[toViewController sizeToPresent];
 		[ViewUtilities alignView:toView inRect:fromViewController.view.frame :BUCenterAlignMode :BUCenterAlignMode];
 		toViewController.view.x+=320;
 		
+		// animation
 		[UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0 usingSpringWithDamping:0.7 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
 			fromViewController.view.tintAdjustmentMode = UIViewTintAdjustmentModeDimmed;
 			[ViewUtilities alignView:toView inRect:fromViewController.view.frame :BUCenterAlignMode :BUCenterAlignMode];
