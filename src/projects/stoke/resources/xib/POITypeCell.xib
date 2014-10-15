@@ -110,7 +110,7 @@
 				<string key="NSReuseIdentifierKey">_NS:384</string>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">2</int>
-					<bytes key="NSRGB">MC45NDExNzY1MzM3IDAuOTMzMzMzMzk2OSAwLjkyOTQxMTgyODUAA</bytes>
+					<bytes key="NSRGB">MC44ODYyNzQ1NzYyIDAuODc4NDMxNDM5NCAwLjg2Mjc0NTE2NTgAA</bytes>
 				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<int key="IBUISelectionStyle">2</int>
@@ -167,13 +167,13 @@
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">3</int>
-						<reference key="object" ref="1062162353"/>
+						<int key="objectID">4</int>
+						<reference key="object" ref="849733954"/>
 						<reference key="parent" ref="614482249"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">4</int>
-						<reference key="object" ref="849733954"/>
+						<int key="objectID">3</int>
+						<reference key="object" ref="1062162353"/>
 						<reference key="parent" ref="614482249"/>
 					</object>
 				</array>
@@ -183,6 +183,7 @@
 				<string key="-2.CustomClassName">UIResponder</string>
 				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="2.CustomClassName">POITypeCellView</string>
+				<reference key="2.IBNSViewMetadataGestureRecognizers" ref="0"/>
 				<string key="2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="3.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -191,7 +192,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">9</int>
+			<int key="maxID">13</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

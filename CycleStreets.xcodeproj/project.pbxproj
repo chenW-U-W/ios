@@ -685,6 +685,8 @@
 		28B0AD4019EEC113008A3F21 /* POIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B0AD3F19EEC113008A3F21 /* POIManager.m */; };
 		28B0AD4D19EEE97F008A3F21 /* POIAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B0AD4C19EEE97F008A3F21 /* POIAnnotation.m */; };
 		28B0AD5019EEEB14008A3F21 /* POIAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B0AD4F19EEEB14008A3F21 /* POIAnnotationView.m */; };
+		28B0AD5219EEFC7F008A3F21 /* CSBarButton_poi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B0AD5119EEFC7F008A3F21 /* CSBarButton_poi@2x.png */; };
+		28B0AD5419EEFC8C008A3F21 /* CSBarButton_poi.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B0AD5319EEFC8C008A3F21 /* CSBarButton_poi.png */; };
 		28B3677C18B275C800F7244C /* MKMapView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B3677B18B275C800F7244C /* MKMapView+Additions.m */; };
 		28B3677D18B275C800F7244C /* MKMapView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B3677B18B275C800F7244C /* MKMapView+Additions.m */; };
 		28B3678018B2822700F7244C /* CSWaypointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B3677F18B2822700F7244C /* CSWaypointAnnotation.m */; };
@@ -1617,6 +1619,8 @@
 		28B0AD4C19EEE97F008A3F21 /* POIAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = POIAnnotation.m; path = Map/POIAnnotation.m; sourceTree = "<group>"; };
 		28B0AD4E19EEEB14008A3F21 /* POIAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = POIAnnotationView.h; path = Map/POIAnnotationView.h; sourceTree = "<group>"; };
 		28B0AD4F19EEEB14008A3F21 /* POIAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = POIAnnotationView.m; path = Map/POIAnnotationView.m; sourceTree = "<group>"; };
+		28B0AD5119EEFC7F008A3F21 /* CSBarButton_poi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CSBarButton_poi@2x.png"; sourceTree = "<group>"; };
+		28B0AD5319EEFC8C008A3F21 /* CSBarButton_poi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CSBarButton_poi.png; sourceTree = "<group>"; };
 		28B3677A18B275C800F7244C /* MKMapView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+Additions.h"; sourceTree = "<group>"; };
 		28B3677B18B275C800F7244C /* MKMapView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+Additions.m"; sourceTree = "<group>"; };
 		28B3677E18B2822700F7244C /* CSWaypointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSWaypointAnnotation.h; path = Map/CSWaypointAnnotation.h; sourceTree = "<group>"; };
@@ -2085,6 +2089,7 @@
 				28B76F3A15E4DA02006B01D0 /* CSBarButton_location.png */,
 				28B76F3B15E4DA02006B01D0 /* CSBarButton_search.png */,
 				28B76F3615E4D95D006B01D0 /* CSBarButton_routePlan.png */,
+				28B0AD5319EEFC8C008A3F21 /* CSBarButton_poi.png */,
 				288C0F4A164A78DE000880FF /* CSBarButton_waypoint.png */,
 				28187A7314FCFF4C00A38A17 /* icon_camera.png */,
 				28187A7414FCFF4C00A38A17 /* icon_location.png */,
@@ -2834,6 +2839,7 @@
 		28AD6532131FC239008527FC /* x2 */ = {
 			isa = PBXGroup;
 			children = (
+				28B0AD5119EEFC7F008A3F21 /* CSBarButton_poi@2x.png */,
 				289EFC7019EDA4EF0081E7BB /* CSIcon_saveloc_home@2x.png */,
 				289EFC7119EDA4EF0081E7BB /* CSIcon_saveloc_work@2x.png */,
 				289EFC5219ED4F770081E7BB /* SavedLocation_CellIcon_Home.png */,
@@ -3701,6 +3707,7 @@
 				28FA8A4B19E454E80040EA46 /* UIButton_orange_lo@2x.png in Resources */,
 				28FA8A4C19E454E80040EA46 /* UIButton_orangesmall_hi@2x.png in Resources */,
 				28FA8A4D19E454E80040EA46 /* UIButton_orangesmall_lo@2x.png in Resources */,
+				28B0AD5219EEFC7F008A3F21 /* CSBarButton_poi@2x.png in Resources */,
 				28FA8A4E19E454E80040EA46 /* UIButton_red_hi@2x.png in Resources */,
 				28FA8A4F19E454E80040EA46 /* UIButton_red_lo@2x.png in Resources */,
 				28FA8A5019E454E80040EA46 /* CSIcon_MapArrow_end@2x.png in Resources */,
@@ -3853,6 +3860,7 @@
 				28FA8ADA19E454E80040EA46 /* CSBarButton_search.png in Resources */,
 				28FA8ADB19E454E80040EA46 /* CSBarButton_search@2x.png in Resources */,
 				28FA8ADC19E454E80040EA46 /* CSBarButton_routePlan@2x.png in Resources */,
+				28B0AD5419EEFC8C008A3F21 /* CSBarButton_poi.png in Resources */,
 				28FA8ADE19E454E80040EA46 /* CSBarButton_deletePoint@2x.png in Resources */,
 				28A9998919E709340050C3E8 /* GenericWebView.xib in Resources */,
 				28FA8ADF19E454E80040EA46 /* HUD_icon_checkMark.png in Resources */,
