@@ -35,8 +35,10 @@
 	
 	switch (_locationType) {
 		case SavedLocationTypeHome:
+			return @"CSIcon_saveloc_home.png";
+		break;
 		case SavedLocationTypeWork:
-			return @"SavedLocation_CellIcon_Home.png";
+			return @"CSIcon_saveloc_work.png";
 		break;
 			
 		default:

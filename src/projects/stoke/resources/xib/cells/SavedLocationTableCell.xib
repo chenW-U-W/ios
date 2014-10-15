@@ -27,12 +27,17 @@
                         <color key="textColor" red="0.34509803919999998" green="0.38823529410000002" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="HWg-jd-EQ2">
+                        <rect key="frame" x="276" y="11" width="22" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" red="0.94117653369999998" green="0.93333339689999995" blue="0.92941182850000004" alpha="1" colorSpace="deviceRGB"/>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.94117653369999998" green="0.93333339689999995" blue="0.92941182850000004" alpha="1" colorSpace="deviceRGB"/>
             <connections>
                 <outlet property="coordLabel" destination="8ed-p6-lUg" id="aDv-ms-wly"/>
+                <outlet property="locationTypeIcon" destination="HWg-jd-EQ2" id="wmC-4x-Mb3"/>
                 <outlet property="titleLabel" destination="O1t-R3-e0h" id="sjF-oJ-mHT"/>
             </connections>
             <point key="canvasLocation" x="390" y="308"/>
