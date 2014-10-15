@@ -414,7 +414,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 	
 	// CNS only
 	
-	self.poiButton = [[UIBarButtonItem alloc] initWithTitle:@"POI"
+	self.poiButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CSBarButton_saveloc.png"]
 														style:UIBarButtonItemStylePlain
 													   target:self
 													   action:@selector(didSelectPOIButton:)];
@@ -482,23 +482,23 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 			switch (_uiState) {
 					
 				case MapPlanningStateNoRoute:
-					return @[_locationButton,_searchButton, _leftFlex, _rightFlex,_savedLocationButton];
+					return @[_locationButton,_searchButton, _leftFlex, _rightFlex,_poiButton, _savedLocationButton];
 					break;
 					
 				case MapPlanningStateLocating:
 					if([self shouldShowWayPointUI]==YES){
-						return @[_waypointButton,_locationButton,_searchButton, _leftFlex, _rightFlex,_savedLocationButton];
+						return @[_waypointButton,_locationButton,_searchButton, _leftFlex, _rightFlex,_poiButton,_savedLocationButton];
 					}else{
-						return @[_locationButton,_searchButton, _leftFlex, _rightFlex,_savedLocationButton];
+						return @[_locationButton,_searchButton, _leftFlex, _rightFlex,_poiButton,_savedLocationButton];
 					}
 					break;
 					
 				case MapPlanningStateStartPlanning:
-					return @[_locationButton,_searchButton,_leftFlex,_rightFlex,_savedLocationButton];
+					return @[_locationButton,_searchButton,_leftFlex,_rightFlex,_poiButton,_savedLocationButton];
 					break;
 					
 				case MapPlanningStatePlanning:
-					return @[_waypointButton, _locationButton,_searchButton,_leftFlex,_routeButton,_savedLocationButton];
+					return @[_waypointButton, _locationButton,_searchButton,_leftFlex,_routeButton,_poiButton,_savedLocationButton];
 					break;
 					
 				case MapPlanningStateRoute:

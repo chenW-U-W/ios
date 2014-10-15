@@ -10,7 +10,6 @@
 #import "POITypeCellView.h"
 #import "GlobalUtilities.h"
 #import "POIManager.h"
-#import "NetResponse.h"
 #import "ViewUtilities.h"
 
 static NSString *const DATAID = @"PoiListing";
@@ -59,13 +58,6 @@ static NSString *const DATAID = @"PoiListing";
 		[self refreshUIFromDataProvider];
 	}
 	
-	if([notification.name isEqualToString:REMOTEDATAREQUESTED]){
-		NSDictionary	*dict=[notification userInfo];
-		NetResponse		*response=[dict objectForKey:RESPONSE];
-		if([response.dataid isEqualToString:DATAID]){
-            [self showViewOverlayForType:kViewOverlayTypeRequestIndicator show:YES withMessage:nil];
-		}
-	}
 }
 
 

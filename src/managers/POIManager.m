@@ -9,15 +9,14 @@
 #import "POIManager.h"
 #import "ValidationVO.h"
 #import "CycleStreets.h"
-#import "BUNetworkOperation.h"
+#import "BUDataSourceManager.h"
 #import "HudManager.h"
 #import "GlobalUtilities.h"
 #import "DeviceUtilities.h"
+#import "BUNetworkOperation.h"
+#import "AppConstants.h"
 
-@interface POIManager(Private)
-
--(void)POIListingDataResponse:(ValidationVO*)validation;
--(void)POICategoryDataResponse:(ValidationVO*)validation;
+@interface POIManager()
 
 
 @end
@@ -49,11 +48,14 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(POIManager);
 -(void)listNotificationInterests{
 	
 	[notifications addObject:REQUESTDIDCOMPLETEFROMSERVER];
+	[notifications addObject:REQUESTDIDCOMPLETEFROMMODEL];
+	[notifications addObject:REQUESTDIDCOMPLETEFROMCACHE];
 	[notifications addObject:DATAREQUESTFAILED];
 	[notifications addObject:REMOTEFILEFAILED];
 	
 	[self addRequestID:POILISTING];
 	[self addRequestID:POICATEGORYLOCATION];
+	[self addRequestID:POIMAPLOCATION];
 	
 	[super listNotificationInterests];
 	
@@ -66,33 +68,22 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(POIManager);
 	BUNetworkOperation		*response=[dict objectForKey:RESPONSE];
 	
 	NSString	*dataid=response.dataid;
-	
 	BetterLog(@"response.dataid=%@",response.dataid);
 	
 	if([self isRegisteredForRequest:dataid]){
 		
-		if([notification.name isEqualToString:REQUESTDIDCOMPLETEFROMSERVER]){
-			
-			if ([response.dataid isEqualToString:POILISTING]) {
-				
-				[self POIListingDataResponse:response.dataProvider];
-				
-			}else if ([response.dataid isEqualToString:POICATEGORYLOCATION]) {
-				
-				[self POICategoryDataResponse:response.dataProvider];
-				
-			}
-			
+		
+		if([notification.name isEqualToString:REMOTEFILEFAILED] || [notification.name isEqualToString:DATAREQUESTFAILED] || [notification.name isEqualToString:REQUESTDIDFAIL]){
+			[[HudManager sharedInstance] showHudWithType:HUDWindowTypeError withTitle:@"Network Error" andMessage:@"Unable to contact server"];
 		}
 		
-		
+		if([notification.name isEqualToString:XMLPARSERDIDFAILPARSING]){
+			[[HudManager sharedInstance] showHudWithType:HUDWindowTypeError withTitle:@"Route error" andMessage:@"Unable to load this route, please re-check route number."];
+		}
 		
 	}
 	
-	if([notification.name isEqualToString:REMOTEFILEFAILED] || [notification.name isEqualToString:DATAREQUESTFAILED]){
-		[[HudManager sharedInstance] removeHUD];
-	}
-	
+
 }
 
 
@@ -116,26 +107,30 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(POIManager);
 	request.parameters=parameters;
 	request.source=DataSourceRequestCacheTypeUseNetwork;
 	
-	NSDictionary *dict=[[NSDictionary alloc] initWithObjectsAndKeys:request,REQUEST,nil];
-	[[NSNotificationCenter defaultCenter] postNotificationName:REQUESTDATAREFRESH object:nil userInfo:dict];
+	__weak __typeof(&*self)weakSelf = self;
+	request.completionBlock=^(BUNetworkOperation *operation, BOOL complete,NSString *error){
+		
+		[weakSelf POIListingDataResponse:operation];
+		
+	};
 	
-	[[HudManager sharedInstance] showHudWithType:HUDWindowTypeProgress withTitle:@"Retrieving List" andMessage:nil];
+	[[BUDataSourceManager sharedInstance] processDataRequest:request];
+	
+	[[HudManager sharedInstance] showHudWithType:HUDWindowTypeProgress withTitle:@"Obtaining route from CycleStreets.net" andMessage:nil];
+	
 	
 	
 }
 
--(void)POIListingDataResponse:(ValidationVO*)validation{
+-(void)POIListingDataResponse:(BUNetworkOperation*)response{
 	
 	
-	switch (validation.validationStatus) {
+	switch (response.validationStatus) {
 			
 		case ValidationPOIListingSuccess:
 			
-			self.dataProvider=[validation.responseDict objectForKey:POILISTING];
+			[self updatePOIListingDataProvider:response.dataProvider];
 			
-			[[NSNotificationCenter defaultCenter] postNotificationName:POILISTINGRESPONSE object:nil userInfo:nil];
-			
-			[[HudManager sharedInstance] showHudWithType:HUDWindowTypeSuccess withTitle:@"Retrieved" andMessage:nil];
 			
 		break;
 		
@@ -152,44 +147,161 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(POIManager);
 	}
 	
 	
+}
+
+-(void)updatePOIListingDataProvider:(NSMutableArray*)arr{
+	
+	self.dataProvider=arr;
+	[self.dataProvider insertObject:[POIManager createNoneCategory] atIndex:0];
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:POILISTINGRESPONSE object:nil userInfo:nil];
+	
+}
+
+
+//
+/***********************************************
+ * @description			POI MAP BOUNDS REQUEST
+ ***********************************************/
+//
+
+-(void)requestPOICategoryMapPointsForCategory:(POICategoryVO*)category withNWBounds:(CLLocationCoordinate2D)nw andSEBounds:(CLLocationCoordinate2D)se{
+	
+	if(![category.key isEqualToString:NONE]){
+	
+		self.selectedCategory=category;
+		
+		NSMutableDictionary *parameters=[NSMutableDictionary dictionaryWithObjectsAndKeys:
+										 [[CycleStreets sharedInstance] APIKey], @"key",
+										 category.key,@"type",
+										 BOX_FLOAT(nw.latitude),@"n",
+										 BOX_FLOAT(nw.longitude),@"w",
+										 BOX_FLOAT(se.latitude),@"s",
+										 BOX_FLOAT(se.longitude),@"e",
+										 BOX_INT(40),@"limit",nil];
+		
+		BUNetworkOperation *request=[[BUNetworkOperation alloc]init];
+		request.dataid=POIMAPLOCATION;
+		request.requestid=ZERO;
+		request.parameters=parameters;
+		request.source=DataSourceRequestCacheTypeUseNetwork;
+		
+		__weak __typeof(&*self)weakSelf = self;
+		request.completionBlock=^(BUNetworkOperation *operation, BOOL complete,NSString *error){
+			
+			[weakSelf POICategoryMapPointsResponse:operation];
+			
+		};
+		
+		[[BUDataSourceManager sharedInstance] processDataRequest:request];
+		
+		[[HudManager sharedInstance] showHudWithType:HUDWindowTypeProgress withTitle:[NSString stringWithFormat:@"Retrieving %@s in area",category.name] andMessage:nil];
+		
+	}else{
+			
+			[self.categoryDataProvider removeAllObjects];
+			
+			[[NSNotificationCenter defaultCenter] postNotificationName:POIMAPLOCATIONRESPONSE object:nil userInfo:nil];
+			
+	}
+	
+}
+
+
+-(void)POICategoryMapPointsResponse:(BUNetworkOperation*)response{
+	
+	[[HudManager sharedInstance] removeHUD];
+	
+	switch (response.validationStatus) {
+			
+		case ValidationPOIMapCategorySuccess:
+			
+			self.categoryDataProvider=response.dataProvider;
+			
+			[[NSNotificationCenter defaultCenter] postNotificationName:POIMAPLOCATIONRESPONSE object:nil userInfo:nil];
+			
+		break;
+			
+		case ValidationPOIMapCategorySuccessNoEntries:
+			
+			[self.categoryDataProvider removeAllObjects];
+			
+			[[NSNotificationCenter defaultCenter] postNotificationName:POIMAPLOCATIONRESPONSE object:nil userInfo:nil];
+			
+			
+		break;
+			
+		case ValidationPOIMapCategoryFailed:
+			
+			[[HudManager sharedInstance] showHudWithType:HUDWindowTypeServer withTitle:@"Unable to retrieve data" andMessage:nil];
+			
+		break;
+			default:
+			break;
+	}
+	
 	
 }
 
 
 
-// request 
+//
+/***********************************************
+ * @description			POI list for location
+ ***********************************************/
+//
+
+
+// request
 -(void)requestPOICategoryDataForCategory:(POICategoryVO*)category atLocation:(CLLocationCoordinate2D)location{
 	
 	
-	NSMutableDictionary *parameters=[NSMutableDictionary dictionaryWithObjectsAndKeys:
-									 [[CycleStreets sharedInstance] APIKey], @"key", 
-									 category.key,@"type",
-									 BOX_FLOAT(location.longitude),@"longitude",
-									 BOX_FLOAT(location.latitude),@"latitude",
-									 BOX_INT(5),@"radius",BOX_INT(40),@"limit",nil];
+	if(![category.key isEqualToString:NONE]){
+		
 	
-	BUNetworkOperation *request=[[BUNetworkOperation alloc]init];
-	request.dataid=POICATEGORYLOCATION;
-	request.requestid=ZERO;
-	request.parameters=parameters;
-	request.source=DataSourceRequestCacheTypeUseNetwork;
-	
-	NSDictionary *dict=[[NSDictionary alloc] initWithObjectsAndKeys:request,REQUEST,nil];
-	[[NSNotificationCenter defaultCenter] postNotificationName:REQUESTDATAREFRESH object:nil userInfo:dict];
-	
-	[[HudManager sharedInstance] showHudWithType:HUDWindowTypeProgress withTitle:[NSString stringWithFormat:@"Retrieving %@s in area",category.name] andMessage:nil];
+		NSMutableDictionary *parameters=[NSMutableDictionary dictionaryWithObjectsAndKeys:
+										 [[CycleStreets sharedInstance] APIKey], @"key", 
+										 category.key,@"type",
+										 BOX_FLOAT(location.longitude),@"longitude",
+										 BOX_FLOAT(location.latitude),@"latitude",
+										 BOX_INT(5),@"radius",BOX_INT(40),@"limit",nil];
+		
+		BUNetworkOperation *request=[[BUNetworkOperation alloc]init];
+		request.dataid=POICATEGORYLOCATION;
+		request.requestid=ZERO;
+		request.parameters=parameters;
+		request.source=DataSourceRequestCacheTypeUseNetwork;
+		
+		__weak __typeof(&*self)weakSelf = self;
+		request.completionBlock=^(BUNetworkOperation *operation, BOOL complete,NSString *error){
+			
+			[weakSelf POICategoryDataResponse:operation];
+			
+		};
+		
+		[[BUDataSourceManager sharedInstance] processDataRequest:request];
+		
+		[[HudManager sharedInstance] showHudWithType:HUDWindowTypeProgress withTitle:[NSString stringWithFormat:@"Retrieving %@s in area",category.name] andMessage:nil];
+		
+	}else{
+		
+		[self.categoryDataProvider removeAllObjects];
+		
+		[[NSNotificationCenter defaultCenter] postNotificationName:POICATEGORYLOCATIONRESPONSE object:nil userInfo:nil];
+		
+	}
 	
 }
 
 
--(void)POICategoryDataResponse:(ValidationVO*)validation{
+-(void)POICategoryDataResponse:(BUNetworkOperation*)response{
 	
 	
-	switch (validation.validationStatus) {
+	switch (response.validationStatus) {
 			
 		case ValidationPOICategorySuccess:
 			
-			self.categoryDataProvider=[validation.responseDict objectForKey:POICATEGORYLOCATION];
+			self.categoryDataProvider=response.dataProvider;
 			
 			[[NSNotificationCenter defaultCenter] postNotificationName:POICATEGORYLOCATIONRESPONSE object:nil userInfo:nil];
 			
@@ -218,5 +330,17 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(POIManager);
  * @description			UTILITIES
  ***********************************************/
 //
+
++(POICategoryVO*)createNoneCategory{
+	
+	POICategoryVO *category=[POICategoryVO new];
+	category.name=@"None";
+	category.key=NONE;
+	category.shortname=@"None";
+	category.total=0;
+	category.icon=nil;
+	
+	return category;
+}
 
 @end

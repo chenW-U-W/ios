@@ -36,10 +36,13 @@ typedef NS_ENUM(int, ValidationStatusCode){
     ValidationCalculateRouteSuccess=1013,
     ValidationRetrieveRouteByIdSuccess=1014,
 	ValidationCategoriesSuccess=1015,
+	ValidationPOIMapCategorySuccess=1016,
+	ValidationPOIMapCategorySuccessNoEntries=1017,
+	
 	
 	
 	ValidationSuccessMIN=ValidationLoginSuccess,
-	ValidationSuccessMAX=ValidationCategoriesSuccess,
+	ValidationSuccessMAX=ValidationPOIMapCategorySuccessNoEntries,
 	
 	// failures
 	ValidationLoginFailed=2000, // 2000
@@ -56,11 +59,12 @@ typedef NS_ENUM(int, ValidationStatusCode){
     ValidationCalculateRouteFailed=2017,
     ValidationRetrieveRouteByIdFailed=2018,
 	ValidationCategoriesFailed=2019,
+	ValidationPOIMapCategoryFailed=2020,
 	
 	ValidationCalculateRouteFailedOffNetwork=122711,
 	
 	ValidationFailureMIN=ValidationLoginFailed,
-	ValidationFailureMAX=ValidationCalculateRouteFailedOffNetwork,
+	ValidationFailureMAX=ValidationPOIMapCategoryFailed,
 	
 	// checking
 	ValdationInvalidCode=9997,
@@ -122,6 +126,7 @@ extern NSString *const UPLOADUSERPHOTO;
 extern NSString *const LOCATIONFEATURES;
 extern NSString *const POILISTING;
 extern NSString *const POICATEGORYLOCATION;
+extern NSString *const POIMAPLOCATION;
 extern NSString *const PHOTOCATEGORIES;
 extern NSString *const WAYPOINTMETADATA;
 
@@ -141,6 +146,7 @@ extern NSString *const SAVEDROUTEUPDATE;
 extern NSString *const MAPSTYLECHANGED;
 extern NSString *const USERACCOUNTLOGINSUCCESS;
 extern NSString *const USERACCOUNTREGISTERSUCCESS;
+extern NSString *const POIMAPLOCATIONRESPONSE;
 
 extern NSString *const GPSLOCATIONUPDATE;
 extern NSString *const GPSLOCATIONFAILED;
