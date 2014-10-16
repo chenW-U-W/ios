@@ -18,11 +18,11 @@
 @synthesize coordinate;
 
 - (NSString *)subtitle{
-	return @"";
+	return _dataProvider.notes;
 }
 
 - (NSString *)title{
-	return @"poi";
+	return _dataProvider.name;
 }
 
 

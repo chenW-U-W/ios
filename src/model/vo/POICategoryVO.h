@@ -17,4 +17,7 @@
 @property (nonatomic)	int						total;
 @property (nonatomic, strong)	NSString		*imageName;
 
+
+@property (nonatomic,assign)  BOOL				selected;
+
 @end

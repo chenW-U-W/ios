@@ -36,5 +36,10 @@ typedef NS_ENUM(NSUInteger, SavedLocationType) {
 -(void)setCoordinate:(CLLocationCoordinate2D)coord;
 
 @property(nonatomic,readonly)  NSString         *coordinateString;
+@property(nonatomic,readonly)  BOOL				isValid;
+
+
++(NSArray*)locationTypeDataProvider;
++(NSString*)imageForLocationType:(SavedLocationType)locationType;
 
 @end

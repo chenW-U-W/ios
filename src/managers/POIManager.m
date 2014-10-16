@@ -19,21 +19,23 @@
 @interface POIManager()
 
 
+@property (nonatomic,strong)  NSMutableDictionary					*selectedPOICategories;
+
+
 @end
 
 
 
 @implementation POIManager
 SYNTHESIZE_SINGLETON_FOR_CLASS(POIManager);
-@synthesize dataProvider;
-@synthesize categoryDataProvider;
 
 
 -(id)init{
 	
 	if (self = [super init])
 	{
-		
+		_selectedPOICategories=[NSMutableDictionary dictionary];
+		_categoryDataProvider=[NSMutableDictionary dictionary];
 	}
 	return self;
 }
@@ -162,11 +164,41 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(POIManager);
  ***********************************************/
 //
 
+-(void)removePOICategoryMapPointsForCategory:(POICategoryVO*)category{
+	
+	[_selectedPOICategories removeObjectForKey:category.name];
+	
+	[_categoryDataProvider removeObjectForKey:category.name];
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:POIMAPLOCATIONRESPONSE object:nil userInfo:nil];
+	
+}
+
+-(void)removeAllPOICategoryMapPoints{
+	
+	for(POICategoryVO *category in _dataProvider){
+		if ([category.key isEqualToString:NONE]) {
+			category.selected=YES;
+		}else{
+			category.selected=NO;
+		}
+	}
+	
+	[_selectedPOICategories removeAllObjects];
+	
+	[_categoryDataProvider removeAllObjects];
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:POIMAPLOCATIONRESPONSE object:nil userInfo:nil];
+	
+}
+
+
+
 -(void)requestPOICategoryMapPointsForCategory:(POICategoryVO*)category withNWBounds:(CLLocationCoordinate2D)nw andSEBounds:(CLLocationCoordinate2D)se{
 	
 	if(![category.key isEqualToString:NONE]){
 	
-		self.selectedCategory=category;
+		_selectedPOICategories[category.name]=category;
 		
 		NSMutableDictionary *parameters=[NSMutableDictionary dictionaryWithObjectsAndKeys:
 										 [[CycleStreets sharedInstance] APIKey], @"key",
@@ -186,17 +218,15 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(POIManager);
 		__weak __typeof(&*self)weakSelf = self;
 		request.completionBlock=^(BUNetworkOperation *operation, BOOL complete,NSString *error){
 			
-			[weakSelf POICategoryMapPointsResponse:operation];
+			[weakSelf POICategoryMapPointsResponse:operation forCategory:category];
 			
 		};
 		
 		[[BUDataSourceManager sharedInstance] processDataRequest:request];
 		
-		[[HudManager sharedInstance] showHudWithType:HUDWindowTypeProgress withTitle:[NSString stringWithFormat:@"Retrieving %@s in area",category.name] andMessage:nil];
-		
 	}else{
 			
-			[self.categoryDataProvider removeAllObjects];
+			[_categoryDataProvider removeAllObjects];
 			
 			[[NSNotificationCenter defaultCenter] postNotificationName:POIMAPLOCATIONRESPONSE object:nil userInfo:nil];
 			
@@ -205,23 +235,23 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(POIManager);
 }
 
 
--(void)POICategoryMapPointsResponse:(BUNetworkOperation*)response{
+-(void)POICategoryMapPointsResponse:(BUNetworkOperation*)response forCategory:(POICategoryVO*)category{
 	
 	[[HudManager sharedInstance] removeHUD];
 	
 	switch (response.validationStatus) {
 			
 		case ValidationPOIMapCategorySuccess:
-			
-			self.categoryDataProvider=response.dataProvider;
+		{
+			[_categoryDataProvider setObject:response.dataProvider forKey:category.name];
 			
 			[[NSNotificationCenter defaultCenter] postNotificationName:POIMAPLOCATIONRESPONSE object:nil userInfo:nil];
-			
+		}
 		break;
 			
 		case ValidationPOIMapCategorySuccessNoEntries:
 			
-			[self.categoryDataProvider removeAllObjects];
+			//[self.categoryDataProvider removeAllObjects];
 			
 			[[NSNotificationCenter defaultCenter] postNotificationName:POIMAPLOCATIONRESPONSE object:nil userInfo:nil];
 			

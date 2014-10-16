@@ -21,6 +21,13 @@
 @implementation POIAnnotationView
 
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+	[self.superview bringSubviewToFront:self];
+	[super touchesBegan:touches withEvent:event];
+}
+
+
 - (id)initWithAnnotation:(id<MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier
 {
 	self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier];
@@ -29,9 +36,6 @@
 		
 		[self updateAnnotation];
 		
-		self.centerOffset=CGPointMake(12, 0-self.height/2);
-		
-		self.calloutOffset=CGPointMake(-12, 0);
 		
 	}
 	

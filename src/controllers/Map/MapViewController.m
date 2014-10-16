@@ -47,13 +47,16 @@
 
 #import "UIColor+AppColors.h"
 #import "UIImage+Additions.h"
+#import "UIImage-Additions.h"
 
 #import <Crashlytics/Crashlytics.h>
+#import <A2StoryboardSegueContext.h>
 
 #import "CSOverlayTransitionAnimator.h"
 #import "SavedLocationsViewController.h"
 #import "SavedLocationVO.h"
 #import "SavedLocationsManager.h"
+#import "SaveLocationCreateViewController.h"
 
 #import "POIListviewController.h"
 #import "POIManager.h"
@@ -121,15 +124,16 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 // waypoint ui
 // will need ui for editing waypoints
 @property(nonatomic,assign)  BOOL									markerMenuOpen;
-@property (nonatomic,strong)  CSWaypointAnnotationView				*selectedAnnotation;
+@property (nonatomic,strong)  MKAnnotationView						*selectedAnnotation;
 
 // data
 @property (nonatomic, strong) RouteVO								* route;
 @property (nonatomic, strong) NSMutableArray						* waypointArray;
+@property (nonatomic, strong) NSMutableArray						* waypointAnnotationArray;
 
 
 // pois
-@property (nonatomic, strong) NSMutableArray						* poiArray;
+@property (nonatomic, strong) NSMutableDictionary					* poiDataProvider;
 @property (nonatomic, strong) NSMutableArray						* poiAnnotationArray;
 
 
@@ -299,8 +303,8 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 		
 		_programmaticChange=YES;
 		[_mapView setUserTrackingMode:MKUserTrackingModeFollowWithHeading animated:YES];
-		_mapView.camera.altitude=50;
-		_mapView.camera.pitch=50;
+//		_mapView.camera.altitude=50;
+//		_mapView.camera.pitch=50;
 		
 	}else{
 		
@@ -1134,7 +1138,9 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 // update Waypoint types from creation, as can change if waypoints are removed post creation ie intermediate can become end etc
 -(void)updateWaypointStatuses{
 	
-	[_mapView removeAnnotations:_mapView.annotationsWithoutUserLocation];
+	[_mapView removeAnnotations:_waypointAnnotationArray];
+	
+	[_waypointAnnotationArray removeAllObjects];
 	
 	for(int i=0;i<_waypointArray.count;i++){
 		
@@ -1160,11 +1166,17 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 
 -(CSWaypointAnnotation*)annotationForWaypoint:(WayPointVO*)waypoint atCoordinate:(CLLocationCoordinate2D)coordinate atIndex:(int)index{
 	
+	if(_waypointAnnotationArray==nil){
+		self.waypointAnnotationArray=[NSMutableArray array];
+	}
+
 	CSWaypointAnnotation *annotation=[[CSWaypointAnnotation alloc]init];
 	annotation.coordinate=coordinate;
 	annotation.index=index;
 	annotation.dataProvider=waypoint;
 	annotation.menuEnabled=NO;
+	
+	[_waypointAnnotationArray addObject:annotation];
 	
 	return annotation;
 }
@@ -1368,7 +1380,16 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 			annotationView.draggable =NO;
 			annotationView.enabled=YES;
 			annotationView.selected=NO;
-			annotationView.canShowCallout=NO;
+			annotationView.canShowCallout=YES;
+			
+			
+			UIButton *rcalloutButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 44)];
+			UIImage *poiimage=[UIImage imageNamed:@"CSIcon_map_poi.png"];
+			[rcalloutButton setImage:poiimage forState:UIControlStateNormal];
+			rcalloutButton.backgroundColor=[UIColor appTintColor];
+			annotationView.rightCalloutAccessoryView=rcalloutButton;
+
+			
 			
 		} else {
 			annotationView.annotation = annotation;
@@ -1383,13 +1404,20 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 	 return nil;
 }
 
+
+// Note; there is a slight issues here
+// as we drag a selected annotation the callout is removed and when it is let go it reappears
+// if you tap long enough but do not move the annotation the callout will flicker
+// this is beacuse it goes through the changestate logic. the tap must be just long enough a quick tap will not trigger changestate
+//
+
 -(void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view{
 	
 	BetterLog(@"");
 	
 	[self performSelector:@selector(offsetSelectedAnnnotationDeselection) withObject:nil afterDelay:0.2];
 	
-	view.selected=YES;
+	//view.selected=YES;
 	
 }
 
@@ -1406,6 +1434,8 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 	
 	BetterLog(@"");
 	
+	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(offsetSelectedAnnnotationDeselection) object:nil];
+	
 	if([view.annotation isKindOfClass:[MKUserLocation class]]){
 		
 		MKUserLocation *annotation=(MKUserLocation*)view.annotation;
@@ -1416,18 +1446,24 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 			[self addWayPointAtCoordinate:annotation.location.coordinate];
 		}
 		
-	}else{
-		
-		BetterLog(@"selectedAnnotation=%@",_selectedAnnotation);
-		
+	}else if( [view.annotation isKindOfClass:[CSWaypointAnnotation class]]){
 		
 		self.selectedAnnotation=(CSWaypointAnnotationView*)view;
 		
 		BetterLog(@"selectedAnnotation=%@",_selectedAnnotation);
-		
-		BetterLog(@"s=%i",_selectedAnnotation.selected);
+		BetterLog(@"CSWaypointAnnotationView.selected=%i",_selectedAnnotation.selected);
+		BetterLog(@"CSWaypointAnnotationView.draggable=%i",_selectedAnnotation.draggable);
 	
-		//[view setDragState:MKAnnotationViewDragStateStarting];
+		[view setDragState:MKAnnotationViewDragStateDragging animated:NO];
+		
+	}else{
+		
+		
+		self.selectedAnnotation=(POIAnnotationView*)view;
+		
+		BetterLog(@"selectedAnnotation=%@",_selectedAnnotation);
+		
+		
 	}
 	
 	
@@ -1437,28 +1473,48 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
 	
-	NSInteger tag=control.tag;
 	
-	CSWaypointAnnotationView *annotationView=(CSWaypointAnnotationView*)view;
-	CSWaypointAnnotation* annotation=annotationView.annotation;
+	if([view.annotation isKindOfClass:[CSWaypointAnnotation class]]){
 	
-	switch (tag) {
-		case kSaveLocationControlTag:
-		{
-			SavedLocationVO *location=[[SavedLocationVO alloc] init];
-			[location setCoordinate:annotation.coordinate];
-			location.title=@"Title";
-			[[SavedLocationsManager sharedInstance] addSavedLocation:location];
+	
+		NSInteger tag=control.tag;
+		
+		CSWaypointAnnotationView *annotationView=(CSWaypointAnnotationView*)view;
+		CSWaypointAnnotation* annotation=annotationView.annotation;
+		
+		switch (tag) {
+			case kSaveLocationControlTag:
+			{
+				SavedLocationVO *location=[[SavedLocationVO alloc] init];
+				[location setCoordinate:annotation.coordinate];
+				
+				[self displayCreateSaveLocationControllerWithLocation:location];
+				
+				
+				[mapView deselectAnnotation:annotation animated:YES];
+			}
+			break;
+				
+			case kDeleteWaypointControlTag:
+			{
+				[self removeWayPoint:annotation.dataProvider];
+			}
+			break;
+		}
+		
+	}else if ([view.annotation isKindOfClass:[POIAnnotation class]]){
+		
+		POIAnnotationView *annotationView=(POIAnnotationView*)view;
+		POIAnnotation* annotation=annotationView.annotation;
+		
+		if (_uiState!=MapPlanningStateRoute) {
+			
+			[self addWayPointAtCoordinate:annotation.coordinate];
 			
 			[mapView deselectAnnotation:annotation animated:YES];
 		}
-		break;
-			
-		case kDeleteWaypointControlTag:
-		{
-			[self removeWayPoint:annotation.dataProvider];
-		}
-		break;
+		
+		
 	}
 	
 }
@@ -1660,10 +1716,19 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 
 -(IBAction)didSelectSaveLocationsButton:(id)sender{
 	
-	[self performSegueWithIdentifier:@"SavedLocation" sender:self];
+	[self performSegueWithIdentifier:@"SavedLocationsSegue" sender:self];
 	
 	
 }
+
+
+-(void)displayCreateSaveLocationControllerWithLocation:(SavedLocationVO*)location{
+	
+	[self performSegueWithIdentifier:@"CreateSavedLocationSegue" sender:self context:location];
+}
+
+
+#pragma mark - Segues
 
 
 
@@ -1671,11 +1736,18 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 	
 	[super prepareForSegue:segue sender:sender];
 	
-	if([segue.identifier isEqualToString:@"SavedLocation"]){
+	if([segue.identifier isEqualToString:@"SavedLocationsSegue"]){
 		
 		SavedLocationsViewController *controller=(SavedLocationsViewController*)segue.destinationViewController;
 		controller.viewMode=SavedLocationsViewModeModal;
 		controller.savedLocationdelegate=self;
+		controller.transitioningDelegate = self;
+		controller.modalPresentationStyle = UIModalPresentationCustom;
+		
+	}else if ([segue.identifier isEqualToString:@"CreateSavedLocationSegue"]){
+		
+		SaveLocationCreateViewController *controller=(SaveLocationCreateViewController*)segue.destinationViewController;
+		controller.dataProvider=segue.context;
 		controller.transitioningDelegate = self;
 		controller.modalPresentationStyle = UIModalPresentationCustom;
 	}
@@ -1689,6 +1761,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 	
 	[self addWayPointAtCoordinate:savedlocation.coordinate];
 	
+	[self performSegueWithIdentifier:@"SavedLocation" sender:self];
 	
 }
 
@@ -1760,15 +1833,18 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 	
 	[self removePOIMarkers];
 	
-	self.poiArray=[POIManager sharedInstance].categoryDataProvider;
+	self.poiDataProvider=[POIManager sharedInstance].categoryDataProvider;
 	
-	for (POILocationVO *poi in _poiArray) {
+	for (NSString *key in _poiDataProvider) {
 		
-		POIAnnotation *annotation=[[POIAnnotation alloc]init];
-		annotation.coordinate=poi.coordinate;
-		annotation.dataProvider=poi;
-		
-		[_poiAnnotationArray addObject:annotation];
+		for (POILocationVO *poi in _poiDataProvider[key]) {
+			
+			POIAnnotation *annotation=[[POIAnnotation alloc]init];
+			annotation.coordinate=poi.coordinate;
+			annotation.dataProvider=poi;
+			
+			[_poiAnnotationArray addObject:annotation];
+		}
 		
 	}
 	

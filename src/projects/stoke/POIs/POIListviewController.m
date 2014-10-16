@@ -24,7 +24,7 @@ static NSString *const DATAID = @"PoiListing";
 
 @property (nonatomic,assign)  int											initialHeight;
 
-
+@property (nonatomic,strong)  POITypeCellView								*currentSelectedCell;
 
 @end
 
@@ -78,6 +78,10 @@ static NSString *const DATAID = @"PoiListing";
 	self.dataProvider=[POIManager sharedInstance].dataProvider;
 	
 	if([_dataProvider count]>0){
+		
+		POICategoryVO *firstCategory=(POICategoryVO*)[_dataProvider firstObject];
+		firstCategory.selected=YES;
+		
 		[self.tableview reloadData];
 		[self showViewOverlayForType:kViewOverlayTypeRequestIndicator show:NO withMessage:nil];
 	}else{
@@ -179,12 +183,13 @@ static NSString *const DATAID = @"PoiListing";
     
     POITypeCellView *cell = (POITypeCellView *)[POITypeCellView cellForTableView:tv fromNib:[POITypeCellView nib]];
 	
-	POICategoryVO *poitype = [_dataProvider objectAtIndex:[indexPath row]];
-	cell.dataProvider=poitype;
+	POICategoryVO *poi = [_dataProvider objectAtIndex:[indexPath row]];
+	cell.dataProvider=poi;
 	[cell populate];
 	
-	if(indexPath==[_tableview indexPathForSelectedRow]){
+	if(poi.selected){
 		cell.accessoryType=UITableViewCellAccessoryCheckmark;
+		self.currentSelectedCell=cell;
 	}else{
 		cell.accessoryType=UITableViewCellAccessoryNone;
 	}
@@ -194,28 +199,52 @@ static NSString *const DATAID = @"PoiListing";
 
 
 
-- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-	
-	if([_tableview indexPathForSelectedRow]!=nil){
-		POITypeCellView *selectedCell=(POITypeCellView*)[_tableview cellForRowAtIndexPath:[_tableview indexPathForSelectedRow]];
-		selectedCell.accessoryType=UITableViewCellAccessoryNone;
-	}
-	
-	return indexPath;
-}
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	NSInteger rowIndex=[indexPath row];
 	
-	POICategoryVO *vo=_dataProvider[rowIndex];
+	POICategoryVO *poi=_dataProvider[rowIndex];
 	
-	[[POIManager sharedInstance] requestPOICategoryMapPointsForCategory:vo withNWBounds:_nwCoordinate andSEBounds:_seCoordinate];
-	
-	// map view will get the response as well as this list
 	
 	POITypeCellView *selectedCell=(POITypeCellView*)[_tableview cellForRowAtIndexPath:[_tableview indexPathForSelectedRow]];
-	selectedCell.accessoryType=UITableViewCellAccessoryCheckmark;
+	
+	poi.selected=!poi.selected;
+	
+	if(poi.selected){
+		
+		if([poi.key isEqualToString:NONE]){
+			
+			[[POIManager sharedInstance] removeAllPOICategoryMapPoints];
+			
+			[self.tableview reloadData];
+			
+		}else{
+			
+			POICategoryVO *selectCellpoi=_currentSelectedCell.dataProvider;
+			
+			if([selectCellpoi.key isEqualToString:NONE]){
+				_currentSelectedCell.accessoryType=UITableViewCellAccessoryNone;
+				selectCellpoi.selected=NO;
+			}
+			
+			
+			if(![poi.key isEqualToString:NONE]){
+				[[POIManager sharedInstance] requestPOICategoryMapPointsForCategory:poi withNWBounds:_nwCoordinate andSEBounds:_seCoordinate];
+			}
+		
+		}
+		
+		selectedCell.accessoryType=UITableViewCellAccessoryCheckmark;
+		
+	}else{
+		if(![poi.key isEqualToString:NONE]){
+			selectedCell.accessoryType=UITableViewCellAccessoryNone;
+			[[POIManager sharedInstance] removePOICategoryMapPointsForCategory:poi];
+		}
+		
+	}
 	
 	
 }

@@ -18,12 +18,19 @@
 SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(POIManager)
 
 @property (nonatomic, strong)	NSMutableArray					*dataProvider;// list of all categories
-@property (nonatomic, strong)	NSMutableArray					*categoryDataProvider;// list of locations in category from current location
+@property (nonatomic, strong)	NSMutableDictionary				*categoryDataProvider;// list of locations in category from current location
+
+
 @property(nonatomic,strong)  POICategoryVO						*selectedCategory;
 
 
 -(void)requestPOIListingData;
+
+-(void)removePOICategoryMapPointsForCategory:(POICategoryVO*)category;
+-(void)removeAllPOICategoryMapPoints;
+
 -(void)requestPOICategoryMapPointsForCategory:(POICategoryVO*)category withNWBounds:(CLLocationCoordinate2D)nw andSEBounds:(CLLocationCoordinate2D)se;
+
 -(void)requestPOICategoryDataForCategory:(POICategoryVO*)category atLocation:(CLLocationCoordinate2D)location;
 
 @end

@@ -68,6 +68,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(SavedLocationsManager);
 		self.dataProvider=[NSMutableArray array];
 		
 		
+		
+		// dev only
 		for(int i=0;i<6;i++){
 			
 			SavedLocationVO *vo=[[SavedLocationVO alloc] init];

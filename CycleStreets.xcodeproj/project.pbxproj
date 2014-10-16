@@ -281,7 +281,6 @@
 		283436DE15DD5DC300B00FD5 /* NSDictionary-MutableDictionaryCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6319131FB6C8008527FC /* NSDictionary-MutableDictionaryCopy.m */; };
 		283436DF15DD5DC300B00FD5 /* NSString-URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD631B131FB6C8008527FC /* NSString-URLEncoding.m */; };
 		283436E015DD5DC300B00FD5 /* UIApplication-Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD631D131FB6C8008527FC /* UIApplication-Additions.m */; };
-		283436E115DD5DC300B00FD5 /* UIButton+Glossy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD631F131FB6C8008527FC /* UIButton+Glossy.m */; };
 		283436E215DD5DC300B00FD5 /* UIColor-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6321131FB6C8008527FC /* UIColor-Expanded.m */; };
 		283436E315DD5DC300B00FD5 /* UIImage+AKLoadingExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6323131FB6C8008527FC /* UIImage+AKLoadingExtension.m */; };
 		283436E415DD5DC300B00FD5 /* UIView+Border.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6327131FB6C8008527FC /* UIView+Border.m */; };
@@ -291,10 +290,8 @@
 		283436EC15DD5DC300B00FD5 /* BUSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD633F131FB6C8008527FC /* BUSegmentedControl.m */; };
 		283436ED15DD5DC300B00FD5 /* CustomNavigtionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6341131FB6C8008527FC /* CustomNavigtionBar.m */; };
 		283436EE15DD5DC300B00FD5 /* ExpandedUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6343131FB6C8008527FC /* ExpandedUILabel.m */; };
-		283436EF15DD5DC300B00FD5 /* GlossyGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6345131FB6C8008527FC /* GlossyGradientView.m */; };
 		283436F015DD5DC300B00FD5 /* GradiantRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6347131FB6C8008527FC /* GradiantRectView.m */; };
 		283436F115DD5DC300B00FD5 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6349131FB6C8008527FC /* GradientView.m */; };
-		283436F315DD5DC300B00FD5 /* IncrementalStepControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD634F131FB6C8008527FC /* IncrementalStepControl.m */; };
 		283436F415DD5DC300B00FD5 /* MultiLabelLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6355131FB6C8008527FC /* MultiLabelLine.m */; };
 		283436F515DD5DC300B00FD5 /* RadioButtonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6357131FB6C8008527FC /* RadioButtonGroup.m */; };
 		283436F715DD5DC300B00FD5 /* ShadowedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6371131FB6C8008527FC /* ShadowedTableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -348,7 +345,6 @@
 		2834375815DD5DC300B00FD5 /* GenericConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B4855A15262BE000E406E1 /* GenericConstants.m */; };
 		2834375A15DD5DC300B00FD5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B484D715261EC800E406E1 /* Reachability.m */; };
 		2834375B15DD5DC300B00FD5 /* CopyLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B484DD15261F3B00E406E1 /* CopyLabel.m */; };
-		2834375D15DD5DC300B00FD5 /* UIImage+Operations.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B485211526222800E406E1 /* UIImage+Operations.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2834375E15DD5DC300B00FD5 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ECCBDE1526316600284926 /* NSData+Base64.m */; };
 		2834375F15DD5DC300B00FD5 /* NSString-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B4855D15262D6000E406E1 /* NSString-Utilities.m */; };
 		2834376015DD5DC300B00FD5 /* PhotoCategoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C0185A153D74C500023FAF /* PhotoCategoryManager.m */; };
@@ -543,6 +539,8 @@
 		28965C5F18BF5852001BB258 /* CSRoutePolyLineRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28965C5D18BF5852001BB258 /* CSRoutePolyLineRenderer.m */; };
 		28965C6018BF709F001BB258 /* XMLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2863A38D134E508800A22093 /* XMLRequest.m */; };
 		28965C6118BF70A0001BB258 /* XMLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2863A38D134E508800A22093 /* XMLRequest.m */; };
+		289A20F119EFC867000892A0 /* CSIcon_map_poi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 289A20F019EFC867000892A0 /* CSIcon_map_poi@2x.png */; };
+		289A20F419F04ECF000892A0 /* SaveLocationCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289A20F319F04ECF000892A0 /* SaveLocationCreateViewController.m */; };
 		289A9B5413536CCB00E8AF90 /* CSIcon_MapArrow_end@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 289A9B4813536CCB00E8AF90 /* CSIcon_MapArrow_end@2x.png */; };
 		289A9B5513536CCB00E8AF90 /* CSIcon_MapArrow_start@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 289A9B4913536CCB00E8AF90 /* CSIcon_MapArrow_start@2x.png */; };
 		289A9B5613536CCB00E8AF90 /* UIIcon_cycle_lanes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 289A9B4B13536CCB00E8AF90 /* UIIcon_cycle_lanes@2x.png */; };
@@ -592,7 +590,6 @@
 		289EFC7519EDA4EF0081E7BB /* CSIcon_saveloc_work@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 289EFC7119EDA4EF0081E7BB /* CSIcon_saveloc_work@2x.png */; };
 		289EFC7619EDA4EF0081E7BB /* CSIcon_saveloc_work@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 289EFC7119EDA4EF0081E7BB /* CSIcon_saveloc_work@2x.png */; };
 		289EFC7719EDA4EF0081E7BB /* CSIcon_saveloc_work@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 289EFC7119EDA4EF0081E7BB /* CSIcon_saveloc_work@2x.png */; };
-		289F78031534431E00B062D1 /* UIImage+Operations.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B485211526222800E406E1 /* UIImage+Operations.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		289F78041534432900B062D1 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ECCBDE1526316600284926 /* NSData+Base64.m */; };
 		289F78051534432B00B062D1 /* NSString-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B4855D15262D6000E406E1 /* NSString-Utilities.m */; };
 		28A89CD514FD52230001BABA /* UploadPhotoVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A89CD414FD52230001BABA /* UploadPhotoVO.m */; };
@@ -643,7 +640,6 @@
 		28AD6426131FB6C8008527FC /* NSDictionary-MutableDictionaryCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6319131FB6C8008527FC /* NSDictionary-MutableDictionaryCopy.m */; };
 		28AD6427131FB6C8008527FC /* NSString-URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD631B131FB6C8008527FC /* NSString-URLEncoding.m */; };
 		28AD6428131FB6C8008527FC /* UIApplication-Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD631D131FB6C8008527FC /* UIApplication-Additions.m */; };
-		28AD6429131FB6C8008527FC /* UIButton+Glossy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD631F131FB6C8008527FC /* UIButton+Glossy.m */; };
 		28AD642A131FB6C8008527FC /* UIColor-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6321131FB6C8008527FC /* UIColor-Expanded.m */; };
 		28AD642B131FB6C8008527FC /* UIImage+AKLoadingExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6323131FB6C8008527FC /* UIImage+AKLoadingExtension.m */; };
 		28AD642D131FB6C8008527FC /* UIView+Border.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6327131FB6C8008527FC /* UIView+Border.m */; };
@@ -653,10 +649,8 @@
 		28AD6437131FB6C8008527FC /* BUSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD633F131FB6C8008527FC /* BUSegmentedControl.m */; };
 		28AD6438131FB6C8008527FC /* CustomNavigtionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6341131FB6C8008527FC /* CustomNavigtionBar.m */; };
 		28AD6439131FB6C8008527FC /* ExpandedUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6343131FB6C8008527FC /* ExpandedUILabel.m */; };
-		28AD643A131FB6C8008527FC /* GlossyGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6345131FB6C8008527FC /* GlossyGradientView.m */; };
 		28AD643B131FB6C8008527FC /* GradiantRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6347131FB6C8008527FC /* GradiantRectView.m */; };
 		28AD643C131FB6C8008527FC /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6349131FB6C8008527FC /* GradientView.m */; };
-		28AD643F131FB6C8008527FC /* IncrementalStepControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD634F131FB6C8008527FC /* IncrementalStepControl.m */; };
 		28AD6442131FB6C8008527FC /* MultiLabelLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6355131FB6C8008527FC /* MultiLabelLine.m */; };
 		28AD6443131FB6C8008527FC /* RadioButtonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6357131FB6C8008527FC /* RadioButtonGroup.m */; };
 		28AD6455131FB6C8008527FC /* ShadowedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6371131FB6C8008527FC /* ShadowedTableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -999,7 +993,6 @@
 		28FA8B1E19E454E80040EA46 /* NSDictionary-MutableDictionaryCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6319131FB6C8008527FC /* NSDictionary-MutableDictionaryCopy.m */; };
 		28FA8B1F19E454E80040EA46 /* NSString-URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD631B131FB6C8008527FC /* NSString-URLEncoding.m */; };
 		28FA8B2019E454E80040EA46 /* UIApplication-Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD631D131FB6C8008527FC /* UIApplication-Additions.m */; };
-		28FA8B2119E454E80040EA46 /* UIButton+Glossy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD631F131FB6C8008527FC /* UIButton+Glossy.m */; };
 		28FA8B2219E454E80040EA46 /* UIColor-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6321131FB6C8008527FC /* UIColor-Expanded.m */; };
 		28FA8B2319E454E80040EA46 /* UIImage+AKLoadingExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6323131FB6C8008527FC /* UIImage+AKLoadingExtension.m */; };
 		28FA8B2419E454E80040EA46 /* UIView+Border.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6327131FB6C8008527FC /* UIView+Border.m */; };
@@ -1011,10 +1004,8 @@
 		28FA8B2A19E454E80040EA46 /* CustomNavigtionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6341131FB6C8008527FC /* CustomNavigtionBar.m */; };
 		28FA8B2B19E454E80040EA46 /* ExpandedUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6343131FB6C8008527FC /* ExpandedUILabel.m */; };
 		28FA8B2C19E454E80040EA46 /* CSPhotomapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 28727AD818B5322800D957FD /* CSPhotomapAnnotation.m */; };
-		28FA8B2D19E454E80040EA46 /* GlossyGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6345131FB6C8008527FC /* GlossyGradientView.m */; };
 		28FA8B2E19E454E80040EA46 /* GradiantRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6347131FB6C8008527FC /* GradiantRectView.m */; };
 		28FA8B2F19E454E80040EA46 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6349131FB6C8008527FC /* GradientView.m */; };
-		28FA8B3019E454E80040EA46 /* IncrementalStepControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD634F131FB6C8008527FC /* IncrementalStepControl.m */; };
 		28FA8B3119E454E80040EA46 /* MultiLabelLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6355131FB6C8008527FC /* MultiLabelLine.m */; };
 		28FA8B3219E454E80040EA46 /* RadioButtonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6357131FB6C8008527FC /* RadioButtonGroup.m */; };
 		28FA8B3319E454E80040EA46 /* ShadowedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AD6371131FB6C8008527FC /* ShadowedTableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -1089,7 +1080,6 @@
 		28FA8B7A19E454E80040EA46 /* GenericConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B4855A15262BE000E406E1 /* GenericConstants.m */; };
 		28FA8B7B19E454E80040EA46 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B484D715261EC800E406E1 /* Reachability.m */; };
 		28FA8B7C19E454E80040EA46 /* CopyLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B484DD15261F3B00E406E1 /* CopyLabel.m */; };
-		28FA8B7D19E454E80040EA46 /* UIImage+Operations.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B485211526222800E406E1 /* UIImage+Operations.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		28FA8B7E19E454E80040EA46 /* CSGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D186D519378587001FBBF7 /* CSGraphView.m */; };
 		28FA8B7F19E454E80040EA46 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ECCBDE1526316600284926 /* NSData+Base64.m */; };
 		28FA8B8019E454E80040EA46 /* NSString-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B4855D15262D6000E406E1 /* NSString-Utilities.m */; };
@@ -1440,6 +1430,9 @@
 		28965C5918BF4F94001BB258 /* CSRoutePolyLineOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSRoutePolyLineOverlay.m; sourceTree = "<group>"; };
 		28965C5C18BF5852001BB258 /* CSRoutePolyLineRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSRoutePolyLineRenderer.h; sourceTree = "<group>"; };
 		28965C5D18BF5852001BB258 /* CSRoutePolyLineRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSRoutePolyLineRenderer.m; sourceTree = "<group>"; };
+		289A20F019EFC867000892A0 /* CSIcon_map_poi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CSIcon_map_poi@2x.png"; sourceTree = "<group>"; };
+		289A20F219F04ECF000892A0 /* SaveLocationCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveLocationCreateViewController.h; sourceTree = "<group>"; };
+		289A20F319F04ECF000892A0 /* SaveLocationCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveLocationCreateViewController.m; sourceTree = "<group>"; };
 		289A9B4813536CCB00E8AF90 /* CSIcon_MapArrow_end@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CSIcon_MapArrow_end@2x.png"; sourceTree = "<group>"; };
 		289A9B4913536CCB00E8AF90 /* CSIcon_MapArrow_start@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CSIcon_MapArrow_start@2x.png"; sourceTree = "<group>"; };
 		289A9B4B13536CCB00E8AF90 /* UIIcon_cycle_lanes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UIIcon_cycle_lanes@2x.png"; sourceTree = "<group>"; };
@@ -2199,6 +2192,8 @@
 				2853210019E7D4E800118E48 /* BUHorizontalMenuView.m */,
 				285320FA19E7D44000118E48 /* SettingsViewController.h */,
 				285320FB19E7D44000118E48 /* SettingsViewController.m */,
+				289A20F219F04ECF000892A0 /* SaveLocationCreateViewController.h */,
+				289A20F319F04ECF000892A0 /* SaveLocationCreateViewController.m */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -2839,6 +2834,7 @@
 		28AD6532131FC239008527FC /* x2 */ = {
 			isa = PBXGroup;
 			children = (
+				289A20F019EFC867000892A0 /* CSIcon_map_poi@2x.png */,
 				28B0AD5119EEFC7F008A3F21 /* CSBarButton_poi@2x.png */,
 				289EFC7019EDA4EF0081E7BB /* CSIcon_saveloc_home@2x.png */,
 				289EFC7119EDA4EF0081E7BB /* CSIcon_saveloc_work@2x.png */,
@@ -3757,6 +3753,7 @@
 				28FA8A7A19E454E80040EA46 /* InitialLocationView.xib in Resources */,
 				289EFC4E19ED2CEC0081E7BB /* SavedLocationTableCell.xib in Resources */,
 				28FA8A7B19E454E80040EA46 /* donate.html in Resources */,
+				289A20F119EFC867000892A0 /* CSIcon_map_poi@2x.png in Resources */,
 				28FA8A7C19E454E80040EA46 /* UIButtonBarArrowLeft@2x.png in Resources */,
 				28A9996E19E6FDFE0050C3E8 /* APIKey_live.txt in Resources */,
 				28FA8A7D19E454E80040EA46 /* UIButtonBarArrowRight@2x.png in Resources */,
@@ -4048,7 +4045,6 @@
 				28AD6426131FB6C8008527FC /* NSDictionary-MutableDictionaryCopy.m in Sources */,
 				28AD6427131FB6C8008527FC /* NSString-URLEncoding.m in Sources */,
 				28AD6428131FB6C8008527FC /* UIApplication-Additions.m in Sources */,
-				28AD6429131FB6C8008527FC /* UIButton+Glossy.m in Sources */,
 				28AD642A131FB6C8008527FC /* UIColor-Expanded.m in Sources */,
 				28AD642B131FB6C8008527FC /* UIImage+AKLoadingExtension.m in Sources */,
 				28AD642D131FB6C8008527FC /* UIView+Border.m in Sources */,
@@ -4060,11 +4056,9 @@
 				28AD6438131FB6C8008527FC /* CustomNavigtionBar.m in Sources */,
 				28AD6439131FB6C8008527FC /* ExpandedUILabel.m in Sources */,
 				28727AD918B5322800D957FD /* CSPhotomapAnnotation.m in Sources */,
-				28AD643A131FB6C8008527FC /* GlossyGradientView.m in Sources */,
 				28A9997A19E705490050C3E8 /* CSAppleSatelliteMapSource.m in Sources */,
 				28AD643B131FB6C8008527FC /* GradiantRectView.m in Sources */,
 				28AD643C131FB6C8008527FC /* GradientView.m in Sources */,
-				28AD643F131FB6C8008527FC /* IncrementalStepControl.m in Sources */,
 				28AD6442131FB6C8008527FC /* MultiLabelLine.m in Sources */,
 				28AD6443131FB6C8008527FC /* RadioButtonGroup.m in Sources */,
 				28AD6455131FB6C8008527FC /* ShadowedTableView.m in Sources */,
@@ -4145,7 +4139,6 @@
 				28ECCBD81526300400284926 /* Reachability.m in Sources */,
 				28ECCBD91526302600284926 /* CopyLabel.m in Sources */,
 				28A9999D19E72ACB0050C3E8 /* UIColor+AppColors.m in Sources */,
-				289F78031534431E00B062D1 /* UIImage+Operations.m in Sources */,
 				28D186DC19378587001FBBF7 /* CSGraphView.m in Sources */,
 				289F78041534432900B062D1 /* NSData+Base64.m in Sources */,
 				289F78051534432B00B062D1 /* NSString-Utilities.m in Sources */,
@@ -4206,7 +4199,6 @@
 				283436DE15DD5DC300B00FD5 /* NSDictionary-MutableDictionaryCopy.m in Sources */,
 				283436DF15DD5DC300B00FD5 /* NSString-URLEncoding.m in Sources */,
 				283436E015DD5DC300B00FD5 /* UIApplication-Additions.m in Sources */,
-				283436E115DD5DC300B00FD5 /* UIButton+Glossy.m in Sources */,
 				283436E215DD5DC300B00FD5 /* UIColor-Expanded.m in Sources */,
 				283436E315DD5DC300B00FD5 /* UIImage+AKLoadingExtension.m in Sources */,
 				283436E415DD5DC300B00FD5 /* UIView+Border.m in Sources */,
@@ -4216,13 +4208,11 @@
 				283436EC15DD5DC300B00FD5 /* BUSegmentedControl.m in Sources */,
 				283436ED15DD5DC300B00FD5 /* CustomNavigtionBar.m in Sources */,
 				283436EE15DD5DC300B00FD5 /* ExpandedUILabel.m in Sources */,
-				283436EF15DD5DC300B00FD5 /* GlossyGradientView.m in Sources */,
 				283436F015DD5DC300B00FD5 /* GradiantRectView.m in Sources */,
 				284ADCEB18C88309003830DE /* NSDataAdditions.m in Sources */,
 				28A9997919E705490050C3E8 /* CSAppleSatelliteMapSource.m in Sources */,
 				28B3678518B2867400F7244C /* CSWaypointAnnotationView.m in Sources */,
 				283436F115DD5DC300B00FD5 /* GradientView.m in Sources */,
-				283436F315DD5DC300B00FD5 /* IncrementalStepControl.m in Sources */,
 				283436F415DD5DC300B00FD5 /* MultiLabelLine.m in Sources */,
 				283436F515DD5DC300B00FD5 /* RadioButtonGroup.m in Sources */,
 				283436F715DD5DC300B00FD5 /* ShadowedTableView.m in Sources */,
@@ -4304,7 +4294,6 @@
 				2834375B15DD5DC300B00FD5 /* CopyLabel.m in Sources */,
 				28A9999E19E72ACB0050C3E8 /* UIColor+AppColors.m in Sources */,
 				28D186DD19378587001FBBF7 /* CSGraphView.m in Sources */,
-				2834375D15DD5DC300B00FD5 /* UIImage+Operations.m in Sources */,
 				2834375E15DD5DC300B00FD5 /* NSData+Base64.m in Sources */,
 				2834375F15DD5DC300B00FD5 /* NSString-Utilities.m in Sources */,
 				2825180019D46CBE00DDD6D9 /* MapViewSearchLocationViewController.m in Sources */,
@@ -4364,7 +4353,6 @@
 				289EFC6719ED9BCD0081E7BB /* UIImage+Additions.m in Sources */,
 				28FA8B1F19E454E80040EA46 /* NSString-URLEncoding.m in Sources */,
 				28FA8B2019E454E80040EA46 /* UIApplication-Additions.m in Sources */,
-				28FA8B2119E454E80040EA46 /* UIButton+Glossy.m in Sources */,
 				28FA8B2219E454E80040EA46 /* UIColor-Expanded.m in Sources */,
 				28FA8B2319E454E80040EA46 /* UIImage+AKLoadingExtension.m in Sources */,
 				289EFC4719ED2BA00081E7BB /* SavedLocationsViewController.m in Sources */,
@@ -4379,10 +4367,8 @@
 				28A9997819E705440050C3E8 /* CSAppleSatelliteMapSource.m in Sources */,
 				28FA8B2B19E454E80040EA46 /* ExpandedUILabel.m in Sources */,
 				28FA8B2C19E454E80040EA46 /* CSPhotomapAnnotation.m in Sources */,
-				28FA8B2D19E454E80040EA46 /* GlossyGradientView.m in Sources */,
 				28FA8B2E19E454E80040EA46 /* GradiantRectView.m in Sources */,
 				28FA8B2F19E454E80040EA46 /* GradientView.m in Sources */,
-				28FA8B3019E454E80040EA46 /* IncrementalStepControl.m in Sources */,
 				28FA8B3119E454E80040EA46 /* MultiLabelLine.m in Sources */,
 				28FA8B3219E454E80040EA46 /* RadioButtonGroup.m in Sources */,
 				28FA8B3319E454E80040EA46 /* ShadowedTableView.m in Sources */,
@@ -4471,7 +4457,6 @@
 				28FA8B7A19E454E80040EA46 /* GenericConstants.m in Sources */,
 				28FA8B7B19E454E80040EA46 /* Reachability.m in Sources */,
 				28FA8B7C19E454E80040EA46 /* CopyLabel.m in Sources */,
-				28FA8B7D19E454E80040EA46 /* UIImage+Operations.m in Sources */,
 				28FA8B7E19E454E80040EA46 /* CSGraphView.m in Sources */,
 				28FA8B7F19E454E80040EA46 /* NSData+Base64.m in Sources */,
 				28FA8B8019E454E80040EA46 /* NSString-Utilities.m in Sources */,
@@ -4487,6 +4472,7 @@
 				28FA8B8519E454E80040EA46 /* PhotoMapImageLocationViewController.m in Sources */,
 				28FA8B8619E454E80040EA46 /* ItineraryViewController.m in Sources */,
 				28FA8B8719E454E80040EA46 /* PhotoWizardCategoryCellView.m in Sources */,
+				289A20F419F04ECF000892A0 /* SaveLocationCreateViewController.m in Sources */,
 				28FA8B8819E454E80040EA46 /* WayPointViewController.m in Sources */,
 				28FA8B8919E454E80040EA46 /* WayPointCellView.m in Sources */,
 				28FA8B8A19E454E80040EA46 /* WayPointVO.m in Sources */,
@@ -4647,6 +4633,7 @@
 		};
 		2834377E15DD5DC300B00FD5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B58C5CA174704304A219879B /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
