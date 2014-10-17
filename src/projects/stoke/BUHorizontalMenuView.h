@@ -66,7 +66,7 @@
 
 @property (nonatomic,assign)  NSInteger                                         selectedIndex;
 
-
+@property (nonatomic,assign)  BOOL												shouldScrollToSelectedItem;
 
 -(void) reloadData;
 

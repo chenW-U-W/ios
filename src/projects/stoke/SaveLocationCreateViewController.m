@@ -13,6 +13,9 @@
 #import "UIView+Additions.h"
 #import "SavedLocationVO.h"
 #import "SavedLocationsManager.h"
+#import "UIColor+AppColors.h"
+#import "UIImage+Additions.h"
+#import "GlobalUtilities.h"
 
 @interface SaveLocationMenuView : UIView<BUHorizontalMenuItem>
 
@@ -20,6 +23,11 @@
 @property (nonatomic,strong)  UILabel							*iconLabel;
 
 @property (nonatomic,strong)  NSDictionary                      *dataProvider;
+
+@property (nonatomic,copy)  GenericEventBlock                   touchBlock;
+
+@property (nonatomic,strong)   UIView					*touchView;
+
 
 @end
 
@@ -29,7 +37,7 @@
 {
 	self = [super initWithFrame:frame];
 	if (self) {
-		
+		[self create];
 	}
 	return self;
 }
@@ -55,10 +63,19 @@
 
 -(void)create{
 	
-	self.iconView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 30, 30)];
+	self.iconView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 50, 45)];
+	_iconView.contentMode=UIViewContentModeCenter;
 	[self addSubview:_iconView];
-	self.iconLabel=[[UILabel alloc]initWithFrame:CGRectMake(_iconView.x, _iconView.y+3, _iconView.width, 17)];
+	self.iconLabel=[[UILabel alloc]initWithFrame:CGRectMake(_iconView.x, _iconView.bottom+3, _iconView.width, 17)];
+	_iconLabel.font=[UIFont systemFontOfSize:11];
+	_iconLabel.textAlignment=NSTextAlignmentCenter;
 	[self addSubview:_iconLabel];
+	
+	self.touchView=[[UIView alloc]initWithFrame:self.frame];
+	[self addSubview:_touchView];
+	UITapGestureRecognizer *tapGesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapItem:)];
+	tapGesture.numberOfTapsRequired=1;
+	[_touchView addGestureRecognizer:tapGesture];
 	
 }
 
@@ -66,18 +83,31 @@
 -(void)populate{
 	
 	_iconLabel.text=_dataProvider[@"title"];
-	_iconView.image=[UIImage imageNamed:[SavedLocationVO imageForLocationType:(SavedLocationType)_dataProvider[@"image"]]];
+	
+	SavedLocationType locationType=(SavedLocationType)[_dataProvider[@"type"] integerValue];
+	NSString *imageName=[SavedLocationVO imageForLocationType:locationType];
+	_iconView.image=[UIImage imageNamed:imageName tintColor:[UIColor appTintColor] style:UIImageTintedStyleKeepingAlpha];
 	
 }
 
 
--(void)setTouchBlock:(GenericEventBlock)block{
-	
-	
-	
-}
+
 
 -(void)setSelected:(BOOL)selected{
+	
+	if(selected){
+		self.backgroundColor=UIColorFromRGB(0xDAD8D3);
+	}else{
+		self.backgroundColor=[UIColor clearColor];
+	}
+	
+}
+
+
+-(void)didTapItem:(UITapGestureRecognizer*)gesture{
+	
+	if(_touchBlock)
+		_touchBlock(@"",_dataProvider);
 	
 }
 
@@ -96,10 +126,17 @@
 @property (nonatomic,strong)  NSArray						*savedLocationDataProvider;
 
 
+@property (nonatomic,strong)  UITextField					*activeField;
+@property (nonatomic,assign)  int							fieldOffset;
+
 @end
 
 @implementation SaveLocationCreateViewController
 
+
+-(void)dealloc{
+	[self removeObservers];
+}
 
 
 //
@@ -110,6 +147,10 @@
 
 -(void)listNotificationInterests{
 	
+	[self initialise];
+	
+	[self.notifications addObject: UIKeyboardWillShowNotification];
+	[self.notifications addObject: UIKeyboardWillHideNotification];
 	
 	
 	[super listNotificationInterests];
@@ -118,8 +159,19 @@
 
 -(void)didReceiveNotification:(NSNotification*)notification{
 	
+	NSString *name=notification.name;
 	
+	if([name isEqualToString:UIKeyboardWillShowNotification]){
+		[self keyboardWillShow:notification];
+	}else if ([name isEqualToString:UIKeyboardWillHideNotification]) {
+		[self keyboardWillHide:notification];
+	}
 	
+}
+
+-(void)removeObservers{
+	
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
@@ -134,6 +186,8 @@
 	[super viewDidLoad];
 	
 	self.savedLocationDataProvider=[SavedLocationVO locationTypeDataProvider];
+	
+	_iconMenuView.shouldScrollToSelectedItem=NO;
 	
 	_nameField.delegate=self;
 	
@@ -157,7 +211,7 @@
 
 -(void)createNonPersistentUI{
 	
-	
+	[_iconMenuView reloadData];
 	
 }
 
@@ -166,7 +220,7 @@
 
 -(void)didDismissWithTouch:(UITapGestureRecognizer*)gestureRecogniser{
 	
-	[self dismissViewControllerAnimated:YES completion:nil];
+	[self dismissView];
 	
 }
 
@@ -192,7 +246,7 @@
 
 - (UIView<BUHorizontalMenuItem>*)menuViewItemForIndex:(NSInteger) index{
 	
-	SaveLocationMenuView *itemView=[[SaveLocationMenuView alloc]initWithFrame:CGRectMake(0, 0, 50, 70)];
+	SaveLocationMenuView *itemView=[[SaveLocationMenuView alloc]initWithFrame:CGRectMake(0, 0, 70, 70)];
 	
 	[itemView setDataProvider:_savedLocationDataProvider[index]];
 	
@@ -206,7 +260,7 @@
 	
 	NSDictionary *itemData=_savedLocationDataProvider[index];
 	
-	_dataProvider.locationType=(SavedLocationType)itemData[@"type"];
+	_dataProvider.locationType=(SavedLocationType)[itemData[@"type"] integerValue];
 	_dataProvider.title=itemData[@"title"];
 	
 	[self validate];
@@ -215,6 +269,10 @@
 
 
 #pragma mark - UITextField delegate
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+	self.activeField=textField;
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
 	
@@ -268,15 +326,69 @@
 
 -(IBAction)didSelectCancelButton:(id)sender{
 	
-	[self dismissViewControllerAnimated:YES completion:nil];
-	
+	[self dismissView];
 }
 
 -(IBAction)didSelectSaveButton:(id)sender{
 	
 	[[SavedLocationsManager sharedInstance] addSavedLocation:_dataProvider];
 	
+	[self dismissView];
+	
 }
+
+
+-(void)dismissView{
+	
+	[self dismissViewControllerAnimated:YES completion:nil];
+	
+}
+
+
+
+
+
+
+#pragma mark - Keyboard view sizing
+//
+/***********************************************
+ * @description			SCROLLVIEW RESIZING SUPPORT
+ ***********************************************/
+//
+
+-(void)keyboardWillShow:(NSNotification*)notification{
+		
+	NSDictionary* userInfo = [notification userInfo];
+	NSValue* boundsValue= [userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey];
+	float duration=[[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+	
+	CGRect boundsRect=[boundsValue CGRectValue];
+	
+	CGRect textFieldRect = _activeField.frame;
+	CGRect newRect=[self.view convertRect:textFieldRect toView:nil];
+	
+	int avaialableh=boundsRect.origin.y-boundsRect.size.height;
+	self.fieldOffset=newRect.origin.y-avaialableh+44;
+	
+	[UIView animateWithDuration:duration animations:^{
+		self.view.y-=_fieldOffset;
+	}];
+	
+}
+
+
+- (void)keyboardWillHide:(NSNotification*)notification{
+	
+	NSDictionary* userInfo = [notification userInfo];
+	
+	float duration=[[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+	
+	[UIView animateWithDuration:duration animations:^{
+		self.view.y+=_fieldOffset;
+	}];
+	
+}
+
 
 
 //
@@ -291,6 +403,5 @@
 }
 
 
-- (IBAction)cancelButton:(id)sender {
-}
+
 @end

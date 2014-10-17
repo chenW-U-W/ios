@@ -129,11 +129,11 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.31372550129999999" green="0.67450982329999998" blue="0.75294125079999996" alpha="1" colorSpace="deviceRGB"/>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location name..." minimumFontSize="17" id="bsA-0W-k8z">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location name..." adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" id="bsA-0W-k8z">
                                 <rect key="frame" x="16" y="129" width="248" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
                                     <action selector="fieldChanged:" destination="obc-HC-sMg" eventType="editingChanged" id="7C4-xb-KTv"/>
                                 </connections>
@@ -176,7 +176,11 @@
                             <view contentMode="scaleToFill" id="2jR-CE-uQE" customClass="BUHorizontalMenuView">
                                 <rect key="frame" x="16" y="50" width="248" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.94117653369999998" green="0.93333339689999995" blue="0.92941182850000004" alpha="1" colorSpace="deviceRGB"/>
+                                <connections>
+                                    <outlet property="menuDataSource" destination="obc-HC-sMg" id="TDM-pw-dDi"/>
+                                    <outlet property="menuDelegate" destination="obc-HC-sMg" id="9TI-ye-vt2"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.94117653369999998" green="0.93333339689999995" blue="0.92941182850000004" alpha="1" colorSpace="deviceRGB"/>
@@ -195,7 +199,54 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ALX-q1-c8o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3987" y="-554"/>
+            <point key="canvasLocation" x="-3999" y="-821"/>
+        </scene>
+        <!--Saved Locations View Controller-->
+        <scene sceneID="4Nj-rb-ine">
+            <objects>
+                <viewController id="gdo-qn-vyO" customClass="SavedLocationsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3vN-Jo-1Qc">
+                        <rect key="frame" x="0.0" y="0.0" width="280" height="260"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="yUc-GO-hBJ">
+                                <rect key="frame" x="0.0" y="0.0" width="280" height="42"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g4V-Xp-Y69">
+                                        <rect key="frame" x="8" y="10" width="264" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.31372550129999999" green="0.67450982329999998" blue="0.75294125079999996" alpha="1" colorSpace="deviceRGB"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="gaR-gc-Nll">
+                                <rect key="frame" x="0.0" y="43" width="280" height="217"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.94117653369999998" green="0.93333339689999995" blue="0.92941182850000004" alpha="1" colorSpace="deviceRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="gdo-qn-vyO" id="0D0-4u-4vt"/>
+                                    <outlet property="delegate" destination="gdo-qn-vyO" id="j2d-8d-IRk"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94117653369999998" green="0.93333339689999995" blue="0.92941182850000004" alpha="1" colorSpace="deviceRGB"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="280" height="260"/>
+                    <connections>
+                        <outlet property="tableView" destination="gaR-gc-Nll" id="tew-RF-KTq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sfu-kd-WIN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4014" y="-461"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="G73-Mk-t08">
@@ -229,7 +280,7 @@
                                 <color key="barTintColor" red="0.31372550129999999" green="0.67450982329999998" blue="0.75294125079999996" alpha="1" colorSpace="deviceRGB"/>
                             </toolbar>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Map Attribution" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="gMu-jU-Xl7" customClass="ExpandedUILabel">
-                                <rect key="frame" x="100" y="484" width="210" height="25"/>
+                                <rect key="frame" x="100.00000014191585" y="484" width="210" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES"/>
                                 <color key="backgroundColor" red="0.31372550129999999" green="0.67450982329999998" blue="0.75294125079999996" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="9"/>
@@ -259,8 +310,8 @@
                         <outlet property="mapView" destination="rA7-CW-iZg" id="Jwa-5P-voQ"/>
                         <outlet property="toolBar" destination="Y3q-ji-xW0" id="HwE-4d-aH0"/>
                         <outlet property="walkingRouteOverlayView" destination="pIs-Lq-mvo" id="4Vj-4s-zYo"/>
-                        <segue destination="NQo-Mm-SvV" kind="modal" identifier="SavedLocationsSegue" id="8Rg-zz-TYX"/>
                         <segue destination="obc-HC-sMg" kind="modal" identifier="CreateSavedLocationSegue" id="tph-ii-tEm"/>
+                        <segue destination="gdo-qn-vyO" kind="modal" identifier="SavedLocationsSegue" id="BI0-gH-t0g"/>
                     </connections>
                 </viewController>
                 <view opaque="NO" contentMode="scaleToFill" id="pIs-Lq-mvo">
@@ -716,11 +767,11 @@
             <objects>
                 <viewController id="NQo-Mm-SvV" customClass="SavedLocationsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AM5-LB-bj2">
-                        <rect key="frame" x="0.0" y="64" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="NG5-wL-qYt">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.94117653369999998" green="0.93333339689999995" blue="0.92941182850000004" alpha="1" colorSpace="deviceRGB"/>
                                 <color key="separatorColor" name="secondarySelectedControlColor" catalog="System" colorSpace="catalog"/>
@@ -761,7 +812,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="8Rg-zz-TYX"/>
-    </inferredMetricsTieBreakers>
 </document>

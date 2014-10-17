@@ -53,6 +53,8 @@
 -(void)createUI{
     
     _selectedIndex=-1;
+	
+	_shouldScrollToSelectedItem=YES;
     
     self.scrollView=[[UIScrollView alloc]initWithFrame:self.bounds];
     _scrollView.bounces = YES;
@@ -69,7 +71,7 @@
     _itemContainer.paddingLeft=0;
     _itemContainer.paddingRight=0;
     _itemContainer.itemPadding=1;
-	_itemContainer.backgroundColor=UIColorFromRGB(0xdddddd);
+	_itemContainer.backgroundColor=[UIColor clearColor];
     
     [_scrollView addSubview:_itemContainer];
     
@@ -148,7 +150,8 @@
 	[itemView setSelected:YES];
 	[oldItem setSelected:NO];
 	
-	[_scrollView setContentOffset:CGPointMake(itemView.x , 0) animated:YES];
+	if(_shouldScrollToSelectedItem)
+		[_scrollView setContentOffset:CGPointMake(itemView.x , 0) animated:YES];
 	
 	
 }

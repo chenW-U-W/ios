@@ -221,7 +221,7 @@
 
 -(CGSize)sizeToPresent{
 	
-	return CGSizeMake(200,200);
+	return CGSizeMake(280,260);
 }
 
 
