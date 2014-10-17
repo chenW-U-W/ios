@@ -1761,8 +1761,6 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 	
 	[self addWayPointAtCoordinate:savedlocation.coordinate];
 	
-	[self performSegueWithIdentifier:@"SavedLocation" sender:self];
-	
 }
 
 
@@ -1774,7 +1772,6 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 																	  sourceController:(UIViewController *)source {
 	
 	CSOverlayTransitionAnimator *animator = [CSOverlayTransitionAnimator new];
-	//Configure the animator
 	animator.presenting = YES;
 	return animator;
 }
@@ -1797,17 +1794,6 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
  ***********************************************/
 //
 
-// logic //
-
-// map markers are made up of waypoint & pois
-// adding waypoint updates mapmarkers
-// enabling poin for type adds these to map markers
-
-// remove/add waypoint needs > full marker refresh needs to take pois into account
-// updateWaypointStatuses should call removeMarkers:arr not remove all
-// similarly removePOIMarkers should only remove poi markers from markermanager
-
-
 -(void)showPOIView{
 	
 	UINavigationController *nav=(UINavigationController*)self.viewDeckController.rightController;
@@ -1827,8 +1813,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 }
 
 
-// TBD: poi markers should always display behind any waypoint markers
-// we should create a insert at bottom method in mapMarkerManager
+
 -(void)updatePOIMapMarkers{
 	
 	[self removePOIMarkers];

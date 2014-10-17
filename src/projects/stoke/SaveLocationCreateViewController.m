@@ -224,7 +224,7 @@
 	
 }
 
--(CGSize)sizeToPresent{
+-(CGSize)preferredContentSize{
 	
 	return CGSizeMake(280,260);
 }
@@ -368,7 +368,7 @@
 	CGRect newRect=[self.view convertRect:textFieldRect toView:nil];
 	
 	int avaialableh=boundsRect.origin.y-boundsRect.size.height;
-	self.fieldOffset=newRect.origin.y-avaialableh+44;
+	self.fieldOffset=MAX(0,newRect.origin.y-avaialableh+(_activeField.height+10));
 	
 	[UIView animateWithDuration:duration animations:^{
 		self.view.y-=_fieldOffset;

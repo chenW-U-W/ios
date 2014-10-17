@@ -10,8 +10,6 @@
 @optional
 -(void)didDismissWithTouch:(UITapGestureRecognizer*)gestureRecogniser;
 
--(CGSize)sizeToPresent;
-
 @end
 
 

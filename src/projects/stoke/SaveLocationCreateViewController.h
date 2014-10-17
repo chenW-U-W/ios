@@ -16,6 +16,4 @@
 @property (nonatomic,strong)  SavedLocationVO			*dataProvider;
 
 
--(CGSize)sizeToPresent;
-
 @end

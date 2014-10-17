@@ -219,7 +219,7 @@
 }
 
 
--(CGSize)sizeToPresent{
+-(CGSize)preferredContentSize{
 	
 	return CGSizeMake(280,260);
 }

@@ -45,7 +45,7 @@
 		// to
         [transitionContext.containerView addSubview:toView];
 		toView.layer.cornerRadius=10;
-		toView.size=[toViewController sizeToPresent];
+		toView.size=[toViewController preferredContentSize];
 		[ViewUtilities alignView:toView inRect:fromViewController.view.frame :BUCenterAlignMode :BUCenterAlignMode];
 		toViewController.view.x+=320;
 		
