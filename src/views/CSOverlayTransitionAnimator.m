@@ -43,11 +43,12 @@
 		[transitionContext.containerView addSubview:touchView];
 		
 		// to
-        [transitionContext.containerView addSubview:toView];
 		toView.layer.cornerRadius=10;
 		toView.size=[toViewController preferredContentSize];
 		[ViewUtilities alignView:toView inRect:fromViewController.view.frame :BUCenterAlignMode :BUCenterAlignMode];
 		toViewController.view.x+=320;
+		[transitionContext.containerView addSubview:toView];
+		
 		
 		// animation
 		[UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0 usingSpringWithDamping:0.7 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseOut animations:^{

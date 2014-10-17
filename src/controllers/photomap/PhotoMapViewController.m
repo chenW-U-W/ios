@@ -49,39 +49,37 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #import "MKMapView+LegalLabel.h"
 #import "CSMapTileService.h"
 #import "PhotoWizardViewController.h"
+#import "ExpandedUILabel.h"
 
 static NSString *const LOCATIONSUBSCRIBERID=@"PhotoMap";
 
 
 @interface PhotoMapViewController()<MKMapViewDelegate>
 
-@property (nonatomic, strong) IBOutlet MKMapView						* mapView;//map of current area
-@property (nonatomic, strong) IBOutlet UILabel							* attributionLabel;// map type label
-
+// outlets
+@property (nonatomic,strong) IBOutlet MKMapView							* mapView;//map of current area
+@property (nonatomic,strong) IBOutlet ExpandedUILabel					* attributionLabel;// map type label
 @property (nonatomic,strong) IBOutlet UINavigationItem					* navigation;
+@property (nonatomic,strong) IBOutlet UIBarButtonItem					* photoWizardButton;
 
 
-@property (nonatomic, strong) IBOutlet UIBarButtonItem					* gpslocateButton;
-@property (nonatomic,strong)  IBOutlet UIBarButtonItem					* locationButton;
+
+// buttons
+@property (nonatomic,strong) UIBarButtonItem							* locationButton;
 @property (nonatomic,strong) UIButton									* activeLocationSubButton;
 
+// views
+@property (nonatomic,strong) PhotoMapImageLocationViewController		* locationView;
+@property (nonatomic,strong) PhotoWizardViewController					* photoWizardView;
 
-@property (nonatomic, strong) IBOutlet UIBarButtonItem					* photoWizardButton;
 
-@property (nonatomic, strong) CLLocation								* currentLocation;
-@property (nonatomic, strong) PhotoMapImageLocationViewController		* locationView;
-@property (nonatomic, strong) PhotoWizardViewController					* photoWizardView;
-
-@property (nonatomic, assign) BOOL										photomapQuerying;
-
+// state
+@property (nonatomic,strong) CLLocation									* currentLocation;
+@property (nonatomic,assign) BOOL										photomapQuerying;
 @property (nonatomic,assign) BOOL										shouldAcceptLocationUpdates;
-
 @property (nonatomic,assign) BOOL										mapChangedFromUserInteraction;
-
 @property (nonatomic,assign) BOOL										initialLocationComplete;
-
-@property (nonatomic,strong)  CSMapSource								* activeMapSource;
-
+@property (nonatomic,strong) CSMapSource								* activeMapSource;
 
 
 @end
@@ -417,14 +415,11 @@ static NSString *const LOCATIONSUBSCRIBERID=@"PhotoMap";
 	
 	self.currentLocation=_mapView.userLocation.location;
 	
-	_gpslocateButton.style = UIBarButtonItemStylePlain;
-	
 	
 }
 
 - (void)mapView:(MKMapView *)mapView didFailToLocateUserWithError:(NSError *)error{
 	
-	_gpslocateButton.style = UIBarButtonItemStylePlain;
 	
 }
 

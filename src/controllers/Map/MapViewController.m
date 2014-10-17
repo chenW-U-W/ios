@@ -531,7 +531,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 			
 		break;
 	}
-	
+	return nil;
 }
 
 
@@ -1293,7 +1293,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 	}
 		
 	
-	BetterLog(@"From %lu to %lu",oldState, newState);
+	BetterLog(@"From %u to %u",oldState, newState);
 	
 	CSWaypointAnnotationView *annotationView=(CSWaypointAnnotationView*)view;
 		

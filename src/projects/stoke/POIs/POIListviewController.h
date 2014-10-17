@@ -7,7 +7,6 @@
 //
 
 #import "SuperViewController.h"
-#import "POICategoryViewController.h"
 #import "IIViewDeckController.h"
 #import <CoreLocation/CoreLocation.h>
 

@@ -34,6 +34,5 @@ typedef NS_ENUM(NSUInteger, SavedLocationsViewMode) {
 
 -(void)didDismissWithTouch:(UITapGestureRecognizer*)gestureRecogniser;
 
--(CGSize)sizeToPresent;
 
 @end
