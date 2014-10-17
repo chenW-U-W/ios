@@ -9,8 +9,9 @@
 #import "SuperViewController.h"
 #import "IIViewDeckController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "CSOverlayTransitionAnimator.h"
 
-@interface POIListviewController : SuperViewController<UITableViewDelegate,UITableViewDataSource,IIViewDeckControllerDelegate>{
+@interface POIListviewController : SuperViewController<UITableViewDelegate,UITableViewDataSource,IIViewDeckControllerDelegate,CSOverlayTransitionProtocol>{
 	
 }
 

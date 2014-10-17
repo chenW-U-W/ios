@@ -20,7 +20,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel						*titleLabel;
 @property (strong, nonatomic) IBOutlet UIImageView					*locationTypeIcon;
-@property (weak, nonatomic) IBOutlet UILabel						*coordLabel;
 
 
 @end
@@ -47,8 +46,6 @@
     _titleLabel.text=_dataProvider.title;
     
 	_locationTypeIcon.image=[UIImage imageNamed:[_dataProvider locationIcon] tintColor:[UIColor appTintColor] style:UIImageTintedStyleKeepingAlpha];
-    
-    _coordLabel.text=_dataProvider.coordinateString;
     
 }
 

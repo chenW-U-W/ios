@@ -101,12 +101,14 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(POIManager);
 	
 	BOOL isRetina=ISRETINADISPLAY;
 	
-	NSMutableDictionary *parameters=[NSMutableDictionary dictionaryWithObjectsAndKeys:[[CycleStreets sharedInstance] APIKey], @"key",isRetina==YES ? BOX_INT(64): BOX_INT(32),@"icons", nil];
+	NSMutableDictionary *parameters=[NSMutableDictionary dictionaryWithObjectsAndKeys:[[CycleStreets sharedInstance] APIKey], @"key",isRetina==YES ? @(64): @(32),@"icons", nil];
 	
 	BUNetworkOperation *request=[[BUNetworkOperation alloc]init];
 	request.dataid=POILISTING;
 	request.requestid=ZERO;
 	request.parameters=parameters;
+#warning This is not cacheing
+	//TODO: this is not cacheing
 	request.source=DataSourceRequestCacheTypeUseNetwork;
 	
 	__weak __typeof(&*self)weakSelf = self;

@@ -364,6 +364,7 @@
 		2834377615DD5DC300B00FD5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 289E6AF8144C357C0079FFE5 /* libz.dylib */; };
 		2834377715DD5DC300B00FD5 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D7E1F712BAA8710025C4A2 /* libxml2.dylib */; };
 		2834377915DD5DC300B00FD5 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2831ABFC1362F7D000EBBA69 /* AddressBook.framework */; };
+		2834D38019F16CEC00036FEC /* POITypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2834D37F19F16CEC00036FEC /* POITypeCell.xib */; };
 		28363432165A9A050039246E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28363418165A73AB0039246E /* Crashlytics.framework */; };
 		28363433165A9A090039246E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28363418165A73AB0039246E /* Crashlytics.framework */; };
 		28373E1F164814A900F5E356 /* WayPointView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28373E1E164814A900F5E356 /* WayPointView.xib */; };
@@ -671,7 +672,6 @@
 		28B0AD2C19EEBA04008A3F21 /* POIListviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B0AD2A19EEBA04008A3F21 /* POIListviewController.m */; };
 		28B0AD2E19EEBA0F008A3F21 /* POIListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B0AD2D19EEBA0F008A3F21 /* POIListView.xib */; };
 		28B0AD3119EEBA18008A3F21 /* POICatLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B0AD2F19EEBA17008A3F21 /* POICatLocationCell.xib */; };
-		28B0AD3219EEBA18008A3F21 /* POITypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B0AD3019EEBA17008A3F21 /* POITypeCell.xib */; };
 		28B0AD3719EEBA21008A3F21 /* POICatLocationCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B0AD3419EEBA21008A3F21 /* POICatLocationCellView.m */; };
 		28B0AD3819EEBA21008A3F21 /* POITypeCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B0AD3619EEBA21008A3F21 /* POITypeCellView.m */; };
 		28B0AD3D19EEBA9F008A3F21 /* POICategoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B0AD3C19EEBA9F008A3F21 /* POICategoryView.xib */; };
@@ -1280,6 +1280,7 @@
 		283435C515DD17B000B00FD5 /* Icon_norecentroutes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_norecentroutes.png; sourceTree = "<group>"; };
 		283435FD15DD5D9100B00FD5 /* APIKey_dev.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = APIKey_dev.txt; path = docs/APIKey_dev.txt; sourceTree = SOURCE_ROOT; };
 		2834378015DD5DC300B00FD5 /* CycleStreets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CycleStreets.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2834D37F19F16CEC00036FEC /* POITypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = POITypeCell.xib; sourceTree = "<group>"; };
 		28363418165A73AB0039246E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = ../../AppCore/external/Crashlytics/Crashlytics.framework; sourceTree = "<group>"; };
 		28373E1E164814A900F5E356 /* WayPointView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WayPointView.xib; sourceTree = "<group>"; };
 		28373E2116481A0C00F5E356 /* WayPointCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WayPointCell.xib; sourceTree = "<group>"; };
@@ -1597,7 +1598,6 @@
 		28B0AD2A19EEBA04008A3F21 /* POIListviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POIListviewController.m; sourceTree = "<group>"; };
 		28B0AD2D19EEBA0F008A3F21 /* POIListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = POIListView.xib; sourceTree = "<group>"; };
 		28B0AD2F19EEBA17008A3F21 /* POICatLocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = POICatLocationCell.xib; sourceTree = "<group>"; };
-		28B0AD3019EEBA17008A3F21 /* POITypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = POITypeCell.xib; sourceTree = "<group>"; };
 		28B0AD3319EEBA21008A3F21 /* POICatLocationCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POICatLocationCellView.h; sourceTree = "<group>"; };
 		28B0AD3419EEBA21008A3F21 /* POICatLocationCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POICatLocationCellView.m; sourceTree = "<group>"; };
 		28B0AD3519EEBA21008A3F21 /* POITypeCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POITypeCellView.h; sourceTree = "<group>"; };
@@ -2208,9 +2208,9 @@
 			isa = PBXGroup;
 			children = (
 				28B0AD2F19EEBA17008A3F21 /* POICatLocationCell.xib */,
-				28B0AD3019EEBA17008A3F21 /* POITypeCell.xib */,
 				2853210719E7DA7E00118E48 /* MapStyleCellView.xib */,
 				289EFC4D19ED2CEC0081E7BB /* SavedLocationTableCell.xib */,
+				2834D37F19F16CEC00036FEC /* POITypeCell.xib */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -3793,10 +3793,10 @@
 				28FA8AA719E454E80040EA46 /* icon_location.png in Resources */,
 				28FA8AA819E454E80040EA46 /* UIIcon_photomap.png in Resources */,
 				28FA8AA919E454E80040EA46 /* CSTabBar_account.png in Resources */,
+				2834D38019F16CEC00036FEC /* POITypeCell.xib in Resources */,
 				28FA8AAA19E454E80040EA46 /* CSTabBar_add_photo.png in Resources */,
 				28FA8AAB19E454E80040EA46 /* CSTabBar_credits.png in Resources */,
 				28FA8AAC19E454E80040EA46 /* CSTabBar_fav_routes.png in Resources */,
-				28B0AD3219EEBA18008A3F21 /* POITypeCell.xib in Resources */,
 				28B0AD3D19EEBA9F008A3F21 /* POICategoryView.xib in Resources */,
 				28FA8AAD19E454E80040EA46 /* CSTabBar_itinerary.png in Resources */,
 				28FA8BB119E455E50040EA46 /* appconfig_live.plist in Resources */,
@@ -4829,7 +4829,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DISPLAY_PREFIX = "Beta-";
-				"DISPLAY_PREFIX[arch=*]" = "Beta-";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",

@@ -186,6 +186,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(UserLocationManager);
 
 -(BOOL)checkLocationStatus:(BOOL)showAlert{
 	
+	//UIApplicationOpenSettingsURLString
 	
 	if([self doesDeviceAllowLocation]==NO){
         
@@ -282,7 +283,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(UserLocationManager);
 	
 	NSUInteger index=[self findSubscriber:subscriberId];
 	
-	if(index==NSNotFound){
+	if(index!=NSNotFound){
 		
 		[locationSubscribers addObject:subscriberId];
 		return YES;

@@ -6,6 +6,7 @@
 #import "UIView+Additions.h"
 #import "ViewUtilities.h"
 #import "UIViewController+BUAdditions.h"
+#import "GenericConstants.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -43,10 +44,10 @@
 		[transitionContext.containerView addSubview:touchView];
 		
 		// to
-		toView.layer.cornerRadius=10;
+		toView.layer.cornerRadius=6;
 		toView.size=[toViewController preferredContentSize];
 		[ViewUtilities alignView:toView inRect:fromViewController.view.frame :BUCenterAlignMode :BUCenterAlignMode];
-		toViewController.view.x+=320;
+		toViewController.view.x+=SCREENWIDTH;
 		[transitionContext.containerView addSubview:toView];
 		
 		
@@ -71,7 +72,7 @@
         [transitionContext.containerView addSubview:fromView];
 		
 		CGRect finalFrame=fromView.frame;
-        finalFrame.origin.x += 320;
+        finalFrame.origin.x += SCREENWIDTH;
 		
 		[UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0 usingSpringWithDamping:0.7 initialSpringVelocity:0 options:UIViewAnimationOptionCurveLinear animations:^{
 			toViewController.view.tintAdjustmentMode = UIViewTintAdjustmentModeAutomatic;

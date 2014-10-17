@@ -748,7 +748,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 		}else{
 			
 			if(_allowsUserTrackingUI){
-			
+				[_mapView setCenterCoordinate:_lastLocation.coordinate zoomLevel:DEFAULT_ZOOM animated:YES];
 			}else{
 				[_mapView setCenterCoordinate:_lastLocation.coordinate zoomLevel:DEFAULT_ZOOM animated:YES];
 
@@ -1750,6 +1750,19 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 		controller.dataProvider=segue.context;
 		controller.transitioningDelegate = self;
 		controller.modalPresentationStyle = UIModalPresentationCustom;
+		
+	}else if ([segue.identifier isEqualToString:@"POIListViewSegue"]){
+		
+		POIListviewController *controller=(POIListviewController*)segue.destinationViewController;
+		
+		CLLocationCoordinate2D nw = [_mapView NWforMapView];
+		CLLocationCoordinate2D se = [_mapView SEforMapView];
+		
+		controller.nwCoordinate=nw;
+		controller.seCoordinate=se;
+		
+		controller.transitioningDelegate = self;
+		controller.modalPresentationStyle = UIModalPresentationCustom;
 	}
 	
 }
@@ -1796,18 +1809,20 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 
 -(void)showPOIView{
 	
-	UINavigationController *nav=(UINavigationController*)self.viewDeckController.rightController;
-	POIListviewController *poiviewcontroller=(POIListviewController*)nav.topViewController;
+	[self performSegueWithIdentifier:@"POIListViewSegue" sender:self];
 	
-	CLLocationCoordinate2D nw = [_mapView NWforMapView];
-	CLLocationCoordinate2D se = [_mapView SEforMapView];
-	
-	poiviewcontroller.nwCoordinate=nw;
-	poiviewcontroller.seCoordinate=se;
-	
-	[self.viewDeckController openRightViewAnimated:YES completion:^(IIViewDeckController *controller, BOOL success) {
-		
-	}];
+//	UINavigationController *nav=(UINavigationController*)self.viewDeckController.rightController;
+//	POIListviewController *poiviewcontroller=(POIListviewController*)nav.topViewController;
+//	
+//	CLLocationCoordinate2D nw = [_mapView NWforMapView];
+//	CLLocationCoordinate2D se = [_mapView SEforMapView];
+//	
+//	poiviewcontroller.nwCoordinate=nw;
+//	poiviewcontroller.seCoordinate=se;
+//	
+//	[self.viewDeckController openRightViewAnimated:YES completion:^(IIViewDeckController *controller, BOOL success) {
+//		
+//	}];
 	
 	
 }

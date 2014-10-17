@@ -22,7 +22,6 @@
 	
 -(void)initialise{
 	
-	self.contentView.backgroundColor=UIColorFromRGB(0xe2e0dc);
 	
 	
 }

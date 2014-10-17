@@ -246,6 +246,7 @@ static NSString *const DATAID = @"PoiListing";
 		
 	}
 	
+	[_tableview deselectRowAtIndexPath:indexPath animated:YES];
 	
 }
 
@@ -268,6 +269,25 @@ static NSString *const DATAID = @"PoiListing";
 	return YES;
 	
 }
+
+
+
+#pragma mark - CSOverlayTransitionProtocol
+
+-(void)didDismissWithTouch:(UITapGestureRecognizer*)gestureRecogniser{
+	
+	[self dismissViewControllerAnimated:YES completion:nil];
+
+}
+
+
+-(CGSize)preferredContentSize{
+	
+	return CGSizeMake(280,320);
+}
+
+
+
 
 //
 /***********************************************

@@ -190,7 +190,7 @@ background-color: #429CB2;
 	font-size       : 16px;
 }
 #BUSegmentedControlButton:disabled{
-    background-color: #509720;
+    background-color: appTintColor;
     color:#FFFFFF;
 }
 

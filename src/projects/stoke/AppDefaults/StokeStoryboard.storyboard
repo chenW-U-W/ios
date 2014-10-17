@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="uZG-hY-a5B">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="uZG-hY-a5B">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -111,7 +110,7 @@
         <scene sceneID="6zR-Dj-gMD">
             <objects>
                 <viewController storyboardIdentifier="SaveLocationCreateViewController" id="obc-HC-sMg" customClass="SaveLocationCreateViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="p2V-Qx-0Up">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="p2V-Qx-0Up">
                         <rect key="frame" x="0.0" y="0.0" width="280" height="260"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -205,7 +204,7 @@
         <scene sceneID="4Nj-rb-ine">
             <objects>
                 <viewController id="gdo-qn-vyO" customClass="SavedLocationsViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3vN-Jo-1Qc">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="3vN-Jo-1Qc">
                         <rect key="frame" x="0.0" y="0.0" width="280" height="260"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -280,7 +279,7 @@
                                 <color key="barTintColor" red="0.31372550129999999" green="0.67450982329999998" blue="0.75294125079999996" alpha="1" colorSpace="deviceRGB"/>
                             </toolbar>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Map Attribution" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="gMu-jU-Xl7" customClass="ExpandedUILabel">
-                                <rect key="frame" x="100.00000014191585" y="484" width="210" height="25"/>
+                                <rect key="frame" x="100.00000028840958" y="484" width="210" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES"/>
                                 <color key="backgroundColor" red="0.31372550129999999" green="0.67450982329999998" blue="0.75294125079999996" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="9"/>
@@ -312,6 +311,7 @@
                         <outlet property="walkingRouteOverlayView" destination="pIs-Lq-mvo" id="4Vj-4s-zYo"/>
                         <segue destination="obc-HC-sMg" kind="modal" identifier="CreateSavedLocationSegue" id="tph-ii-tEm"/>
                         <segue destination="gdo-qn-vyO" kind="modal" identifier="SavedLocationsSegue" id="BI0-gH-t0g"/>
+                        <segue destination="mV7-Ai-JUC" kind="modal" identifier="POIListViewSegue" id="QJ2-7V-cQ8"/>
                     </connections>
                 </viewController>
                 <view opaque="NO" contentMode="scaleToFill" id="pIs-Lq-mvo">
@@ -338,6 +338,55 @@
             </objects>
             <point key="canvasLocation" x="-3624" y="-538"/>
         </scene>
+        <!--Listview Controller-->
+        <scene sceneID="5Dt-2o-l56">
+            <objects>
+                <viewController id="mV7-Ai-JUC" customClass="POIListviewController" sceneMemberID="viewController">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="O7n-Na-HaP">
+                        <rect key="frame" x="0.0" y="0.0" width="280" height="320"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="SBk-3e-fCm">
+                                <rect key="frame" x="0.0" y="0.0" width="280" height="42"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="POIs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="W6V-jc-xIq">
+                                        <rect key="frame" x="8" y="10" width="264" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.31372550129999999" green="0.67450982329999998" blue="0.75294125079999996" alpha="1" colorSpace="deviceRGB"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="nmU-ou-89a">
+                                <rect key="frame" x="0.0" y="42" width="280" height="278"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" name="controlHighlightColor" catalog="System" colorSpace="catalog"/>
+                                <color key="separatorColor" red="0.88627457620000005" green="0.87843143940000001" blue="0.86274516580000005" alpha="1" colorSpace="deviceRGB"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="mV7-Ai-JUC" id="APd-E1-qzk"/>
+                                    <outlet property="delegate" destination="mV7-Ai-JUC" id="ALf-1T-hQp"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="280" height="320"/>
+                    <connections>
+                        <outlet property="tableview" destination="nmU-ou-89a" id="qeg-Oe-kGz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="95u-SP-zIA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3203" y="-669"/>
+        </scene>
         <!--Hi-->
         <scene sceneID="nyH-4h-cam">
             <objects>
@@ -353,7 +402,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r3d-bs-lUb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3253" y="-538"/>
+            <point key="canvasLocation" x="-3624" y="-1200"/>
         </scene>
         <!--Itinerary-->
         <scene sceneID="C4I-MO-Ahx">
