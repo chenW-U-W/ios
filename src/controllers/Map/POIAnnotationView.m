@@ -10,11 +10,13 @@
 #import "UIView+Additions.h"
 #import "POIAnnotation.h"
 #import "ImageCache.h"
+#import "GlobalUtilities.h"
 
 @interface POIAnnotationView()
 
 @property (nonatomic,strong)  UILabel							*indexLabel;
 
+@property (nonatomic,strong)  UIImageView						*imageView;
 
 @end
 
@@ -33,6 +35,11 @@
 	self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier];
 	
 	if (self) {
+		
+		
+		self.imageView=[[UIImageView alloc]initWithFrame:CGRectMake(2, 2, 24,24)];
+		_imageView.contentMode=UIViewContentModeScaleAspectFit;
+		[self addSubview:_imageView];
 		
 		[self updateAnnotation];
 		
@@ -55,9 +62,9 @@
 	
 	
 	POIAnnotation* annotation=self.annotation;
+	UIImage *image=[[ImageCache sharedInstance] imageExists:[NSString stringWithFormat:@"Icon_POI_%@",annotation.dataProvider.poiType] ofType:nil];
 	
-	self.image=[[ImageCache sharedInstance] imageExists:[NSString stringWithFormat:@"Icon_POI_%@",annotation.dataProvider.poiType] ofType:nil];
-	
+	_imageView.image=image;
 	
 }
 

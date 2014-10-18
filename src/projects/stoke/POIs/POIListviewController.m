@@ -274,7 +274,7 @@ static NSString *const DATAID = @"PoiListing";
 
 #pragma mark - CSOverlayTransitionProtocol
 
--(void)didDismissWithTouch:(UITapGestureRecognizer*)gestureRecogniser{
+-(void)didDismissWithTouch:(UIGestureRecognizer*)gestureRecogniser{
 	
 	[self dismissViewControllerAnimated:YES completion:nil];
 

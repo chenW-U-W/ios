@@ -50,6 +50,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #import "CSMapTileService.h"
 #import "PhotoWizardViewController.h"
 #import "ExpandedUILabel.h"
+#import "PhotoMapVideoLocationViewController.h"
 
 static NSString *const LOCATIONSUBSCRIBERID=@"PhotoMap";
 
@@ -69,7 +70,8 @@ static NSString *const LOCATIONSUBSCRIBERID=@"PhotoMap";
 @property (nonatomic,strong) UIButton									* activeLocationSubButton;
 
 // views
-@property (nonatomic,strong) PhotoMapImageLocationViewController		* locationView;
+@property (nonatomic,strong) PhotoMapImageLocationViewController		* locationImageView;
+@property (nonatomic,strong) PhotoMapVideoLocationViewController		* locationVideoView;
 @property (nonatomic,strong) PhotoWizardViewController					* photoWizardView;
 
 
@@ -222,11 +224,26 @@ static NSString *const LOCATIONSUBSCRIBERID=@"PhotoMap";
 	BetterLog(@"Fired");
 	
 	CSPhotomapAnnotation *annotation=(CSPhotomapAnnotation*)view.annotation;
-	
-	PhotoMapImageLocationViewController *lv = [[PhotoMapImageLocationViewController alloc] initWithNibName:@"PhotoMapImageLocationView" bundle:nil];
 	PhotoMapVO *photoEntry = (PhotoMapVO *)annotation.dataProvider;
-	lv.dataProvider=photoEntry;
-	[self presentModalViewController:lv animated:YES];
+	
+	switch (photoEntry.mediaType) {
+		case PhotoMapMediaType_Image:
+			{
+				PhotoMapImageLocationViewController *lv = [[PhotoMapImageLocationViewController alloc] initWithNibName:[PhotoMapImageLocationViewController nibName] bundle:nil];
+				lv.dataProvider=photoEntry;
+				[self presentModalViewController:lv animated:YES];
+			}
+		break;
+				
+		case PhotoMapMediaType_Video:
+			{
+				PhotoMapVideoLocationViewController *lv = [[PhotoMapVideoLocationViewController alloc] initWithNibName:[PhotoMapVideoLocationViewController nibName] bundle:nil];
+				lv.dataProvider=photoEntry;
+				[self presentModalViewController:lv animated:YES];
+			}
+		break;
+	}
+	
 	
 }
 

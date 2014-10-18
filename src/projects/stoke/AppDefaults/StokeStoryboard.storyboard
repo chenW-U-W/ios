@@ -1,111 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="uZG-hY-a5B">
     <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="IfH-TP-9kQ">
-            <objects>
-                <navigationController storyboardIdentifier="WayPointNavController" definesPresentationContext="YES" id="ktF-aB-e8s" sceneMemberID="viewController">
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="9wb-5c-Wok">
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.31372550129999999" green="0.67450982329999998" blue="0.75294125079999996" alpha="1" colorSpace="deviceRGB"/>
-                        <color key="tintColor" red="0.31372550129999999" green="0.67450982329999998" blue="0.75294125079999996" alpha="1" colorSpace="deviceRGB"/>
-                        <color key="barTintColor" red="0.31372550129999999" green="0.67450982329999998" blue="0.75294125079999996" alpha="1" colorSpace="deviceRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="MLh-Bz-0jb" kind="relationship" relationship="rootViewController" id="X0b-yo-Ob3"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DN2-a0-tTa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3886" y="183"/>
-        </scene>
-        <!--Waypoints-->
-        <scene sceneID="Wur-Lk-bJc">
-            <objects>
-                <viewController storyboardIdentifier="WayPointViewController" id="MLh-Bz-0jb" customClass="WayPointViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hm2-fh-1Vu">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="fv2-UG-Z6q" customClass="FMMoveTableView">
-                                <rect key="frame" x="0.0" y="0.0" width="280" height="504"/>
-                                <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
-                                <color key="backgroundColor" red="0.94117653369999998" green="0.93333339689999995" blue="0.92941182850000004" alpha="1" colorSpace="deviceRGB"/>
-                                <color key="separatorColor" red="0.94117653369999998" green="0.93333339689999995" blue="0.92941182850000004" alpha="1" colorSpace="deviceRGB"/>
-                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="MLh-Bz-0jb" id="ZMn-h1-Lin"/>
-                                    <outlet property="delegate" destination="MLh-Bz-0jb" id="6A4-sR-9kH"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Waypoints" id="pr3-mY-JPF">
-                        <barButtonItem key="leftBarButtonItem" title="Close" id="3dB-PB-SvM">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="closeButtonSelected:" destination="MLh-Bz-0jb" id="nV0-ka-XAB"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="tableView" destination="fv2-UG-Z6q" id="5W0-aY-AYx"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HhG-E3-Dxu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3886" y="910"/>
-        </scene>
-        <!--POIs-->
-        <scene sceneID="vzz-UK-ahJ">
-            <objects>
-                <viewController storyboardIdentifier="POIListviewController" id="RcO-9Y-kLr" customClass="POIListviewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3TZ-nl-qX2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="CoT-2R-tzZ">
-                                <rect key="frame" x="42" y="0.0" width="278" height="504"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="0.94117653369999998" green="0.93333339689999995" blue="0.92941182850000004" alpha="1" colorSpace="deviceRGB"/>
-                                <color key="separatorColor" red="0.94117653369999998" green="0.93333339689999995" blue="0.92941182850000004" alpha="1" colorSpace="deviceRGB"/>
-                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="RcO-9Y-kLr" id="n5k-0c-cpc"/>
-                                    <outlet property="delegate" destination="RcO-9Y-kLr" id="5ob-GU-Dhj"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="POIs" id="Uyv-lA-9d7">
-                        <barButtonItem key="rightBarButtonItem" title="Close" id="Xzr-4G-0eI">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="closeViewController:" destination="RcO-9Y-kLr" id="FHu-8t-6U1"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="tableview" destination="CoT-2R-tzZ" id="eBp-6j-1hO"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="So8-sx-X8s" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3388" y="910"/>
-        </scene>
         <!--Save Location Create View Controller-->
         <scene sceneID="6zR-Dj-gMD">
             <objects>
@@ -182,7 +81,7 @@
                                 </connections>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.94117653369999998" green="0.93333339689999995" blue="0.92941182850000004" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" red="0.92549019607843142" green="0.9137254901960784" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -198,7 +97,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ALX-q1-c8o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3999" y="-821"/>
+            <point key="canvasLocation" x="-3440" y="128"/>
         </scene>
         <!--Saved Locations View Controller-->
         <scene sceneID="4Nj-rb-ine">
@@ -245,9 +144,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sfu-kd-WIN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4014" y="-461"/>
+            <point key="canvasLocation" x="-4085" y="128"/>
         </scene>
-        <!--Map View Controller-->
+        <!--Route-->
         <scene sceneID="G73-Mk-t08">
             <objects>
                 <viewController storyboardIdentifier="MapViewController" id="gA4-QV-Dgc" customClass="MapViewController" sceneMemberID="viewController">
@@ -279,7 +178,7 @@
                                 <color key="barTintColor" red="0.31372550129999999" green="0.67450982329999998" blue="0.75294125079999996" alpha="1" colorSpace="deviceRGB"/>
                             </toolbar>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Map Attribution" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="gMu-jU-Xl7" customClass="ExpandedUILabel">
-                                <rect key="frame" x="100.00000028840958" y="484" width="210" height="25"/>
+                                <rect key="frame" x="100.00000059572628" y="484" width="210" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES"/>
                                 <color key="backgroundColor" red="0.31372550129999999" green="0.67450982329999998" blue="0.75294125079999996" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="9"/>
@@ -298,6 +197,7 @@
                         <color key="tintColor" red="0.31372550129999999" green="0.67450982329999998" blue="0.75294125079999996" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
+                    <tabBarItem key="tabBarItem" title="Route" image="CSTabBar_plan_route.png" id="AWX-0p-0hM"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
@@ -312,6 +212,7 @@
                         <segue destination="obc-HC-sMg" kind="modal" identifier="CreateSavedLocationSegue" id="tph-ii-tEm"/>
                         <segue destination="gdo-qn-vyO" kind="modal" identifier="SavedLocationsSegue" id="BI0-gH-t0g"/>
                         <segue destination="mV7-Ai-JUC" kind="modal" identifier="POIListViewSegue" id="QJ2-7V-cQ8"/>
+                        <segue destination="QWx-CJ-dLg" kind="modal" identifier="WaypointViewSegue" id="a6i-Ca-Yvv"/>
                     </connections>
                 </viewController>
                 <view opaque="NO" contentMode="scaleToFill" id="pIs-Lq-mvo">
@@ -336,7 +237,7 @@
                 </view>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qlj-nd-Sml" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3624" y="-538"/>
+            <point key="canvasLocation" x="-3604" y="-538"/>
         </scene>
         <!--Listview Controller-->
         <scene sceneID="5Dt-2o-l56">
@@ -385,24 +286,54 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="95u-SP-zIA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3203" y="-669"/>
+            <point key="canvasLocation" x="-3123" y="158"/>
         </scene>
-        <!--Hi-->
-        <scene sceneID="nyH-4h-cam">
+        <!--Way Point View Controller-->
+        <scene sceneID="mYB-QT-REy">
             <objects>
-                <viewController storyboardIdentifier="CSInitialMapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Owm-gz-z56" customClass="CSInitialMapViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="PfR-sh-zkO">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.31372550129999999" green="0.67450982329999998" blue="0.75294125079999996" alpha="1" colorSpace="deviceRGB"/>
-                        <color key="tintColor" red="0.31372550129999999" green="0.67450982329999998" blue="0.75294125079999996" alpha="1" colorSpace="deviceRGB"/>
+                <viewController id="QWx-CJ-dLg" customClass="WayPointViewController" sceneMemberID="viewController">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="KOS-r5-daD">
+                        <rect key="frame" x="0.0" y="0.0" width="280" height="280"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="sRN-De-NEK">
+                                <rect key="frame" x="0.0" y="0.0" width="280" height="42"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waypoints" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6cZ-Cu-gfN">
+                                        <rect key="frame" x="8" y="10" width="264" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.31372550129999999" green="0.67450982329999998" blue="0.75294125079999996" alpha="1" colorSpace="deviceRGB"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="iw8-xx-AV8" customClass="FMMoveTableView">
+                                <rect key="frame" x="0.0" y="42" width="280" height="238"/>
+                                <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.94117653369999998" green="0.93333339689999995" blue="0.92941182850000004" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="separatorColor" red="0.94117653369999998" green="0.93333339689999995" blue="0.92941182850000004" alpha="1" colorSpace="deviceRGB"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="QWx-CJ-dLg" id="1pc-to-qcc"/>
+                                    <outlet property="delegate" destination="QWx-CJ-dLg" id="g6P-yo-xDB"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Hi" image="CSTabBar_plan_route.png" id="cmW-Om-JtC"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="280" height="280"/>
+                    <connections>
+                        <outlet property="tableView" destination="iw8-xx-AV8" id="290-iv-UEB"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="r3d-bs-lUb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jdu-Rm-abU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3624" y="-1200"/>
+            <point key="canvasLocation" x="-3757" y="138"/>
         </scene>
         <!--Itinerary-->
         <scene sceneID="C4I-MO-Ahx">
@@ -423,25 +354,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W90-YA-VNQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2697" y="-538"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ySC-fT-WNK">
-            <objects>
-                <navigationController storyboardIdentifier="POINavController" definesPresentationContext="YES" id="ckD-QR-gbX" sceneMemberID="viewController">
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="ZVa-3F-aiG">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.31372550129999999" green="0.67450982329999998" blue="0.75294125079999996" alpha="1" colorSpace="deviceRGB"/>
-                        <color key="barTintColor" red="0.31372550129999999" green="0.67450982329999998" blue="0.75294125079999996" alpha="1" colorSpace="deviceRGB"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="RcO-9Y-kLr" kind="relationship" relationship="rootViewController" id="Pbh-UN-nyj"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LOW-e7-8fg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3388" y="183"/>
         </scene>
         <!--Itinerary-->
         <scene sceneID="yRI-FM-nhS">
@@ -722,7 +634,7 @@
                         <color key="tintColor" red="0.31372550129999999" green="0.67450982329999998" blue="0.75294125079999996" alpha="1" colorSpace="deviceRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Owm-gz-z56" kind="relationship" relationship="viewControllers" id="8my-7A-1wi"/>
+                        <segue destination="gA4-QV-Dgc" kind="relationship" relationship="viewControllers" id="AMG-MV-pfO"/>
                         <segue destination="Whq-3E-C5M" kind="relationship" relationship="viewControllers" id="WQI-0R-4be"/>
                         <segue destination="TeA-CB-brw" kind="relationship" relationship="viewControllers" id="nWl-nY-lvG"/>
                         <segue destination="0ny-e6-BF2" kind="relationship" relationship="viewControllers" id="063-HP-5Bs"/>

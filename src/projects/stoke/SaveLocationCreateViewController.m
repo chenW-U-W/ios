@@ -218,7 +218,7 @@
 
 #pragma mark - CSOverlayTransitionProtocol
 
--(void)didDismissWithTouch:(UITapGestureRecognizer*)gestureRecogniser{
+-(void)didDismissWithTouch:(UIGestureRecognizer*)gestureRecogniser{
 	
 	[self dismissView];
 	

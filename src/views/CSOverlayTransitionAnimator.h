@@ -8,7 +8,7 @@
 @protocol CSOverlayTransitionProtocol <NSObject>
 
 @optional
--(void)didDismissWithTouch:(UITapGestureRecognizer*)gestureRecogniser;
+-(void)didDismissWithTouch:(UIGestureRecognizer*)gestureRecogniser;
 
 @end
 

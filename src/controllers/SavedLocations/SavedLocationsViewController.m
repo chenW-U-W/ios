@@ -210,7 +210,7 @@
 
 #pragma mark - CSOverlayTransitionProtocol
 
--(void)didDismissWithTouch:(UITapGestureRecognizer*)gestureRecogniser{
+-(void)didDismissWithTouch:(UIGestureRecognizer*)gestureRecogniser{
 	
 	if(_savedLocationdelegate!=nil){
 		[self dismissViewControllerAnimated:YES completion:nil];

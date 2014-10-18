@@ -32,7 +32,7 @@ typedef NS_ENUM(NSUInteger, SavedLocationsViewMode) {
 @property (nonatomic,assign) id <SavedLocationsViewDelegate>				savedLocationdelegate;
 
 
--(void)didDismissWithTouch:(UITapGestureRecognizer*)gestureRecogniser;
+-(void)didDismissWithTouch:(UIGestureRecognizer*)gestureRecogniser;
 
 
 @end

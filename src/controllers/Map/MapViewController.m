@@ -51,6 +51,7 @@
 
 #import <Crashlytics/Crashlytics.h>
 #import <A2StoryboardSegueContext.h>
+#include <PixateFreestyle/PixateFreestyle.h>
 
 #import "CSOverlayTransitionAnimator.h"
 #import "SavedLocationsViewController.h"
@@ -323,6 +324,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 	_walkingRouteOverlayView.y=self.view.height+_walkingRouteOverlayView.height;
 	
 	
+	
 	self.programmaticChange = NO;
 	self.singleTapDidOccur=NO;
 	
@@ -398,7 +400,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 	self.activeLocationButton = [[UIBarButtonItem alloc] initWithCustomView:_locatingIndicator ];
 	_activeLocationButton.style	= UIBarButtonItemStylePlain;
 	
-	self.waypointButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CSBarButton_waypoint.png"]
+	self.waypointButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CSTabBar_plan_route.png"]
 														   style:UIBarButtonItemStylePlain
 														  target:self
 														  action:@selector(showWayPointView)];
@@ -988,13 +990,15 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 
 -(void)showWayPointView{
 	
-	UINavigationController *nav=(UINavigationController*)self.viewDeckController.leftController;
-	WayPointViewController *waypointController=(WayPointViewController*)nav.topViewController;
-	self.viewDeckController.panningMode=IIViewDeckFullViewPanning;
-	waypointController.delegate=self;
-	waypointController.dataProvider=_waypointArray;
+//	UINavigationController *nav=(UINavigationController*)self.viewDeckController.leftController;
+//	WayPointViewController *waypointController=(WayPointViewController*)nav.topViewController;
+//	self.viewDeckController.panningMode=IIViewDeckFullViewPanning;
+//	waypointController.delegate=self;
+//	waypointController.dataProvider=_waypointArray;
+//	
+//	[self.viewDeckController openLeftViewAnimated:YES];
 	
-	[self.viewDeckController openLeftViewAnimated:YES];
+	[self performSegueWithIdentifier:@"WaypointViewSegue" sender:self];
 	
 }
 
@@ -1376,7 +1380,8 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 		if (annotationView == nil){
 			
 			annotationView = [[POIAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil];
-			annotationView.size=CGSizeMake(30, 30);
+			annotationView.styleId=@"POIAnnotationView";
+			annotationView.size=CGSizeMake(28,28);
 			annotationView.draggable =NO;
 			annotationView.enabled=YES;
 			annotationView.selected=NO;
@@ -1412,6 +1417,8 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 //
 
 -(void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view{
+	
+	
 	
 	BetterLog(@"");
 	
@@ -1760,6 +1767,15 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 		
 		controller.nwCoordinate=nw;
 		controller.seCoordinate=se;
+		
+		controller.transitioningDelegate = self;
+		controller.modalPresentationStyle = UIModalPresentationCustom;
+		
+	}else if ([segue.identifier isEqualToString:@"WaypointViewSegue"]){
+		
+		WayPointViewController *controller=(WayPointViewController*)segue.destinationViewController;
+		controller.delegate=self;
+		controller.dataProvider=_waypointArray;
 		
 		controller.transitioningDelegate = self;
 		controller.modalPresentationStyle = UIModalPresentationCustom;

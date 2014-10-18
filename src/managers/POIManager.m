@@ -101,7 +101,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(POIManager);
 	
 	BOOL isRetina=ISRETINADISPLAY;
 	
-	NSMutableDictionary *parameters=[NSMutableDictionary dictionaryWithObjectsAndKeys:[[CycleStreets sharedInstance] APIKey], @"key",isRetina==YES ? @(64): @(32),@"icons", nil];
+	NSMutableDictionary *parameters=[NSMutableDictionary dictionaryWithObjectsAndKeys:[[CycleStreets sharedInstance] APIKey], @"key",
+									 isRetina==YES ? @(64): @(32),@"icons",
+									 @"stoke",@"iconset",
+									 nil];
 	
 	BUNetworkOperation *request=[[BUNetworkOperation alloc]init];
 	request.dataid=POILISTING;

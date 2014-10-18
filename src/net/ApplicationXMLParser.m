@@ -40,43 +40,10 @@
 @property(nonatomic,strong)BUNetworkOperation *activeOperation;
 
 
-
-// user account
--(void)LoginXMLParser:(TBXML*)parser;
--(void)RegisterXMLParser:(TBXML*)parser;
--(void)RetrievePasswordXMLParser:(TBXML*)parser;
-
-
-// routes
--(void)CalculateRouteXMLParser:(TBXML*)parser;
-
-
-// photos
--(void)PhotoUploadXMLParser:(TBXML*)parser;
--(void)RetrievePhotosXMLParser:(TBXML*)parser;
-
-
-// pois
--(void)POIListingXMLParser:(TBXML*)parser;
--(void)POICategoryXMLParser:(TBXML*)parser;
-
-
-// categories
--(void)PhotoCategoriesXMLParser:(TBXML*)parser;
-
-
-
-//utility
-
--(RouteVO*)newRouteForData:(TBXMLElement*)response;
-
-
 @end
 
 @implementation ApplicationXMLParser
 SYNTHESIZE_SINGLETON_FOR_CLASS(ApplicationXMLParser);
-
-
 
 
 -(instancetype)init{

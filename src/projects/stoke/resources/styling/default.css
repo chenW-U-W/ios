@@ -207,6 +207,14 @@ background-color: #429CB2;
 }
 
 
+#POIAnnotationView{
+	background-color: #ECE9E8;
+	border-width    : 0px;
+	border-radius   : 3px;
+	border-style    : none;
+	
+}
+
 
 
 /* Photomap view */

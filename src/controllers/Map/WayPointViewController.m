@@ -235,6 +235,22 @@
 
 
 
+#pragma mark - CSOverlayTransitionProtocol
+
+-(void)didDismissWithTouch:(UIGestureRecognizer*)gestureRecogniser{
+	
+	[self dismissViewControllerAnimated:YES completion:nil];
+	
+}
+
+
+-(CGSize)preferredContentSize{
+	
+	return CGSizeMake(280,320);
+}
+
+
+
 //
 /***********************************************
  * @description			MEMORY
