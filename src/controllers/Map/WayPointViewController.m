@@ -8,7 +8,6 @@
 
 #import "WayPointViewController.h"
 #import "WayPointCellView.h"
-#import "IIViewDeckController.h"
 #import "GlobalUtilities.h"
 #import "FMMoveTableView.h"
 #import "UIView+Additions.h"
@@ -57,7 +56,6 @@
 {
     [super viewDidLoad];
 	
-	self.viewDeckController.delegate=self;
 	
 	self.initialHeight=self.view.height;
 	
@@ -74,16 +72,6 @@
     [super viewWillAppear:animated];
 }
 
--(BOOL)viewDeckController:(IIViewDeckController *)viewDeckController shouldOpenViewSide:(IIViewDeckSide)viewDeckSide{
-	
-	if(viewDeckSide==IIViewDeckLeftSide){
-	
-		[self.tableView reloadData];
-	
-	}
-	
-	return YES;
-}
 
 
 -(void)createPersistentUI{
@@ -227,11 +215,6 @@
  * @description			UI EVENTS
  ***********************************************/
 //
-
-
--(IBAction)closeButtonSelected:(id)sender{
-	[self.viewDeckController closeLeftViewAnimated:YES];
-}
 
 
 
