@@ -9,7 +9,7 @@
 #import "BuildTargetConstants.h"
 #import "CycleStreets.h"
 
-NSString *const API_IDENTIFIER=@"stoke";
+NSString *const API_IDENTIFIER=@"cyclenorthstaffs";
 
 @implementation BuildTargetConstants
 

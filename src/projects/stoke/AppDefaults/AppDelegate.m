@@ -42,7 +42,7 @@
 	
 	
 	#if defined (CONFIGURATION_Adhoc)
-	[TestFlight takeOff:@"66d1beaa-3747-4893-8146-93c7003bc24f"]; //66d1beaa-3747-4893-8146-93c7003bc24f
+	[TestFlight takeOff:@"ecb4ff79-119e-4ca2-bfd9-9cab59e425fa"]; //66d1beaa-3747-4893-8146-93c7003bc24f
 	#endif
 	
 	[Crashlytics startWithAPIKey:@"ea3a63e4bd4d920df480d1f6635e7e38b20e6634"];

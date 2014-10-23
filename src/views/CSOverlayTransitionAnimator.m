@@ -39,9 +39,11 @@
 		touchView.backgroundColor=[UIColor blackColor];
 		touchView.tag=kTouchViewTag;
 		touchView.alpha=0;
-		UISwipeGestureRecognizer *tapGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:toViewController action:@selector(didDismissWithTouch:)];
-		tapGestureRecognizer.direction=UISwipeGestureRecognizerDirectionRight;
+		UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:toViewController action:@selector(didDismissWithTouch:)];
+		UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:toViewController action:@selector(didDismissWithTouch:)];
+		swipeGestureRecognizer.direction=UISwipeGestureRecognizerDirectionRight;
 		[touchView addGestureRecognizer:tapGestureRecognizer];
+		[touchView addGestureRecognizer:swipeGestureRecognizer];
 		[transitionContext.containerView addSubview:touchView];
 		
 		// to
