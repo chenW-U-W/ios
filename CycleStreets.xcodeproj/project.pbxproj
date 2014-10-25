@@ -781,7 +781,6 @@
 		28ECCBD91526302600284926 /* CopyLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B484DD15261F3B00E406E1 /* CopyLabel.m */; };
 		28FA62BE153C1C7200AF6267 /* UITextViewAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28FA62BD153C1C7200AF6267 /* UITextViewAccessoryView.xib */; };
 		28FA8A3E19E454E80040EA46 /* credits.html in Resources */ = {isa = PBXBuildFile; fileRef = E77D8F10120321E4003E6B8D /* credits.html */; };
-		28FA8A3F19E454E80040EA46 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7FD8F3E127821DB002640D0 /* Default@2x.png */; };
 		28FA8A4019E454E80040EA46 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28AD60B8131FB54A008527FC /* Entitlements.plist */; };
 		28FA8A4119E454E80040EA46 /* contentStrings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28AD620D131FB69D008527FC /* contentStrings.plist */; };
 		28FA8A4219E454E80040EA46 /* FormData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28AD620E131FB69D008527FC /* FormData.plist */; };
@@ -962,7 +961,6 @@
 		28FA8AFA19E454E80040EA46 /* UIActivityTwitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2868D23B166E1C0600C0C153 /* UIActivityTwitter@2x.png */; };
 		28FA8AFB19E454E80040EA46 /* UIIcon_walking.png in Resources */ = {isa = PBXBuildFile; fileRef = 28FAB4231777464F002D0912 /* UIIcon_walking.png */; };
 		28FA8AFC19E454E80040EA46 /* UIIcon_walking@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28FAB42A17774665002D0912 /* UIIcon_walking@2x.png */; };
-		28FA8AFD19E454E80040EA46 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2825871E17785867001E3DA1 /* Default-568h@2x.png */; };
 		28FA8AFE19E454E80040EA46 /* Icon_nosearchresults@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2865C24819D56CE5001C329B /* Icon_nosearchresults@2x.png */; };
 		28FA8AFF19E454E80040EA46 /* UIButtonBarRefresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28718BB017858BE600781A6B /* UIButtonBarRefresh@2x.png */; };
 		28FA8B0019E454E80040EA46 /* UIButtonBarStop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28718BB117858BE600781A6B /* UIButtonBarStop@2x.png */; };
@@ -3689,7 +3687,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				28FA8A3E19E454E80040EA46 /* credits.html in Resources */,
-				28FA8A3F19E454E80040EA46 /* Default@2x.png in Resources */,
 				28FA8A4019E454E80040EA46 /* Entitlements.plist in Resources */,
 				285320FE19E7D46100118E48 /* SettingsView.xib in Resources */,
 				28FA8A4119E454E80040EA46 /* contentStrings.plist in Resources */,
@@ -3901,7 +3898,6 @@
 				28FA8AFB19E454E80040EA46 /* UIIcon_walking.png in Resources */,
 				289EFC5319ED4F770081E7BB /* SavedLocation_CellIcon_Home.png in Resources */,
 				28FA8AFC19E454E80040EA46 /* UIIcon_walking@2x.png in Resources */,
-				28FA8AFD19E454E80040EA46 /* Default-568h@2x.png in Resources */,
 				2853212619E7F24F00118E48 /* CNSMapStyle.png in Resources */,
 				28A9997519E702BF0050C3E8 /* PhotoMapView.xib in Resources */,
 				28FA8AFE19E454E80040EA46 /* Icon_nosearchresults@2x.png in Resources */,
@@ -4688,7 +4684,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				BUNDLE_ID = "mobile-adhoc";
+				BUNDLE_ID = "cns-adhoc";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -4733,7 +4729,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				BUNDLE_ID = "mobile-dev";
+				BUNDLE_ID = "cns-dev";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Neil Edwards (A497C6BS7Y)";
@@ -4838,7 +4834,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				BUNDLE_ID = "mobile-adhoc";
+				BUNDLE_ID = "cns-adhoc";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = NO;
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;

@@ -250,25 +250,6 @@ static NSString *const DATAID = @"PoiListing";
 	
 }
 
-//
-/***********************************************
- * @description			User Events
- ***********************************************/
-//
-
--(IBAction)closeViewController:(id)sender{
-	
-	[self.viewDeckController closeRightViewAnimated:YES];
-	
-}
-
-
-
--(BOOL)viewDeckController:(IIViewDeckController *)viewDeckController shouldOpenViewSide:(IIViewDeckSide)viewDeckSide{
-	
-	return YES;
-	
-}
 
 
 

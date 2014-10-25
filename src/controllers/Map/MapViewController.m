@@ -25,7 +25,6 @@
 #import "HudManager.h"
 #import "UserLocationManager.h"
 #import	"WayPointVO.h"
-#import "IIViewDeckController.h"
 #import "WayPointViewController.h"
 #import "UIView+Additions.h"
 #import "ViewUtilities.h"
@@ -73,25 +72,16 @@ static NSInteger DEFAULT_OVERVIEWZOOM = 15;
 static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 
 
-@interface MarkerMenuItem : UIMenuItem
-@property (nonatomic, strong) WayPointVO* waypoint; 
-@end
-@implementation MarkerMenuItem
-@synthesize waypoint;
-@end
 
-
-@interface MapViewController()<MKMapViewDelegate,UIActionSheetDelegate,CLLocationManagerDelegate,IIViewDeckControllerDelegate,LocationReceiver,UIViewControllerTransitioningDelegate,SavedLocationsViewDelegate>
+@interface MapViewController()<MKMapViewDelegate,UIActionSheetDelegate,CLLocationManagerDelegate,LocationReceiver,UIViewControllerTransitioningDelegate,SavedLocationsViewDelegate>
 
 // tool bar
 @property (nonatomic, strong) IBOutlet UIToolbar					* toolBar;
 @property (nonatomic, strong) UIBarButtonItem						* locationButton;
-@property (nonatomic, strong) UIBarButtonItem						* activeLocationButton;
 @property (nonatomic, strong) UIButton								* activeLocationSubButton;
 @property (nonatomic, strong) UIBarButtonItem						* searchButton;
 @property (nonatomic, strong) UIBarButtonItem						* routeButton;
 @property (nonatomic, strong) UIBarButtonItem						* changePlanButton;
-@property (nonatomic, strong) UIActivityIndicatorView				* locatingIndicator;
 @property (nonatomic, strong) UIBarButtonItem						* leftFlex;
 @property (nonatomic, strong) UIBarButtonItem						* rightFlex;
 @property (nonatomic,strong)  UIBarButtonItem						* waypointButton;
@@ -394,11 +384,6 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 
 -(void)initToolBarEntries{
 	
-	self.locatingIndicator=[[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-	_locatingIndicator.hidesWhenStopped=YES;
-	
-	self.activeLocationButton = [[UIBarButtonItem alloc] initWithCustomView:_locatingIndicator ];
-	_activeLocationButton.style	= UIBarButtonItemStylePlain;
 	
 	self.waypointButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CSTabBar_plan_route.png"]
 														   style:UIBarButtonItemStylePlain
@@ -438,13 +423,14 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 														style:UIBarButtonItemStylePlain
 													   target:self
 													   action:@selector(didSelectPOIButton:)];
+	_poiButton.width=40;
 	
 	self.savedLocationButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CSBarButton_saveloc.png"]
 													  style:UIBarButtonItemStylePlain
 													 target:self
 													 action:@selector(didSelectSaveLocationsButton:)];
 	
-	//
+	_savedLocationButton.width=40;
 	
 	
 	
@@ -1128,14 +1114,15 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 	
 	if(_waypointArray.count<=1){
 		[self assessUIState];
-		[self.viewDeckController closeLeftViewAnimated:YES];
+		
+		[self dismissViewControllerAnimated:YES completion:nil];
 	}
 }
 -(void)wayPointWasSelected:(id)waypoint{
 	WayPointVO *dp=(WayPointVO*)waypoint;
 	[_mapView setCenterCoordinate:dp.coordinate zoomLevel:DEFAULT_OVERVIEWZOOM animated:YES];
 	
-	[self.viewDeckController closeLeftViewAnimated:YES];
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -1234,14 +1221,6 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 
 - (BOOL)canBecomeFirstResponder {
 	return YES;
-}
-
-
-// reset panning mode so it is only active when WayPoint view is visible.
-- (void)viewDeckController:(IIViewDeckController*)viewDeckController didShowCenterViewFromSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated{
-	
-	self.viewDeckController.panningMode=IIViewDeckNoPanning;
-	
 }
 
 
