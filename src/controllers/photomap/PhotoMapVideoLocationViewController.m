@@ -35,7 +35,11 @@
 
 -(void)listNotificationInterests{
 	
+	[self initialise];
 	
+	[self.notifications addObject:MPMoviePlayerLoadStateDidChangeNotification];
+	[self.notifications addObject:MPMoviePlayerPlaybackDidFinishNotification];
+	[self.notifications addObject:MPMediaPlaybackIsPreparedToPlayDidChangeNotification];
 	
 	[super listNotificationInterests];
 	
@@ -43,8 +47,17 @@
 
 -(void)didReceiveNotification:(NSNotification*)notification{
 	
+	if([notification.name isEqualToString:MPMoviePlayerPlaybackDidFinishNotification]){
+		BetterLog(@"");
+	}
 	
+	if([notification.name isEqualToString:MPMoviePlayerLoadStateDidChangeNotification]){
+		BetterLog(@"");
+	}
 	
+	if([notification.name isEqualToString:MPMediaPlaybackIsPreparedToPlayDidChangeNotification]){
+		BetterLog(@"");
+	}
 }
 
 
@@ -83,6 +96,7 @@
 	self.videoPlayer = [[MPMoviePlayerController alloc] init];
 	_videoPlayer.scalingMode = MPMovieScalingModeAspectFill;
 	_videoPlayer.controlStyle = MPMovieControlStyleDefault;
+	_videoPlayer.movieSourceType=MPMovieSourceTypeFile;
 	
 	[_videoPlayer prepareToPlay];
 	[_videoPlayer.view setFrame: _videoPlayerTargetView.bounds];

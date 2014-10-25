@@ -116,6 +116,7 @@
 		28187ADD14FCFF4D00A38A17 /* CSIcon_finish_wisp.png in Resources */ = {isa = PBXBuildFile; fileRef = 28187A9C14FCFF4C00A38A17 /* CSIcon_finish_wisp.png */; };
 		28187ADE14FCFF4D00A38A17 /* CSIcon_start_wisp.png in Resources */ = {isa = PBXBuildFile; fileRef = 28187A9D14FCFF4C00A38A17 /* CSIcon_start_wisp.png */; };
 		2818C7A01458069E0077F529 /* RouteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2818C79F1458069D0077F529 /* RouteCell.xib */; };
+		281C771619F4266800A756D6 /* APIKey_live.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2846556419C9B859002E7CB7 /* APIKey_live.txt */; };
 		281E08B6145168F90034CC63 /* POILocationVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 281E08B5145168F90034CC63 /* POILocationVO.m */; };
 		281E08EE145198D10034CC63 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 281E08EB145198D10034CC63 /* GTMNSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		281E08EF145198D10034CC63 /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 281E08ED145198D10034CC63 /* NSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -593,7 +594,6 @@
 		289F78051534432B00B062D1 /* NSString-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B4855D15262D6000E406E1 /* NSString-Utilities.m */; };
 		28A89CD514FD52230001BABA /* UploadPhotoVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A89CD414FD52230001BABA /* UploadPhotoVO.m */; };
 		28A8B6351450B259009C5647 /* POICategoryVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A8B6341450B259009C5647 /* POICategoryVO.m */; };
-		28A9996E19E6FDFE0050C3E8 /* APIKey_live.txt in Resources */ = {isa = PBXBuildFile; fileRef = 28A9996C19E6FDFE0050C3E8 /* APIKey_live.txt */; };
 		28A9997219E6FEA80050C3E8 /* CSCycleNorthMapSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A9997119E6FEA80050C3E8 /* CSCycleNorthMapSource.m */; };
 		28A9997519E702BF0050C3E8 /* PhotoMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A9997419E702BF0050C3E8 /* PhotoMapView.xib */; };
 		28A9997819E705440050C3E8 /* CSAppleSatelliteMapSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A9997719E705440050C3E8 /* CSAppleSatelliteMapSource.m */; };
@@ -1471,7 +1471,6 @@
 		28A89CD414FD52230001BABA /* UploadPhotoVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadPhotoVO.m; sourceTree = "<group>"; };
 		28A8B6331450B259009C5647 /* POICategoryVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POICategoryVO.h; sourceTree = "<group>"; };
 		28A8B6341450B259009C5647 /* POICategoryVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POICategoryVO.m; sourceTree = "<group>"; };
-		28A9996C19E6FDFE0050C3E8 /* APIKey_live.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = APIKey_live.txt; sourceTree = "<group>"; };
 		28A9997019E6FEA80050C3E8 /* CSCycleNorthMapSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSCycleNorthMapSource.h; sourceTree = "<group>"; };
 		28A9997119E6FEA80050C3E8 /* CSCycleNorthMapSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSCycleNorthMapSource.m; sourceTree = "<group>"; };
 		28A9997419E702BF0050C3E8 /* PhotoMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoMapView.xib; sourceTree = "<group>"; };
@@ -3055,7 +3054,6 @@
 				28FA8A3819E453F90040EA46 /* plist */,
 				28FA8A3919E453F90040EA46 /* styling */,
 				28FA8A3A19E453F90040EA46 /* xib */,
-				28A9996C19E6FDFE0050C3E8 /* APIKey_live.txt */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -3762,7 +3760,6 @@
 				28FA8A7B19E454E80040EA46 /* donate.html in Resources */,
 				289A20F119EFC867000892A0 /* CSIcon_map_poi@2x.png in Resources */,
 				28FA8A7C19E454E80040EA46 /* UIButtonBarArrowLeft@2x.png in Resources */,
-				28A9996E19E6FDFE0050C3E8 /* APIKey_live.txt in Resources */,
 				28FA8A7D19E454E80040EA46 /* UIButtonBarArrowRight@2x.png in Resources */,
 				28FA8A7E19E454E80040EA46 /* UIButtonBarCameraSmall@2x.png in Resources */,
 				28FA8A7F19E454E80040EA46 /* UIButtonBarInfo@2x.png in Resources */,
@@ -3802,6 +3799,7 @@
 				28FA8AA319E454E80040EA46 /* UIIcon_straight_on.png in Resources */,
 				28FA8AA419E454E80040EA46 /* UIIcon_turn_left.png in Resources */,
 				28FA8AA519E454E80040EA46 /* UIIcon_turn_right.png in Resources */,
+				281C771619F4266800A756D6 /* APIKey_live.txt in Resources */,
 				28FA8AA619E454E80040EA46 /* icon_camera.png in Resources */,
 				28FA8AA719E454E80040EA46 /* icon_location.png in Resources */,
 				28FA8AA819E454E80040EA46 /* UIIcon_photomap.png in Resources */,
@@ -4516,6 +4514,7 @@
 				GCC_PREFIX_HEADER = AppDefaults/Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				IBC_WARNINGS = NO;
@@ -4565,6 +4564,7 @@
 				GCC_PREFIX_HEADER = AppDefaults/Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				IBC_WARNINGS = NO;
@@ -4735,6 +4735,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_ID = "mobile-dev";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Neil Edwards (A497C6BS7Y)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -4750,6 +4751,7 @@
 				GCC_PREFIX_HEADER = AppDefaults/Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				IBC_WARNINGS = NO;
@@ -4786,6 +4788,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_ID = mobile;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = NO;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: CycleStreets Ltd (4LJ34GQZ65)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
@@ -4799,6 +4802,7 @@
 				GCC_PREFIX_HEADER = AppDefaults/Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				IBC_WARNINGS = NO;
@@ -4836,6 +4840,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				BUNDLE_ID = "mobile-adhoc";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = NO;
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: CycleStreets Ltd (4LJ34GQZ65)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -4850,6 +4855,7 @@
 				GCC_PREFIX_HEADER = AppDefaults/Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				IBC_WARNINGS = NO;
@@ -5017,6 +5023,7 @@
 				GCC_PREFIX_HEADER = AppDefaults/Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				IBC_WARNINGS = NO;
