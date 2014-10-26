@@ -117,6 +117,7 @@
 		28187ADE14FCFF4D00A38A17 /* CSIcon_start_wisp.png in Resources */ = {isa = PBXBuildFile; fileRef = 28187A9D14FCFF4C00A38A17 /* CSIcon_start_wisp.png */; };
 		2818C7A01458069E0077F529 /* RouteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2818C79F1458069D0077F529 /* RouteCell.xib */; };
 		281C771619F4266800A756D6 /* APIKey_live.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2846556419C9B859002E7CB7 /* APIKey_live.txt */; };
+		281D4F0319FC1B8D001004F2 /* CSIcon_mapstyle_tick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 281D4F0219FC1B8D001004F2 /* CSIcon_mapstyle_tick@2x.png */; };
 		281E08B6145168F90034CC63 /* POILocationVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 281E08B5145168F90034CC63 /* POILocationVO.m */; };
 		281E08EE145198D10034CC63 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 281E08EB145198D10034CC63 /* GTMNSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		281E08EF145198D10034CC63 /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 281E08ED145198D10034CC63 /* NSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -441,6 +442,8 @@
 		285F68DC132C07CD00B511C0 /* RouteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 285F68DB132C07CD00B511C0 /* RouteListViewController.m */; };
 		2863A3FE134E508800A22093 /* FavouritesCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2863A3A1134E508800A22093 /* FavouritesCellView.m */; };
 		2863A402134E508800A22093 /* CSRouteDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2863A3A7134E508800A22093 /* CSRouteDetailsViewController.m */; };
+		28641D4F19FD65C8009321E0 /* LeisureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28641D4E19FD65C8009321E0 /* LeisureViewController.m */; };
+		28641D5219FD6D6F009321E0 /* LeisureRouteVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 28641D5119FD6D6F009321E0 /* LeisureRouteVO.m */; };
 		2865C24919D56CE5001C329B /* Icon_nosearchresults@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2865C24819D56CE5001C329B /* Icon_nosearchresults@2x.png */; };
 		2865C24A19D56CE5001C329B /* Icon_nosearchresults@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2865C24819D56CE5001C329B /* Icon_nosearchresults@2x.png */; };
 		2865C24C19D570BA001C329B /* Icon_nosearchresults.png in Resources */ = {isa = PBXBuildFile; fileRef = 2865C24B19D570BA001C329B /* Icon_nosearchresults.png */; };
@@ -1260,6 +1263,7 @@
 		28187A9C14FCFF4C00A38A17 /* CSIcon_finish_wisp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CSIcon_finish_wisp.png; sourceTree = "<group>"; };
 		28187A9D14FCFF4C00A38A17 /* CSIcon_start_wisp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CSIcon_start_wisp.png; sourceTree = "<group>"; };
 		2818C79F1458069D0077F529 /* RouteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RouteCell.xib; sourceTree = "<group>"; };
+		281D4F0219FC1B8D001004F2 /* CSIcon_mapstyle_tick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CSIcon_mapstyle_tick@2x.png"; sourceTree = "<group>"; };
 		281E08B4145168F90034CC63 /* POILocationVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POILocationVO.h; sourceTree = "<group>"; };
 		281E08B5145168F90034CC63 /* POILocationVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POILocationVO.m; sourceTree = "<group>"; };
 		281E08EA145198D10034CC63 /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
@@ -1340,6 +1344,10 @@
 		2863A3A1134E508800A22093 /* FavouritesCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouritesCellView.m; sourceTree = "<group>"; };
 		2863A3A6134E508800A22093 /* CSRouteDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSRouteDetailsViewController.h; path = Favourites/CSRouteDetailsViewController.h; sourceTree = "<group>"; };
 		2863A3A7134E508800A22093 /* CSRouteDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSRouteDetailsViewController.m; path = Favourites/CSRouteDetailsViewController.m; sourceTree = "<group>"; };
+		28641D4D19FD65C8009321E0 /* LeisureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeisureViewController.h; sourceTree = "<group>"; };
+		28641D4E19FD65C8009321E0 /* LeisureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeisureViewController.m; sourceTree = "<group>"; };
+		28641D5019FD6D6F009321E0 /* LeisureRouteVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeisureRouteVO.h; sourceTree = "<group>"; };
+		28641D5119FD6D6F009321E0 /* LeisureRouteVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeisureRouteVO.m; sourceTree = "<group>"; };
 		2865C24819D56CE5001C329B /* Icon_nosearchresults@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_nosearchresults@2x.png"; sourceTree = "<group>"; };
 		2865C24B19D570BA001C329B /* Icon_nosearchresults.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_nosearchresults.png; sourceTree = "<group>"; };
 		2868D236166E1C0600C0C153 /* UIActivityBlank@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UIActivityBlank@2x.png"; sourceTree = "<group>"; };
@@ -2195,6 +2203,8 @@
 				285320FB19E7D44000118E48 /* SettingsViewController.m */,
 				289A20F219F04ECF000892A0 /* SaveLocationCreateViewController.h */,
 				289A20F319F04ECF000892A0 /* SaveLocationCreateViewController.m */,
+				28641D4D19FD65C8009321E0 /* LeisureViewController.h */,
+				28641D4E19FD65C8009321E0 /* LeisureViewController.m */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -2581,6 +2591,8 @@
 				28373E2916481BF800F5E356 /* WayPointVO.m */,
 				289EFC4119ED24360081E7BB /* SavedLocationVO.h */,
 				289EFC4219ED24360081E7BB /* SavedLocationVO.m */,
+				28641D5019FD6D6F009321E0 /* LeisureRouteVO.h */,
+				28641D5119FD6D6F009321E0 /* LeisureRouteVO.m */,
 			);
 			path = vo;
 			sourceTree = "<group>";
@@ -2836,6 +2848,7 @@
 			children = (
 				289A20F019EFC867000892A0 /* CSIcon_map_poi@2x.png */,
 				28B0AD5119EEFC7F008A3F21 /* CSBarButton_poi@2x.png */,
+				281D4F0219FC1B8D001004F2 /* CSIcon_mapstyle_tick@2x.png */,
 				289EFC7019EDA4EF0081E7BB /* CSIcon_saveloc_home@2x.png */,
 				289EFC7119EDA4EF0081E7BB /* CSIcon_saveloc_work@2x.png */,
 				289EFC5219ED4F770081E7BB /* SavedLocation_CellIcon_Home.png */,
@@ -3785,6 +3798,7 @@
 				28FA8A9919E454E80040EA46 /* BUSegmentedControl_right_lo.png in Resources */,
 				28FA8A9A19E454E80040EA46 /* UIIcon_cycle_lanes.png in Resources */,
 				28FA8A9B19E454E80040EA46 /* UIIcon_cycle_tracks.png in Resources */,
+				281D4F0319FC1B8D001004F2 /* CSIcon_mapstyle_tick@2x.png in Resources */,
 				28FA8A9C19E454E80040EA46 /* UIIcon_footpaths.png in Resources */,
 				28FA8A9D19E454E80040EA46 /* UIIcon_minor_roads.png in Resources */,
 				28FA8A9E19E454E80040EA46 /* UIIcon_quiet_street.png in Resources */,
@@ -4363,6 +4377,7 @@
 				28FA8B2819E454E80040EA46 /* CSRouteSegmentAnnotation.m in Sources */,
 				28FA8B2919E454E80040EA46 /* BUSegmentedControl.m in Sources */,
 				28FA8B2A19E454E80040EA46 /* CustomNavigtionBar.m in Sources */,
+				28641D4F19FD65C8009321E0 /* LeisureViewController.m in Sources */,
 				28A9997819E705440050C3E8 /* CSAppleSatelliteMapSource.m in Sources */,
 				28FA8B2B19E454E80040EA46 /* ExpandedUILabel.m in Sources */,
 				28FA8B2C19E454E80040EA46 /* CSPhotomapAnnotation.m in Sources */,
@@ -4399,6 +4414,7 @@
 				28FA8B4A19E454E80040EA46 /* CSRouteDetailsViewController.m in Sources */,
 				28FA8B4B19E454E80040EA46 /* BUCalloutView.m in Sources */,
 				28FA8B4C19E454E80040EA46 /* LoginVO.m in Sources */,
+				28641D5219FD6D6F009321E0 /* LeisureRouteVO.m in Sources */,
 				28FA8B4D19E454E80040EA46 /* PhotoCategoryVO.m in Sources */,
 				28FA8B4E19E454E80040EA46 /* BUDividerView.m in Sources */,
 				28FA8B4F19E454E80040EA46 /* LocationSearchManager.m in Sources */,

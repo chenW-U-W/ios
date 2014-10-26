@@ -280,7 +280,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 	
 	_mapView.rotateEnabled=YES;
     _mapView.pitchEnabled=YES;
-	
+	_mapView.showsPointsOfInterest=NO;
 	_mapView.tintColor=[UIColor appTintColor];
 	
 	_attributionLabel.textAlignment=NSTextAlignmentCenter;
