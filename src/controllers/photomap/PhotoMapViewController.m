@@ -232,6 +232,7 @@ static NSString *const LOCATIONSUBSCRIBERID=@"PhotoMap";
 				PhotoMapImageLocationViewController *lv = [[PhotoMapImageLocationViewController alloc] initWithNibName:[PhotoMapImageLocationViewController nibName] bundle:nil];
 				lv.dataProvider=photoEntry;
 				[self presentModalViewController:lv animated:YES];
+				
 			}
 		break;
 				

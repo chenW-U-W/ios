@@ -81,7 +81,7 @@
 	_viewContainer.itemPadding=20;
 	
 	self.videoPlayer = [[MPMoviePlayerController alloc] init];
-	_videoPlayer.scalingMode = MPMovieScalingModeAspectFill;
+	_videoPlayer.scalingMode = MPMovieScalingModeAspectFit;
 	_videoPlayer.controlStyle = MPMovieControlStyleDefault;
 	
 	[_videoPlayer prepareToPlay];
@@ -107,6 +107,7 @@
 
 -(void)createNonPersistentUI{
 	
+	//TODO: Should not replay this when coming out of FS mode
 	[_videoPlayer setContentURL:[NSURL URLWithString:_dataProvider.videoURL]];
 	[_videoPlayer play];
 	
