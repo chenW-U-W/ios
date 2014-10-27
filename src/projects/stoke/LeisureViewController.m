@@ -9,10 +9,15 @@
 #import "LeisureViewController.h"
 #import "RouteManager.h"
 #import "LeisureRouteVO.h"
+#import "WayPointVO.h"
+
+#import "ViewUtilities.h"
+#import "BUHorizontalMenuView.h"
+#import "LeisureWaypointView.h"
 
 #import <CoreLocation/CoreLocation.h>
 
-@interface LeisureViewController ()
+@interface LeisureViewController ()<BUHorizontalMenuDataSource,BUHorizontalMenuDelegate>
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl		*typeControl;
 
@@ -21,19 +26,13 @@
 @property (weak, nonatomic) IBOutlet UILabel				*endLabel;
 @property (weak, nonatomic) IBOutlet UILabel				*readoutLabel;
 
-
-@property (weak, nonatomic) IBOutlet UIButton				*currentButton;
-@property (weak, nonatomic) IBOutlet UIButton				*mapButton;
-@property (weak, nonatomic) IBOutlet UIButton				*savedButton;
-
+@property (strong, nonatomic) IBOutlet BUHorizontalMenuView *waypointControl;
 
 @property (weak, nonatomic) IBOutlet UIButton				*calculateButton;
 
 
-
 // state
 @property (nonatomic,strong) LeisureRouteVO					*dataProvider;
-
 
 
 @end
@@ -57,12 +56,8 @@
 	[typeArr enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop) {
 		[_typeControl insertSegmentWithTitle:obj atIndex:idx animated:NO];
 	}];
-	
-	_unitControl.minimumValue=0;
-	_unitControl.minimumValue=100;
-	_unitControl.value=50;
-	
-    
+	_typeControl.selectedSegmentIndex=0;
+
 }
 
 
@@ -76,9 +71,10 @@
 
 -(void)createNonPersistentUI{
     
-    
+	self.dataProvider=[[LeisureRouteVO alloc]init];
 	
-	
+	_waypointControl.shouldScrollToSelectedItem=NO;
+	[_waypointControl reloadData];
     
 }
 
@@ -126,22 +122,10 @@
 #pragma mark - UI Events
 
 
--(IBAction)didSelectCurrentLocationButton:(id)sender{
-    
-    // use current gps location
-    
-}
-
--(IBAction)didSelectMapButton:(id)sender{
-    
-   // use current map center location
-    
-}
-
--(IBAction)didSelectSavedLocationButton:(id)sender{
-    
-    // show saved location view
-    
+-(void)dismissView{
+	
+	[self dismissViewControllerAnimated:YES completion:nil];
+	
 }
 
 
@@ -166,6 +150,51 @@
 }
 
 
+
+#pragma mark - BUHorizontalmenu delegate
+
+
+- (NSInteger) numberOfItemsForMenu:(BUHorizontalMenuView*) menuView{
+	return _waypointArray.count;
+}
+
+
+-(UIView<BUHorizontalMenuItem>*)menuViewItemForIndex:(NSInteger)index{
+	
+	LeisureWaypointView *itemView=[ViewUtilities loadInstanceOfView:[LeisureWaypointView class] fromNibNamed:@"LeisureWaypointView"];
+	
+	WayPointVO *dp=_waypointArray[index];
+	
+	itemView.dataProvider=dp;
+	
+	[itemView populate];
+	
+	return itemView;
+	
+}
+
+
+- (void)horizMenu:(BUHorizontalMenuView*) menuView itemSelectedAtIndex:(NSInteger) index{
+	
+	WayPointVO *dp=_waypointArray[index];
+	
+	_dataProvider.routeCoordinate=dp.coordinate;
+}
+
+
+
+#pragma mark - CSOverlayTransitionProtocol
+
+-(void)didDismissWithTouch:(UIGestureRecognizer*)gestureRecogniser{
+	
+	[self dismissView];
+	
+}
+
+-(CGSize)preferredContentSize{
+	
+	return CGSizeMake(280,350);
+}
 
 
 @end
