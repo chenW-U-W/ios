@@ -94,15 +94,11 @@
     __weak __typeof(&*self)weakSelf = self;
     for(NSInteger i=0;i<_itemCount;i++){
         
-        NSDictionary *itemData = [_menuDataSource horizMenu:self itemAtIndex:i];
-        
 		 __weak UIView<BUHorizontalMenuItem> *itemView=(UIView<BUHorizontalMenuItem>*)[_menuDataSource menuViewItemForIndex:i];
 		
 		[itemView setTouchBlock:^(NSString *eventType, id dataProvider) {
 			[weakSelf didSelectItem:itemView atIndex:i];
 		}];
-		
-		[itemView setDataProvider:itemData];
 		
         [_itemContainer addSubview:itemView];
         

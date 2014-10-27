@@ -32,7 +32,8 @@ static NSString *const RouteTypeDistance=@"Distance";
 
 -(LeisureRouteType)changeRouteType:(NSInteger)index{
 	
-	_routeType=(LeisureRouteType)[LeisureRouteVO routeTypes][index];
+	NSArray *routeTypes=[LeisureRouteVO routeTypes];
+	_routeType=(LeisureRouteType)[routeTypes[index] integerValue];
 	
 	return _routeType;
 	
@@ -44,13 +45,16 @@ static NSString *const RouteTypeDistance=@"Distance";
 	
 	NSArray *valueRange=[LeisureRouteVO typeRangeArrayForRouteType:_routeType];
 	
-	if(_routeType==LeisureRouteTypeDuration){
+	if(_routeType==LeisureRouteTypeDistance){
 		
-		int actualValue=(_routeValue/100) * [valueRange[1] intValue];
+		float actualValue=(_routeValue/100.0f) * [valueRange[1] floatValue];
 		
-		return [NSString stringWithFormat:@"%i %@",actualValue,[[SettingsManager sharedInstance] routeUnitisMiles] ? @"m":@"km"];
+		return [NSString stringWithFormat:@"%i %@",(int)actualValue,[[SettingsManager sharedInstance] routeUnitisMiles] ? @"miles":@"km"];
 	}else{
-		return [NSString stringWithFormat:@"%i mins",_routeValue];
+		
+		float actualValue=(_routeValue/100.0f) * [valueRange[1] floatValue];
+		
+		return [NSString stringWithFormat:@"%i mins",(int)actualValue];
 	}
 	
 }

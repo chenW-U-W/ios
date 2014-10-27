@@ -57,6 +57,7 @@
 #import "SavedLocationVO.h"
 #import "SavedLocationsManager.h"
 #import "SaveLocationCreateViewController.h"
+#import "LeisureViewController.h"
 
 #import "POIListviewController.h"
 #import "POIManager.h"
@@ -422,7 +423,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 	self.poiButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CSBarButton_poi.png"]
 														style:UIBarButtonItemStylePlain
 													   target:self
-													   action:@selector(didSelectPOIButton:)];
+													   action:@selector(didSelectLeisureRouteButton:)];
 	_poiButton.width=40;
 	
 	self.savedLocationButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CSBarButton_saveloc.png"]
@@ -1714,6 +1715,11 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 }
 
 
+-(IBAction)didSelectLeisureRouteButton:(id)sender{
+	[self performSegueWithIdentifier:@"LeisureViewSegue" sender:self];
+}
+
+
 #pragma mark - Segues
 
 
@@ -1755,6 +1761,14 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 		WayPointViewController *controller=(WayPointViewController*)segue.destinationViewController;
 		controller.delegate=self;
 		controller.dataProvider=_waypointArray;
+		
+		controller.transitioningDelegate = self;
+		controller.modalPresentationStyle = UIModalPresentationCustom;
+		
+	}else if ([segue.identifier isEqualToString:@"LeisureViewSegue"]){
+		
+		LeisureViewController *controller=(LeisureViewController*)segue.destinationViewController;
+		controller.waypointArray=_waypointArray;
 		
 		controller.transitioningDelegate = self;
 		controller.modalPresentationStyle = UIModalPresentationCustom;

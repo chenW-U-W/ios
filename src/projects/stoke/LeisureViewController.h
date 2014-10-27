@@ -10,4 +10,6 @@
 
 @interface LeisureViewController : SuperViewController
 
+@property (nonatomic,assign)  NSArray				*waypointArray;
+
 @end
