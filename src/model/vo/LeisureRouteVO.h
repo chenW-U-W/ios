@@ -23,6 +23,8 @@ typedef NS_ENUM(NSUInteger, LeisureRouteType) {
 @property (nonatomic,assign) CLLocationCoordinate2D    routeCoordinate;
 
 
+@property(nonatomic,readonly)  NSString					*coordinateString;
+
 // update
 -(LeisureRouteType)changeRouteType:(NSInteger)index;
 

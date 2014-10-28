@@ -75,6 +75,8 @@
 	
 	_waypointControl.shouldScrollToSelectedItem=NO;
 	[_waypointControl reloadData];
+	
+	[self updateUIForTypeChange];
     
 }
 
@@ -132,21 +134,30 @@
 
 #pragma mark - View action
 
--(BOOL)validate{
+-(void)validate{
     
-    
-    
-    return YES;
+	BOOL isValid=[self isValid];
+	
+	_calculateButton.enabled=isValid;
+}
+
+
+-(BOOL)isValid{
+	
+	BOOL valid=YES;
+	
+	if(!_dataProvider.isValid)
+		valid=NO;
+	
+	return valid;
+	
 }
 
 
 -(IBAction)didSelectCalculateButton:(id)sender{
     
-    if([self validate]){
-        
-        
-        
-    }
+	[[RouteManager sharedInstance] loadRouteForLeisure:_dataProvider];
+	
 }
 
 
@@ -179,6 +190,8 @@
 	WayPointVO *dp=_waypointArray[index];
 	
 	_dataProvider.routeCoordinate=dp.coordinate;
+	
+	[self validate];
 }
 
 

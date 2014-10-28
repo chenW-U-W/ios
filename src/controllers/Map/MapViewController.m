@@ -80,14 +80,16 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 @property (nonatomic, strong) IBOutlet UIToolbar					* toolBar;
 @property (nonatomic, strong) UIBarButtonItem						* locationButton;
 @property (nonatomic, strong) UIButton								* activeLocationSubButton;
-@property (nonatomic, strong) UIBarButtonItem						* searchButton;
+@property (nonatomic, strong) UIBarButtonItem						* waypointButton;
 @property (nonatomic, strong) UIBarButtonItem						* routeButton;
 @property (nonatomic, strong) UIBarButtonItem						* changePlanButton;
 @property (nonatomic, strong) UIBarButtonItem						* leftFlex;
 @property (nonatomic, strong) UIBarButtonItem						* rightFlex;
-@property (nonatomic,strong)  UIBarButtonItem						* waypointButton;
-@property (nonatomic,strong)  UIBarButtonItem						* poiButton;
-@property (nonatomic,strong)  UIBarButtonItem						* savedLocationButton;
+@property (nonatomic, strong) UIBarButtonItem						* addPointButton;
+
+
+@property (weak, nonatomic) IBOutlet UIView                          *addPointView;
+
 
 
 @property(nonatomic,strong) IBOutlet  UIView						*walkingRouteOverlayView;
@@ -147,17 +149,6 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 @property (nonatomic,strong)  UITapGestureRecognizer				*mapSingleTapRecognizer;
 @property (nonatomic,strong)  UITapGestureRecognizer				*mapDoubleTapRecognizer;
 
-// ui
-- (void)initToolBarEntries;
-- (void)updateUItoState:(MapPlanningState)state;
-
-
-
-// waypoints
--(void)resetWayPoints;
--(void)removeWayPointAtIndex:(NSUInteger)index;
--(void)assessWayPointAddition:(CLLocationCoordinate2D)cooordinate;
--(void)addWayPointAtCoordinate:(CLLocationCoordinate2D)coords;
 
 
 @end
@@ -400,11 +391,11 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 	self.locationButton = [[UIBarButtonItem alloc] initWithCustomView:_activeLocationSubButton];
 	_locationButton.width = 40;
 	
-	self.searchButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CSBarButton_search.png"]
-													   style:UIBarButtonItemStylePlain
-													  target:self
-													  action:@selector(searchButtonSelected)];
-	_searchButton.width = 40;
+//	self.searchButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CSBarButton_search.png"]
+//													   style:UIBarButtonItemStylePlain
+//													  target:self
+//													  action:@selector(searchButtonSelected)];
+//	_searchButton.width = 40;
 	
 	self.changePlanButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CSBarButton_routePlan.png"]
 													   style:UIBarButtonItemStylePlain
@@ -420,18 +411,18 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 	
 	// CNS only
 	
-	self.poiButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CSBarButton_poi.png"]
+	self.addPointButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CSBarButton_addPoint.png"]
 														style:UIBarButtonItemStylePlain
 													   target:self
-													   action:@selector(didSelectLeisureRouteButton:)];
-	_poiButton.width=40;
+                                                     action:@selector(displayAddPointView)];
+	_addPointButton.width=40;
 	
-	self.savedLocationButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CSBarButton_saveloc.png"]
-													  style:UIBarButtonItemStylePlain
-													 target:self
-													 action:@selector(didSelectSaveLocationsButton:)];
+////	self.savedLocationButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CSBarButton_saveloc.png"]
+//													  style:UIBarButtonItemStylePlain
+//													 target:self
+//													 action:@selector(didSelectSaveLocationsButton:)];
 	
-	_savedLocationButton.width=40;
+	//_savedLocationButton.width=40;
 	
 	
 	
@@ -453,32 +444,32 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 			switch (_uiState) {
 					
 				case MapPlanningStateNoRoute:
-					return @[_locationButton,_searchButton, _leftFlex,];
+					return @[_locationButton, _leftFlex];
 				break;
 					
 				case MapPlanningStateLocating:
 					if([self shouldShowWayPointUI]==YES){
-						return @[_waypointButton,_locationButton,_searchButton, _leftFlex,];
+						return @[_waypointButton,_locationButton, _leftFlex];
 					}else{
 						
-						return @[_locationButton,_searchButton, _leftFlex,];
+						return @[_locationButton, _leftFlex];
 					}
 				break;
 					
 				case MapPlanningStateStartPlanning:
-					return @[_locationButton,_searchButton,_leftFlex];
+					return @[_locationButton,_leftFlex];
 				break;
 					
 				case MapPlanningStatePlanning:
-					return @[_waypointButton, _locationButton,_searchButton,_leftFlex,_routeButton];
+					return @[ _waypointButton,_locationButton,_leftFlex,_routeButton];
 				break;
 					
 				case MapPlanningStateRoute:
-					return @[_locationButton,_searchButton,_leftFlex, _changePlanButton,_routeButton];
+					return @[_locationButton,_leftFlex, _changePlanButton,_routeButton];
 				break;
 					
 				case MapPlanningStateRouteLocating:
-					return @[_locationButton,_searchButton,_leftFlex, _changePlanButton,_routeButton];
+					return @[_locationButton,_leftFlex, _changePlanButton,_routeButton];
 				break;
 			}
 		}
@@ -489,31 +480,31 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 			switch (_uiState) {
 					
 				case MapPlanningStateNoRoute:
-					return @[_locationButton,_searchButton, _leftFlex, _rightFlex, _savedLocationButton,_poiButton];
+					return @[_locationButton, _leftFlex, _rightFlex, _addPointButton];
 					break;
 					
 				case MapPlanningStateLocating:
 					if([self shouldShowWayPointUI]==YES){
-						return @[_waypointButton,_locationButton,_searchButton, _leftFlex, _rightFlex,_savedLocationButton,_poiButton];
+						return @[_waypointButton,_locationButton, _leftFlex, _rightFlex,_addPointButton];
 					}else{
-						return @[_locationButton,_searchButton, _leftFlex, _rightFlex,_savedLocationButton,_poiButton];
+						return @[_locationButton, _leftFlex, _rightFlex,_addPointButton];
 					}
 					break;
 					
 				case MapPlanningStateStartPlanning:
-					return @[_locationButton,_searchButton,_leftFlex,_rightFlex,_savedLocationButton,_poiButton];
+					return @[_locationButton,_leftFlex,_rightFlex,_addPointButton];
 					break;
 					
 				case MapPlanningStatePlanning:
-					return @[_waypointButton, _locationButton,_searchButton,_leftFlex,_routeButton,_savedLocationButton,_poiButton];
+					return @[_waypointButton, _locationButton,_leftFlex,_routeButton,_addPointButton];
 					break;
 					
 				case MapPlanningStateRoute:
-					return @[_locationButton,_searchButton,_leftFlex, _changePlanButton,_routeButton];
+					return @[_locationButton,_leftFlex, _changePlanButton,_routeButton];
 					break;
 					
 				case MapPlanningStateRouteLocating:
-					return @[_locationButton,_searchButton,_leftFlex, _changePlanButton,_routeButton];
+					return @[_locationButton,_leftFlex, _changePlanButton,_routeButton];
 				break;
 			}
 		}
@@ -551,7 +542,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 		{
 			BetterLog(@"MapPlanningStateNoRoute");
 			
-			_searchButton.enabled = YES;
+			//_searchButton.enabled = YES;
 			_activeLocationSubButton.selected=NO;
 			
 			items=[self toolbarItemsForBuildTargetForUIState];
@@ -565,7 +556,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 			BetterLog(@"MapPlanningStateLocating");
 			
 			
-			_searchButton.enabled = YES;
+			//_searchButton.enabled = YES;
 			_activeLocationSubButton.selected=YES;
 			
 			items=[self toolbarItemsForBuildTargetForUIState];
@@ -581,7 +572,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 		{
 			BetterLog(@"MapPlanningStateStartPlanning");
 			
-			_searchButton.enabled = YES;
+			//_searchButton.enabled = YES;
 			_activeLocationSubButton.selected=NO;
 			
 			items=[self toolbarItemsForBuildTargetForUIState];
@@ -595,7 +586,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 			BetterLog(@"MapPlanningStatePlanning");
 			
 			_routeButton.title = @"Plan";
-			_searchButton.enabled = YES;
+			//_searchButton.enabled = YES;
 			_activeLocationSubButton.selected=NO;
 			
 			items=[self toolbarItemsForBuildTargetForUIState];
@@ -609,7 +600,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 			
 			_routeButton.title = @"New";
 			_activeLocationSubButton.selected=NO;
-			_searchButton.enabled = YES;
+			//_searchButton.enabled = YES;
 			
 			items=[self toolbarItemsForBuildTargetForUIState];
             [self.toolBar setItems:items animated:NO ];
@@ -622,7 +613,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 			
 			_routeButton.title = @"New";
 			_activeLocationSubButton.selected=NO;
-			_searchButton.enabled = NO;
+			//_searchButton.enabled = NO;
 			
 			items=[self toolbarItemsForBuildTargetForUIState];
 			[self.toolBar setItems:items animated:NO ];
@@ -975,26 +966,12 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 #pragma mark - Waypoints
 //------------------------------------------------------------------------------------
 
--(void)showWayPointView{
-	
-//	UINavigationController *nav=(UINavigationController*)self.viewDeckController.leftController;
-//	WayPointViewController *waypointController=(WayPointViewController*)nav.topViewController;
-//	self.viewDeckController.panningMode=IIViewDeckFullViewPanning;
-//	waypointController.delegate=self;
-//	waypointController.dataProvider=_waypointArray;
-//	
-//	[self.viewDeckController openLeftViewAnimated:YES];
-	
-	[self performSegueWithIdentifier:@"WaypointViewSegue" sender:self];
-	
-}
 
 
 -(void)resetWayPoints{
 	
 	[_waypointArray removeAllObjects];
 	
-	//[[_mapView markerManager] removeMarkers];
 }
 
 
@@ -1243,6 +1220,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 	
 	[self performSelector:@selector(addLocationToMapForGesture:) withObject:location afterDelay:0.7];
 	
+	[self hideAddPointView];
 	
 }
 
@@ -1295,6 +1273,12 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 }
 
 
+- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated{
+	
+	[self hideAddPointView];
+	
+	
+}
 
 
 
@@ -1576,6 +1560,13 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 //
 
 
+-(IBAction)showWayPointView{
+	
+	[self performSegueWithIdentifier:@"WaypointViewSegue" sender:self];
+
+	
+}
+
 
 - (IBAction) searchButtonSelected {
 	
@@ -1589,6 +1580,8 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 	_mapLocationSearchView.centreLocation = [_mapView centerCoordinate];
 	
 	[self presentModalViewController:_mapLocationSearchView	animated:YES];
+	
+	[self hideAddPointView];
 	
 }
 
@@ -1696,6 +1689,8 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 -(IBAction)didSelectPOIButton:(id)sender{
 	
 	[self showPOIView];
+    
+    [self hideAddPointView];
 	
 }
 
@@ -1704,6 +1699,8 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 -(IBAction)didSelectSaveLocationsButton:(id)sender{
 	
 	[self performSegueWithIdentifier:@"SavedLocationsSegue" sender:self];
+    
+    [self hideAddPointView];
 	
 	
 }
@@ -1712,11 +1709,46 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 -(void)displayCreateSaveLocationControllerWithLocation:(SavedLocationVO*)location{
 	
 	[self performSegueWithIdentifier:@"CreateSavedLocationSegue" sender:self context:location];
+    
+    [self hideAddPointView];
 }
 
 
 -(IBAction)didSelectLeisureRouteButton:(id)sender{
+	
 	[self performSegueWithIdentifier:@"LeisureViewSegue" sender:self];
+	
+	[self hideAddPointView];
+}
+
+
+
+
+
+#pragma mark - Add Point View
+
+-(void)displayAddPointView{
+	
+	if(_addPointView.y>_addPointView.height){
+		
+		[self hideAddPointView];
+		
+	}else{
+		[UIView animateWithDuration:0.3 animations:^{
+			_addPointView.y+=_addPointView.height;
+		}];
+	}
+	
+}
+
+
+-(void)hideAddPointView{
+	
+	if(_addPointView.y>20)
+		[UIView animateWithDuration:0.3 animations:^{
+			_addPointView.y=20;
+		}];
+	
 }
 
 

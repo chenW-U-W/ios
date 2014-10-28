@@ -47,15 +47,24 @@ static NSString *const RouteTypeDistance=@"Distance";
 	
 	if(_routeType==LeisureRouteTypeDistance){
 		
-		float actualValue=(_routeValue/100.0f) * [valueRange[1] floatValue];
+		float actualValue=(_routeValue/100.0f) * ([valueRange[1] floatValue]-[valueRange[0] floatValue]);
+		actualValue+=[valueRange[0] floatValue];										  
 		
-		return [NSString stringWithFormat:@"%i %@",(int)actualValue,[[SettingsManager sharedInstance] routeUnitisMiles] ? @"miles":@"km"];
+		return [NSString stringWithFormat:@"%i %@",(int)actualValue,[[SettingsManager sharedInstance] routeUnitisMiles] ? actualValue<2 ? @"mile" : @"miles":@"km"];
 	}else{
 		
-		float actualValue=(_routeValue/100.0f) * [valueRange[1] floatValue];
+		float actualValue=(_routeValue/100.0f) * ([valueRange[1] floatValue]-[valueRange[0] floatValue]);
+		actualValue+=[valueRange[0] floatValue];
 		
 		return [NSString stringWithFormat:@"%i mins",(int)actualValue];
 	}
+	
+}
+
+
+-(NSString*)coordinateString{
+	
+	return [NSString stringWithFormat:@"%f, %f",_routeCoordinate.latitude,_routeCoordinate.longitude];
 	
 }
 
@@ -96,7 +105,7 @@ static NSString *const RouteTypeDistance=@"Distance";
 	if(type==LeisureRouteTypeDistance){
 		return @[@(1),@(20)];
 	}else{
-		return @[@(1),@(120)];
+		return @[@(10),@(120)];
 	}
 	
 }

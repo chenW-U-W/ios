@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C734F7B0E9BE2903FA0694DB"
+               BlueprintIdentifier = "9FEE29E7D6533F1FF57E6BEA"
                BuildableName = "libPods-FMMoveTableView.a"
                BlueprintName = "Pods-FMMoveTableView"
                ReferencedContainer = "container:Pods.xcodeproj">

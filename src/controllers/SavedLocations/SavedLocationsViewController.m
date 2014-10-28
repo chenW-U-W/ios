@@ -221,7 +221,7 @@
 
 -(CGSize)preferredContentSize{
 	
-	return CGSizeMake(280,260);
+	return CGSizeMake(280,340);
 }
 
 
