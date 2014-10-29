@@ -1729,13 +1729,13 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 
 -(void)displayAddPointView{
 	
-	if(_addPointView.y>_addPointView.height){
+	if(_addPointView.height>20){
 		
 		[self hideAddPointView];
 		
 	}else{
 		[UIView animateWithDuration:0.3 animations:^{
-			_addPointView.y+=_addPointView.height;
+			_addPointView.height=60;
 		}];
 	}
 	
@@ -1746,7 +1746,7 @@ static CLLocationDistance MIN_START_FINISH_DISTANCE = 100;
 	
 	if(_addPointView.y>20)
 		[UIView animateWithDuration:0.3 animations:^{
-			_addPointView.y=20;
+			_addPointView.height=20;
 		}];
 	
 }
