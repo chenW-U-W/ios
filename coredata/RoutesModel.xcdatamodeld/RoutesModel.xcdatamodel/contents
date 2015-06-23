@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14D136" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="POILocationModel" representedClassName="POILocationModel" syncable="YES">
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <attribute name="locationid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="poiType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="parentRoute" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RouteModel" inverseName="pois" inverseEntity="RouteModel" syncable="YES"/>
+    </entity>
+    <entity name="RouteModel" representedClassName="RouteModel" syncable="YES">
+        <attribute name="calorie" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cosaved" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="length" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="plan" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="routeID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="speed" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="time" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="userRouteName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="pois" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="POILocationModel" inverseName="parentRoute" inverseEntity="POILocationModel" syncable="YES"/>
+        <relationship name="segments" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SegmentModel" inverseName="parentRoute" inverseEntity="SegmentModel" syncable="YES"/>
+        <relationship name="waypoints" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WaypointModel" inverseName="parentRoute" inverseEntity="WaypointModel" syncable="YES"/>
+    </entity>
+    <entity name="SegmentModel" representedClassName="SegmentModel" syncable="YES">
+        <attribute name="elevations" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="provisionName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="roadName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="segmentBusynance" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="segmentDistance" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="segmentTime" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="startBearing" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="startDistance" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="startTime" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="turnType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="walkValue" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="parentRoute" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RouteModel" inverseName="segments" inverseEntity="RouteModel" syncable="YES"/>
+        <relationship name="pointArray" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WaypointModel" inverseName="parentSegment" inverseEntity="WaypointModel" syncable="YES"/>
+    </entity>
+    <entity name="WaypointModel" representedClassName="WaypointModel" syncable="YES">
+        <attribute name="isWalking" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="x" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="y" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="parentRoute" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RouteModel" inverseName="waypoints" inverseEntity="RouteModel" syncable="YES"/>
+        <relationship name="parentSegment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SegmentModel" inverseName="pointArray" inverseEntity="SegmentModel" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="RouteModel" positionX="-468" positionY="-123" width="128" height="268"/>
+        <element name="SegmentModel" positionX="160" positionY="-166" width="128" height="238"/>
+        <element name="WaypointModel" positionX="-218" positionY="189" width="128" height="118"/>
+        <element name="POILocationModel" positionX="-477" positionY="378" width="128" height="163"/>
+    </elements>
+</model>
