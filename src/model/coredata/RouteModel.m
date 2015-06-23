@@ -198,7 +198,7 @@
 
 -(NSMutableArray*)createCorrectedWaypointArray{
 	
-	NSMutableArray *arr=[self.waypoints mutableCopy];
+	NSMutableArray *arr=[self.waypoints.array mutableCopy];
 	
 	if(arr.count>2){
 		[arr exchangeObjectAtIndex:arr.count-1 withObjectAtIndex:1];
