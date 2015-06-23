@@ -2,6 +2,12 @@
 #import "SegmentModel.h"
 #import "SettingsManager.h"
 #import "NSDate+Helper.h"
+#import "RouteVO.h"
+#import "POILocationVO.h"
+#import "POILocationModel.h"
+#import "WaypointModel.h"
+#import "CSPointVO.h"
+#import "NSManagedObject+BUCoreData.h"
 
 @interface RouteModel ()
 
@@ -263,8 +269,8 @@
 
 - (CLLocationCoordinate2D) insetNorthEast {
 	CLLocationCoordinate2D location;
-	location.latitude = self.nelatitudeValue;+0.002;
-	location.longitude = self.nelongitudeValue;+0.002;
+	location.latitude = self.nelatitudeValue+0.002;
+	location.longitude = self.nelongitudeValue+0.002;
 	return location;
 }
 
@@ -324,5 +330,61 @@
 -(NSString*)fileid{
 	return [NSString stringWithFormat:@"%@_%@",self.routeID,self.plan];
 }
+
+
+#pragma mark - legacy migration
+
+
+-(void)populateWithLegacyObject:(RouteVO*)legacyObject{
+	
+	// simple properties
+	self.name=[legacyObject.name copy];
+	self.routeID=[legacyObject.routeid copy];
+	self.userRouteName=[legacyObject.userRouteName copy];
+	self.speed=@(legacyObject.speed);
+	self.plan=legacyObject.plan;
+	self.length=legacyObject.length;
+	self.time=@(legacyObject.time);
+	self.calorie=legacyObject.calorie;
+	self.cosaved=legacyObject.cosaved;
+	self.date=[legacyObject.date copy];
+	
+	// locations
+	self.nelatitudeValue=legacyObject.northEast.coordinate.latitude;
+	self.nelongitudeValue=legacyObject.northEast.coordinate.longitude;
+	self.swlatitudeValue=legacyObject.southWest.coordinate.latitude;
+	self.swlongitudeValue=legacyObject.southWest.coordinate.longitude;
+	
+	// relationships
+	
+	for(SegmentVO *segment in legacyObject.segments){
+		
+		SegmentModel *newsegment=[SegmentModel create];
+		[newsegment populateWithLegacyObject:segment];
+		[self addSegmentsObject:newsegment];
+		
+	}
+	
+	for(POILocationVO *poi in legacyObject.poiArray){
+		
+		POILocationModel *newpoi=[POILocationModel create];
+		[newpoi populateWithLegacyObject:poi];
+		[self addPoisObject:newpoi];
+		
+	}
+	
+	
+	for(CSPointVO *point in legacyObject.waypoints){
+		
+		WaypointModel *newwaypoint=[WaypointModel create];
+		[newwaypoint populateWithLegacyObject:point];
+		[self addWaypointsObject:newwaypoint];
+		
+	}
+	
+	
+}
+
+
 
 @end

@@ -201,4 +201,30 @@ CLLocationDistance const MIN_START_FINISH_DISTANCE = 100;
 }
 
 
++(CSRouteSaveType)routeSaveStringTypeToConstant:(NSString*)stringType{
+	
+	if([stringType isEqualToString:@"CSRouteSaveTypeRecent"]){
+		return CSRouteSaveTypeRecent;
+	}else if ([stringType isEqualToString:@"CSRouteSaveTypeFavourite"]){
+		return CSRoutePlanTypeBalanced;
+	}
+	
+	return CSRouteSaveTypeUnknown;
+	
+}
+
+
++(NSString*)routeSaveConstantToString:(CSRouteSaveType)saveType{
+	
+	if(saveType==CSRouteSaveTypeRecent){
+		return @"CSRouteSaveTypeRecent";
+	}else if (saveType==CSRouteSaveTypeFavourite){
+		return @"CSRouteSaveTypeFavourite";
+	}
+	
+	return @"NONE";
+	
+}
+
+
 @end

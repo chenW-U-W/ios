@@ -1070,7 +1070,27 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(RouteManager);
 			return NO;
 		}
 	}
+}
+
+-(BOOL)removeRoutesDir{
 	
+	NSFileManager* fileManager = [NSFileManager defaultManager];
+	NSArray* paths=NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+	NSString* docsdir=[paths objectAtIndex:0];
+	NSString *ipath=[docsdir stringByAppendingPathComponent:ROUTEARCHIVEPATH];
+	
+	BOOL isDir=YES;
+	
+	if([fileManager fileExistsAtPath:ipath isDirectory:&isDir]){
+		NSError *error=nil;
+		if([fileManager removeItemAtPath:ipath error:&error ]){
+			return YES;
+		}else{
+			return NO;
+		}
+	}
+	
+	return YES;
 	
 }
 

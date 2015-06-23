@@ -62,9 +62,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(RouteManager);
 -(void)loadMetaDataForWaypoint:(WayPointVO*)waypoint;
 
 
-// legacy
+// legacy & migration
 -(void)legacyRouteCleanup;
 - (void)legacyRemoveRouteFile:(NSString*)routeid;
 -(RouteVO*)legacyLoadRoute:(NSString*)routeid;
+-(BOOL)removeRoutesDir;
 
 @end

@@ -1,4 +1,5 @@
 #import "_SegmentModel.h"
+#import "SegmentVO.h"
 
 @interface SegmentModel : _SegmentModel {}
 
@@ -33,5 +34,7 @@
 -(CLLocationCoordinate2D)maxNorthEastForLocation:(CLLocation*)comparelocation;
 -(CLLocationCoordinate2D)maxSouthWestForLocation:(CLLocation*)comparelocation;
 
+
+-(void)populateWithLegacyObject:(SegmentVO*)legacyObject;
 
 @end

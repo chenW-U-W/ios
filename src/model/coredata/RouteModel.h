@@ -1,6 +1,11 @@
 #import "_RouteModel.h"
 #import "SegmentModel.h"
 
+@class RouteVO;
+
+
+
+
 @interface RouteModel : _RouteModel {}
 
 
@@ -65,6 +70,10 @@
 -(CLLocationCoordinate2D)maxNorthEastForLocation:(CLLocation*)comparelocation;
 
 -(NSString*)lengthPercentStringForPercent:(float)percent;
+
+
+// legacy migration
+-(void)populateWithLegacyObject:(RouteVO*)legacyObject;
 
 
 @end

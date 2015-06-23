@@ -21,6 +21,7 @@
         <attribute name="plan" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="routeID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="speed" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="storeType" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="swlatitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="swlongitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="time" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -53,7 +54,7 @@
     </entity>
     <elements>
         <element name="POILocationModel" positionX="-477" positionY="378" width="128" height="163"/>
-        <element name="RouteModel" positionX="-468" positionY="-123" width="128" height="300"/>
+        <element name="RouteModel" positionX="-468" positionY="-123" width="128" height="315"/>
         <element name="SegmentModel" positionX="160" positionY="-166" width="128" height="240"/>
         <element name="WaypointModel" positionX="-218" positionY="189" width="128" height="118"/>
     </elements>

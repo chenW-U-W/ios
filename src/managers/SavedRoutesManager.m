@@ -15,6 +15,12 @@
 #import "GlobalUtilities.h"
 #import "NSDate+Helper.h"
 #import <NSObject+BKBlockExecution.h>
+#import "RouteModel.h"
+
+#import "BUPersistentStore.h"
+#import "NSFetchedResultsController+Additions.h"
+#import "NSManagedObject+BUCoreData.h"
+#import "BUPersistentStore+Additions.h"
 
 @interface SavedRoutesManager(Private)
 
@@ -54,6 +60,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(SavedRoutesManager);
 		if(_routeidStore==nil){
 			self.routeidStore = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[NSMutableArray array], SAVEDROUTE_FAVS,[NSMutableArray array],SAVEDROUTE_RECENTS,nil];
 		}
+		
+		[[BUPersistentStore mainStore] setupWithStoreName:@"CoreDataStore.sqlite" modelName:@"RoutesModel"];
 		
 		__weak __typeof(&*self)weakSelf = self;
 		[self bk_performBlockInBackground:^(id obj) {
@@ -134,27 +142,107 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(SavedRoutesManager);
  ***********************************************/
 //
 
+// this should be user initiated or specifically stall app to complete
+// ie dont do this in the background
+
 -(void)migrateFileRoutesToCoreData{
 	
+	int recentCount=0;
 	
-	// get route ids
+	for(NSString *key in _routeidStore){
+		
+		NSArray *routes=[_routeidStore objectForKey:key];
+		recentCount=routes.count;
+		
+		for(NSString *routeid in routes){
+			
+			RouteVO *route=[[RouteManager sharedInstance] loadRouteForFileID:routeid];
+			
+			if(route.dateString==nil){
+				
+				NSDate *newdate=[NSDate dateWithTimeIntervalSince1970:[route.date integerValue]];
+				NSString *dateStr=[NSDate stringFromDate:newdate withFormat:[NSDate dbFormatString]];
+				if(newdate!=nil){
+					route.date=dateStr;
+				}
+			}
+			
+			RouteModel *newRoute=[RouteModel create];
+			[newRoute populateWithLegacyObject:route];
+			
+			if(route!=nil){
+				if([key isEqualToString:SAVEDROUTE_FAVS]){
+					newRoute.storeTypeValue=CSRouteSaveTypeFavourite;
+				}else{
+					newRoute.storeTypeValue=CSRouteSaveTypeRecent;
+				}
+			}
+		}
+		
+		[[BUPersistentStore mainStore] fastSave];
+		
+		
+		
+	}
 	
-	// routes need new storeType property (fav/recent)
 	
-	// need new RouteModel class
-	// RouteVO *route=[[RouteManager sharedInstance] loadRouteForFileID:routeid];
+	// do test load of data
+	NSError *error=nil;
+	NSFetchRequest *recentRequest=[self fetchRequestFor:CSRouteSaveTypeRecent];
+	NSArray *results=[[BUPersistentStore mainStore] allForFetchRequest:recentRequest error:&error];
 	
 	
-	// then create new RouteModel class and initialize with data from RouteVO
+	if(error==nil && results.count==recentCount){
+		
+		BOOL removedDir=[[RouteManager sharedInstance] removeRoutesDir];
+		
+		if(removedDir==YES){
+			
+			NSFileManager* fileManager = [NSFileManager defaultManager];
+			
+			if([fileManager fileExistsAtPath:[self indiciesFile]]){
+				NSError *error=nil;
+				if([fileManager removeItemAtPath:[self indiciesFile] error:&error ]){
+					BetterLog(@"removed legacy indicies file");
+				}else{
+					BetterLog(@"didnt remove indicies file");
+				}
+			}
+			
+		}else{
+			BetterLog(@"Unable to remove legacy routes dir");
+		}
+		
+	}
 	
-	// set storeType
 	
-	// once all done, remove legacy userroutes dir & indicies file
+	// removed legacy data
+	
+
+	
+	
 	
 	// re try using fetchedresults controllers
 	
 }
 
+
+- (NSFetchRequest *)fetchRequestFor:(CSRouteSaveType)saveType {
+	
+	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+	NSManagedObjectContext *context=[[BUPersistentStore mainStore] managedObjectContext];
+	[fetchRequest setEntity:[RouteModel entityInManagedObjectContext:context]];
+	[fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"storeType = %@",[AppConstants routeSaveConstantToString:saveType]]];
+	[fetchRequest setFetchBatchSize:100];
+	
+	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
+	NSArray *sortDescriptors = @[sortDescriptor];
+	[fetchRequest setSortDescriptors:sortDescriptors];
+	
+	
+	return fetchRequest;
+	
+}
 
 
 

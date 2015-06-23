@@ -1572,6 +1572,22 @@
 		28E23BE51B385AED002D6DB2 /* WaypointModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E23BC71B385AED002D6DB2 /* WaypointModel.m */; };
 		28E23BE61B385AED002D6DB2 /* WaypointModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E23BC71B385AED002D6DB2 /* WaypointModel.m */; };
 		28E23BE71B385AED002D6DB2 /* WaypointModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E23BC71B385AED002D6DB2 /* WaypointModel.m */; };
+		28E23BF21B396CA9002D6DB2 /* BUPersistentStore+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E23BEB1B396CA9002D6DB2 /* BUPersistentStore+Additions.m */; };
+		28E23BF31B396CA9002D6DB2 /* BUPersistentStore+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E23BEB1B396CA9002D6DB2 /* BUPersistentStore+Additions.m */; };
+		28E23BF41B396CA9002D6DB2 /* BUPersistentStore+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E23BEB1B396CA9002D6DB2 /* BUPersistentStore+Additions.m */; };
+		28E23BF51B396CA9002D6DB2 /* BUPersistentStore+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E23BEB1B396CA9002D6DB2 /* BUPersistentStore+Additions.m */; };
+		28E23BF61B396CA9002D6DB2 /* BUPersistentStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E23BED1B396CA9002D6DB2 /* BUPersistentStore.m */; };
+		28E23BF71B396CA9002D6DB2 /* BUPersistentStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E23BED1B396CA9002D6DB2 /* BUPersistentStore.m */; };
+		28E23BF81B396CA9002D6DB2 /* BUPersistentStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E23BED1B396CA9002D6DB2 /* BUPersistentStore.m */; };
+		28E23BF91B396CA9002D6DB2 /* BUPersistentStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E23BED1B396CA9002D6DB2 /* BUPersistentStore.m */; };
+		28E23BFA1B396CA9002D6DB2 /* NSFetchedResultsController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E23BEF1B396CA9002D6DB2 /* NSFetchedResultsController+Additions.m */; };
+		28E23BFB1B396CA9002D6DB2 /* NSFetchedResultsController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E23BEF1B396CA9002D6DB2 /* NSFetchedResultsController+Additions.m */; };
+		28E23BFC1B396CA9002D6DB2 /* NSFetchedResultsController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E23BEF1B396CA9002D6DB2 /* NSFetchedResultsController+Additions.m */; };
+		28E23BFD1B396CA9002D6DB2 /* NSFetchedResultsController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E23BEF1B396CA9002D6DB2 /* NSFetchedResultsController+Additions.m */; };
+		28E23BFE1B396CA9002D6DB2 /* NSManagedObject+BUCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E23BF11B396CA9002D6DB2 /* NSManagedObject+BUCoreData.m */; };
+		28E23BFF1B396CA9002D6DB2 /* NSManagedObject+BUCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E23BF11B396CA9002D6DB2 /* NSManagedObject+BUCoreData.m */; };
+		28E23C001B396CA9002D6DB2 /* NSManagedObject+BUCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E23BF11B396CA9002D6DB2 /* NSManagedObject+BUCoreData.m */; };
+		28E23C011B396CA9002D6DB2 /* NSManagedObject+BUCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E23BF11B396CA9002D6DB2 /* NSManagedObject+BUCoreData.m */; };
 		28E6030A1610B683006A4B4C /* cyclestreets.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 28E603091610B683006A4B4C /* cyclestreets.geojson */; };
 		28E8A3CC1455638D0063AA96 /* SegmentVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E8A3CB1455638D0063AA96 /* SegmentVO.m */; };
 		28E8A3E61455B6D10063AA96 /* SavedRoutesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E8A3E51455B6D00063AA96 /* SavedRoutesManager.m */; };
@@ -2630,6 +2646,14 @@
 		28E23BC51B385AED002D6DB2 /* SegmentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentModel.m; sourceTree = "<group>"; };
 		28E23BC61B385AED002D6DB2 /* WaypointModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaypointModel.h; sourceTree = "<group>"; };
 		28E23BC71B385AED002D6DB2 /* WaypointModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaypointModel.m; sourceTree = "<group>"; };
+		28E23BEA1B396CA9002D6DB2 /* BUPersistentStore+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BUPersistentStore+Additions.h"; sourceTree = "<group>"; };
+		28E23BEB1B396CA9002D6DB2 /* BUPersistentStore+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BUPersistentStore+Additions.m"; sourceTree = "<group>"; };
+		28E23BEC1B396CA9002D6DB2 /* BUPersistentStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUPersistentStore.h; sourceTree = "<group>"; };
+		28E23BED1B396CA9002D6DB2 /* BUPersistentStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUPersistentStore.m; sourceTree = "<group>"; };
+		28E23BEE1B396CA9002D6DB2 /* NSFetchedResultsController+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFetchedResultsController+Additions.h"; sourceTree = "<group>"; };
+		28E23BEF1B396CA9002D6DB2 /* NSFetchedResultsController+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFetchedResultsController+Additions.m"; sourceTree = "<group>"; };
+		28E23BF01B396CA9002D6DB2 /* NSManagedObject+BUCoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+BUCoreData.h"; sourceTree = "<group>"; };
+		28E23BF11B396CA9002D6DB2 /* NSManagedObject+BUCoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+BUCoreData.m"; sourceTree = "<group>"; };
 		28E603091610B683006A4B4C /* cyclestreets.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cyclestreets.geojson; sourceTree = "<group>"; };
 		28E8A3CA1455638D0063AA96 /* SegmentVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentVO.h; sourceTree = "<group>"; };
 		28E8A3CB1455638D0063AA96 /* SegmentVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentVO.m; sourceTree = "<group>"; };
@@ -2810,6 +2834,7 @@
 		280E2405144D825D0021CDFA /* core */ = {
 			isa = PBXGroup;
 			children = (
+				28E23BE91B396CA9002D6DB2 /* BUCoreData */,
 				284ADCEC18C892A9003830DE /* BUCodableObject.h */,
 				284ADCED18C892A9003830DE /* BUCodableObject.m */,
 				280E2408144D825D0021CDFA /* BUTableCellView.h */,
@@ -4153,6 +4178,21 @@
 				28E23BBF1B385AED002D6DB2 /* _WaypointModel.m */,
 			);
 			name = machineclasses;
+			sourceTree = "<group>";
+		};
+		28E23BE91B396CA9002D6DB2 /* BUCoreData */ = {
+			isa = PBXGroup;
+			children = (
+				28E23BEA1B396CA9002D6DB2 /* BUPersistentStore+Additions.h */,
+				28E23BEB1B396CA9002D6DB2 /* BUPersistentStore+Additions.m */,
+				28E23BEC1B396CA9002D6DB2 /* BUPersistentStore.h */,
+				28E23BED1B396CA9002D6DB2 /* BUPersistentStore.m */,
+				28E23BEE1B396CA9002D6DB2 /* NSFetchedResultsController+Additions.h */,
+				28E23BEF1B396CA9002D6DB2 /* NSFetchedResultsController+Additions.m */,
+				28E23BF01B396CA9002D6DB2 /* NSManagedObject+BUCoreData.h */,
+				28E23BF11B396CA9002D6DB2 /* NSManagedObject+BUCoreData.m */,
+			);
+			path = BUCoreData;
 			sourceTree = "<group>";
 		};
 		28FA8A2719E451FB0040EA46 /* projects */ = {
@@ -5741,6 +5781,7 @@
 				28AD62A2131FB69D008527FC /* SuperViewController.m in Sources */,
 				28AD62A3131FB69D008527FC /* AccountViewController.m in Sources */,
 				28AD62A6131FB69D008527FC /* SettingsManager.m in Sources */,
+				28E23BF21B396CA9002D6DB2 /* BUPersistentStore+Additions.m in Sources */,
 				289EFC5619ED5A710081E7BB /* NSMutableArray+Plist.m in Sources */,
 				28AD62A7131FB69D008527FC /* StartupManager.m in Sources */,
 				28AD62AC131FB69D008527FC /* Files.m in Sources */,
@@ -5774,6 +5815,7 @@
 				28AD642B131FB6C8008527FC /* UIImage+AKLoadingExtension.m in Sources */,
 				28AD642D131FB6C8008527FC /* UIView+Border.m in Sources */,
 				28E23BD01B385AED002D6DB2 /* _SegmentModel.m in Sources */,
+				28E23BFE1B396CA9002D6DB2 /* NSManagedObject+BUCoreData.m in Sources */,
 				28AD642E131FB6C8008527FC /* UIView+Additions.m in Sources */,
 				28AD6434131FB6C8008527FC /* AsyncImageView.m in Sources */,
 				28E23BDC1B385AED002D6DB2 /* RouteModel.m in Sources */,
@@ -5798,6 +5840,7 @@
 				28AD6460131FB6C8008527FC /* DeviceUtilities.m in Sources */,
 				283C5FCC18B915C300E97BDF /* PhotoWizardViewController.m in Sources */,
 				28AD6462131FB6C8008527FC /* GlobalUtilities.m in Sources */,
+				28E23BF61B396CA9002D6DB2 /* BUPersistentStore.m in Sources */,
 				289EFC5919ED86AE0081E7BB /* CSOverlayTransitionAnimator.m in Sources */,
 				283C5FCD18B91B4500E97BDF /* PhotoWizardLocationViewController.m in Sources */,
 				28965C5418BF3CC3001BB258 /* TBXML+Additions.m in Sources */,
@@ -5837,6 +5880,7 @@
 				28719D92136FE2AD00F69A1B /* LocationSearchManager.m in Sources */,
 				280E91C614097D8600C7AC75 /* StringManager.m in Sources */,
 				280E91C714097D8600C7AC75 /* StyleManager.m in Sources */,
+				28E23BFA1B396CA9002D6DB2 /* NSFetchedResultsController+Additions.m in Sources */,
 				280E91C814097D8600C7AC75 /* UserSettingsManager.m in Sources */,
 				2886DEE018C530A500CD208B /* BUDataSourceManager.m in Sources */,
 				2889096A193F41BB009C4325 /* CSMapSource.m in Sources */,
@@ -5922,6 +5966,7 @@
 				284ADCEF18C892A9003830DE /* BUCodableObject.m in Sources */,
 				283436C915DD5DC300B00FD5 /* AccountViewController.m in Sources */,
 				288055DB18BB7A9B00BABAB1 /* CSRouteSegmentAnnotationView.m in Sources */,
+				28E23BF31B396CA9002D6DB2 /* BUPersistentStore+Additions.m in Sources */,
 				289EFC5719ED5A710081E7BB /* NSMutableArray+Plist.m in Sources */,
 				283436CC15DD5DC300B00FD5 /* SettingsManager.m in Sources */,
 				283436CD15DD5DC300B00FD5 /* StartupManager.m in Sources */,
@@ -5955,6 +6000,7 @@
 				283436E215DD5DC300B00FD5 /* UIColor-Expanded.m in Sources */,
 				283436E315DD5DC300B00FD5 /* UIImage+AKLoadingExtension.m in Sources */,
 				28E23BD11B385AED002D6DB2 /* _SegmentModel.m in Sources */,
+				28E23BFF1B396CA9002D6DB2 /* NSManagedObject+BUCoreData.m in Sources */,
 				283436E415DD5DC300B00FD5 /* UIView+Border.m in Sources */,
 				283436E515DD5DC300B00FD5 /* UIView+Additions.m in Sources */,
 				28E23BDD1B385AED002D6DB2 /* RouteModel.m in Sources */,
@@ -5979,6 +6025,7 @@
 				289EFC5E19ED86C50081E7BB /* SavedLocationVO.m in Sources */,
 				283436F815DD5DC300B00FD5 /* DeviceUtilities.m in Sources */,
 				283436F915DD5DC300B00FD5 /* GlobalUtilities.m in Sources */,
+				28E23BF71B396CA9002D6DB2 /* BUPersistentStore.m in Sources */,
 				283436FA15DD5DC300B00FD5 /* StringUtilities.m in Sources */,
 				289EFC5A19ED86AF0081E7BB /* CSOverlayTransitionAnimator.m in Sources */,
 				283436FB15DD5DC300B00FD5 /* ViewUtilities.m in Sources */,
@@ -6018,6 +6065,7 @@
 				2834371215DD5DC300B00FD5 /* ItineraryViewController.m in Sources */,
 				28BC6AA918AE42FA00EF0436 /* PhotoCategoryVO.m in Sources */,
 				2834371415DD5DC300B00FD5 /* RouteSegmentViewController.m in Sources */,
+				28E23BFB1B396CA9002D6DB2 /* NSFetchedResultsController+Additions.m in Sources */,
 				28727ADA18B5322800D957FD /* CSPhotomapAnnotation.m in Sources */,
 				2889096B193F41BB009C4325 /* CSMapSource.m in Sources */,
 				28727ADF18B5387C00D957FD /* CSPhotomapAnnotationView.m in Sources */,
@@ -6118,6 +6166,7 @@
 				28A264B71AE65D78006C09A7 /* SaveLocationCreateViewController.m in Sources */,
 				28A263FD1AE65AB4006C09A7 /* AppConstants.m in Sources */,
 				28A263FE1AE65AB4006C09A7 /* CSOverlayPushTransitionAnimator.m in Sources */,
+				28E23BF91B396CA9002D6DB2 /* BUPersistentStore.m in Sources */,
 				28A263FF1AE65AB4006C09A7 /* NSDate+Helper.m in Sources */,
 				28A264001AE65AB4006C09A7 /* NSDate+NSDateRFC1123.m in Sources */,
 				28A264011AE65AB4006C09A7 /* BUNetworkOperation.m in Sources */,
@@ -6127,6 +6176,7 @@
 				28A264051AE65AB4006C09A7 /* NSDictionary+UrlEncoding.m in Sources */,
 				28A264061AE65AB4006C09A7 /* PhotoMapViewController.m in Sources */,
 				28A264071AE65AB4006C09A7 /* NSDictionary-MutableDictionaryCopy.m in Sources */,
+				28E23C011B396CA9002D6DB2 /* NSManagedObject+BUCoreData.m in Sources */,
 				28A264081AE65AB4006C09A7 /* NSString-URLEncoding.m in Sources */,
 				28A264091AE65AB4006C09A7 /* UIApplication-Additions.m in Sources */,
 				28A2640A1AE65AB4006C09A7 /* UIColor-Expanded.m in Sources */,
@@ -6181,6 +6231,7 @@
 				28A264331AE65AB4006C09A7 /* CSOpenStreetMapSource.m in Sources */,
 				28A264341AE65AB4006C09A7 /* LoginVO.m in Sources */,
 				28A264351AE65AB4006C09A7 /* CSOrdnanceSurveyStreetViewMapSource.m in Sources */,
+				28E23BF51B396CA9002D6DB2 /* BUPersistentStore+Additions.m in Sources */,
 				28A264361AE65AB4006C09A7 /* POIAnnotation.m in Sources */,
 				28A264371AE65AB4006C09A7 /* BUDividerView.m in Sources */,
 				28A264381AE65AB4006C09A7 /* CSRoutePolyLineRenderer.m in Sources */,
@@ -6247,6 +6298,7 @@
 				28A2646B1AE65AB4006C09A7 /* BUIconButton.m in Sources */,
 				28E23BE71B385AED002D6DB2 /* WaypointModel.m in Sources */,
 				28A2646C1AE65AB4006C09A7 /* UploadPhotoVO.m in Sources */,
+				28E23BFD1B396CA9002D6DB2 /* NSFetchedResultsController+Additions.m in Sources */,
 				28A2646D1AE65AB4006C09A7 /* GenericConstants.m in Sources */,
 				28A2646E1AE65AB4006C09A7 /* Reachability.m in Sources */,
 				28A2646F1AE65AB4006C09A7 /* CopyLabel.m in Sources */,
@@ -6308,6 +6360,7 @@
 				28FA8B1919E454E80040EA46 /* NSDate-Misc.m in Sources */,
 				28FA8B1A19E454E80040EA46 /* NSDictionary+Helpers.m in Sources */,
 				28FA8BB519E45C6F0040EA46 /* AppDelegate.m in Sources */,
+				28E23BF81B396CA9002D6DB2 /* BUPersistentStore.m in Sources */,
 				28FA8B1C19E454E80040EA46 /* NSDictionary+UrlEncoding.m in Sources */,
 				28FA8B1D19E454E80040EA46 /* BUIconActionSheet.m in Sources */,
 				28FA8B1E19E454E80040EA46 /* NSDictionary-MutableDictionaryCopy.m in Sources */,
@@ -6317,6 +6370,7 @@
 				28FA8B2019E454E80040EA46 /* UIApplication-Additions.m in Sources */,
 				28FA8B2219E454E80040EA46 /* UIColor-Expanded.m in Sources */,
 				28FA8B2319E454E80040EA46 /* UIImage+AKLoadingExtension.m in Sources */,
+				28E23C001B396CA9002D6DB2 /* NSManagedObject+BUCoreData.m in Sources */,
 				28920F631AD3CBB200997461 /* CSTableLoadingCellView.m in Sources */,
 				289EFC4719ED2BA00081E7BB /* SavedLocationsViewController.m in Sources */,
 				28FA8B2419E454E80040EA46 /* UIView+Border.m in Sources */,
@@ -6371,6 +6425,7 @@
 				28FA8B4C19E454E80040EA46 /* LoginVO.m in Sources */,
 				28641D5219FD6D6F009321E0 /* LeisureRouteVO.m in Sources */,
 				28FA8B4D19E454E80040EA46 /* PhotoCategoryVO.m in Sources */,
+				28E23BF41B396CA9002D6DB2 /* BUPersistentStore+Additions.m in Sources */,
 				28FA8B4E19E454E80040EA46 /* BUDividerView.m in Sources */,
 				28FA8B4F19E454E80040EA46 /* LocationSearchManager.m in Sources */,
 				28FA8B5019E454E80040EA46 /* StringManager.m in Sources */,
@@ -6437,6 +6492,7 @@
 				28FA8B7A19E454E80040EA46 /* GenericConstants.m in Sources */,
 				28E23BE61B385AED002D6DB2 /* WaypointModel.m in Sources */,
 				28FA8B7B19E454E80040EA46 /* Reachability.m in Sources */,
+				28E23BFC1B396CA9002D6DB2 /* NSFetchedResultsController+Additions.m in Sources */,
 				28347A9E1A37174400FA83BE /* CSUserRouteVO.m in Sources */,
 				28FA8B7C19E454E80040EA46 /* CopyLabel.m in Sources */,
 				28FA8B7E19E454E80040EA46 /* CSGraphView.m in Sources */,
@@ -7292,6 +7348,7 @@
 				28E23BB41B3858D9002D6DB2 /* Adhoc */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		28FA8BA819E454E80040EA46 /* Build configuration list for PBXNativeTarget "Stoke" */ = {
 			isa = XCConfigurationList;

@@ -14,6 +14,7 @@ const struct RouteModelAttributes RouteModelAttributes = {
 	.plan = @"plan",
 	.routeID = @"routeID",
 	.speed = @"speed",
+	.storeType = @"storeType",
 	.swlatitude = @"swlatitude",
 	.swlongitude = @"swlongitude",
 	.time = @"time",
@@ -72,6 +73,11 @@ const struct RouteModelFetchedProperties RouteModelFetchedProperties = {
 	}
 	if ([key isEqualToString:@"speedValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"speed"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
+	if ([key isEqualToString:@"storeTypeValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"storeType"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
@@ -237,6 +243,32 @@ const struct RouteModelFetchedProperties RouteModelFetchedProperties = {
 
 - (void)setPrimitiveSpeedValue:(int32_t)value_ {
 	[self setPrimitiveSpeed:[NSNumber numberWithInt:value_]];
+}
+
+
+
+
+
+@dynamic storeType;
+
+
+
+- (int32_t)storeTypeValue {
+	NSNumber *result = [self storeType];
+	return [result intValue];
+}
+
+- (void)setStoreTypeValue:(int32_t)value_ {
+	[self setStoreType:[NSNumber numberWithInt:value_]];
+}
+
+- (int32_t)primitiveStoreTypeValue {
+	NSNumber *result = [self primitiveStoreType];
+	return [result intValue];
+}
+
+- (void)setPrimitiveStoreTypeValue:(int32_t)value_ {
+	[self setPrimitiveStoreType:[NSNumber numberWithInt:value_]];
 }
 
 

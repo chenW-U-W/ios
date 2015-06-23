@@ -30,6 +30,13 @@ enum  {
 typedef int CSRoutePlanType;
 
 
+typedef NS_ENUM(NSUInteger, CSRouteSaveType) {
+	CSRouteSaveTypeRecent,
+	CSRouteSaveTypeFavourite,
+	CSRouteSaveTypeUnknown
+};
+
+
 typedef void (^ParserCompletionBlock)(BUNetworkOperation *operation);
 typedef void (^ParserErrorBlock)(BUNetworkOperation *operation, NSError *error);
 
@@ -224,5 +231,9 @@ extern CLLocationDistance const MIN_START_FINISH_DISTANCE;
 + (CSRoutePlanType)planStringTypeToConstant:(NSString*)stringType;
 + (NSString*)planConstantToString:(CSRoutePlanType)parserType;
 + (NSArray*)planArray;
+
++(CSRouteSaveType)routeSaveStringTypeToConstant:(NSString*)stringType;
++(NSString*)routeSaveConstantToString:(CSRouteSaveType)saveType;
+
 
 @end

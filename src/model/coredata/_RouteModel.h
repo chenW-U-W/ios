@@ -15,6 +15,7 @@ extern const struct RouteModelAttributes {
 	__unsafe_unretained NSString *plan;
 	__unsafe_unretained NSString *routeID;
 	__unsafe_unretained NSString *speed;
+	__unsafe_unretained NSString *storeType;
 	__unsafe_unretained NSString *swlatitude;
 	__unsafe_unretained NSString *swlongitude;
 	__unsafe_unretained NSString *time;
@@ -33,6 +34,7 @@ extern const struct RouteModelFetchedProperties {
 @class POILocationModel;
 @class SegmentModel;
 @class WaypointModel;
+
 
 
 
@@ -173,6 +175,20 @@ extern const struct RouteModelFetchedProperties {
 - (void)setSpeedValue:(int32_t)value_;
 
 //- (BOOL)validateSpeed:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSNumber* storeType;
+
+
+
+@property int32_t storeTypeValue;
+- (int32_t)storeTypeValue;
+- (void)setStoreTypeValue:(int32_t)value_;
+
+//- (BOOL)validateStoreType:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -344,6 +360,15 @@ extern const struct RouteModelFetchedProperties {
 
 - (int32_t)primitiveSpeedValue;
 - (void)setPrimitiveSpeedValue:(int32_t)value_;
+
+
+
+
+- (NSNumber*)primitiveStoreType;
+- (void)setPrimitiveStoreType:(NSNumber*)value;
+
+- (int32_t)primitiveStoreTypeValue;
+- (void)setPrimitiveStoreTypeValue:(int32_t)value_;
 
 
 

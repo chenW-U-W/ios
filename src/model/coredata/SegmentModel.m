@@ -1,5 +1,7 @@
 #import "SegmentModel.h"
 #import "WaypointModel.h"
+#import "CSPointVO.h"
+#import "NSManagedObject+BUCoreData.h"
 
 static NSDictionary *roadIcons;
 
@@ -288,6 +290,39 @@ static NSDictionary *roadIcons;
 	location.longitude=MIN(selflongtitude, comparelongtitude)-0.002;
 	
 	return location;
+}
+
+
+
+#pragma mark - legacy migration
+
+
+-(void)populateWithLegacyObject:(SegmentVO*)legacyObject{
+	
+	// simple properties
+	self.roadName=[legacyObject.roadName copy];
+	self.provisionName=[legacyObject.provisionName copy];
+	self.turnType=[legacyObject.turnType copy];
+	self.walkValue=@(legacyObject.walkValue);
+	self.segmentTime=@(legacyObject.segmentTime);
+	self.segmentDistance=@(legacyObject.segmentDistance);
+	self.startBearing=@(legacyObject.startBearing);
+	self.segmentBusynance=@(legacyObject.segmentBusynance);
+	self.startTime=@(legacyObject.startTime);
+	self.startDistance=@(legacyObject.startDistance);
+	
+	
+	// relationships
+	
+	for(CSPointVO *point in legacyObject.pointsArray){
+		
+		WaypointModel *newwaypoint=[WaypointModel create];
+		[newwaypoint populateWithLegacyObject:point];
+		[self addPointArrayObject:newwaypoint];
+		
+	}
+	
+	
 }
 
 

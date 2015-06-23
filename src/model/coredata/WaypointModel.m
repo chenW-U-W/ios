@@ -38,4 +38,16 @@
 }
 
 
+
+#pragma mark - legacy migration
+
+
+-(void)populateWithLegacyObject:(CSPointVO*)legacyObject{
+	
+	self.xValue=legacyObject.point.x;
+	self.yValue=legacyObject.point.y;
+	self.isWalkingValue=legacyObject.isWalking;
+	
+}
+
 @end
