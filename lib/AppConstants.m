@@ -196,7 +196,7 @@ CLLocationDistance const MIN_START_FINISH_DISTANCE = 100;
 + (NSArray*)planArray{
 	
 	return @[CSPLANTYPE_FASTEST,CSPLANTYPE_BALANCED,CSPLANTYPE_QUIETEST];
-	
+	//-----------------
 	
 }
 
